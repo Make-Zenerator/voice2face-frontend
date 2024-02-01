@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Result</title>
+<!-- <link href="styles.css" rel="stylesheet"> -->
+</head>
+<body>
+    <button type="button" onclick="location.href='/'">홈으로</button>
+    <header>
+        <h1>MZ</h1>
+    </header>
+<main>
+    <p>유저 email<span id="email"></span></p>
+    <div id="createdImageDisplay">
+        <!-- 생성된 이미지가 표시될 곳 -->
+    </div>
+    <button id="saveImage">이미지 저장하기</button>
+</main>
+<script>
+    
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const email = decodeURIComponent(urlParams.get('email'));
+    async function getUserData() {
+        try {
+            const response = await fetch(`/get_user_data?email=${encodeURIComponent(email)}`);
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            
+            document.getElementById('email').textContent = result.email;
+        } catch (error) {
+            console.error('Failed to get user data: ', error);
+        }
+    }
+    getUserData();
+
+</script>
+</body>
+</html>

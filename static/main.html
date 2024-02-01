@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main</title>
+<!-- <link href="styles.css" rel="stylesheet"> -->
+</head>
+<body>
+<header>
+    <h1><a href="/">MZ</a></h1>
+</header>
+<main>
+    <form id="emailForm">
+        <label for="email">이메일 입력:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="password">비밀번호 입력(4자리): </label>
+        <input type="password" id="password" name="password" required>
+
+    </form>
+    <button id="goCreate">이미지 생성 하러 가기</button>
+    <button id="goResult">생성된 이미지 확인하기</button>
+</main>
+<script>
+    async function goCreate() {
+        const form = document.getElementById('emailForm');
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        try {
+            const response = await fetch('/users/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            console.log(result);
+            alert("User created successfully");
+        
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            window.location.href = `/static/create.html?email=${encodeURIComponent(email)}`;
+        } catch (error) {
+            console.error('Failed to create user: ', error);
+            alert("Failed to create user");
+        }
+    }
+    
+    async function goResult() {
+        const form = document.getElementById('emailForm');
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        try {
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const result = await response.json();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+        
+            if (result) {
+                window.location.href = `/static/result.html?email=${encodeURIComponent(email)}`;
+            }
+            else {
+                alert(result);
+            }
+        } catch (error) {
+            console.error('Failed to create user: ', error);
+            alert("Failed to create user");
+        }
+    }
+
+    document.getElementById('goCreate').addEventListener('click', goCreate);
+    document.getElementById('goResult').addEventListener('click', goResult);
+</script>
+</body>
+</html>
