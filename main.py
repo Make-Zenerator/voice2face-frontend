@@ -25,6 +25,7 @@ class User(BaseModel):
     password: str = Field(..., example="password")
     gender: Optional[str] = Field(None, example="Man")
     age: Optional[int] = Field(None, example=30)
+    image_path: Optional[str] = Field(None, example="../src/output/image.jpg")
 
 @app.on_event("startup")
 async def startup():
