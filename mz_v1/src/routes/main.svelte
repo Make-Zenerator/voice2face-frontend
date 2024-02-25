@@ -1,3 +1,8 @@
+<script>
+
+    
+</script>
+
 <style>
     .site-header {
        display: flex;
@@ -105,9 +110,9 @@
      <div class="logo-and-navigation">
          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7387e1f2558c4cb68adb47e3cea898b9ad9d6228337bee53a2579a53313abd25?apiKey=6e0b0bf64b4b49c58a8bfeae7e59ace2&" alt="Company Logo" class="logo"/>
          <nav class="navigation">
-             <a href="#" class="nav-item">About us</a>
-             <a href="#" class="nav-item">로그인</a>
-             <a href="#" class="nav-item signup">회원가입</a>
+             <a href="/aboutus" class="nav-item">About us</a>
+             <a href="/login" class="nav-item">로그인</a>
+             <a href="/join" class="nav-item signup" >회원가입</a>
          </nav>
      </div>
  </header>
@@ -121,8 +126,8 @@
                  where you can experience your own impressions and characters with your voice.
              </p>
              <div class="call-to-action">
-                 <a href="#" class="cta-button">나의 다른 모습 체험하기</a>
-                 <a href="#" class="cta-button signup">회원가입</a>
+                 <a href="/login" class="cta-button">나의 다른 모습 체험하기</a>
+                 <a href="/join" class="cta-button signup">회원가입</a>
              </div>
          </div>
          <div class="banner-image">
@@ -140,8 +145,5 @@
  </main>
  
  
- <script>
- 
- 
- </script>
+
  

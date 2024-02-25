@@ -1,5 +1,8 @@
 <script>
     // Svelte script section if needed
+    let email;
+    
+    
   </script>
   
   <header class="site-header">
@@ -10,8 +13,8 @@
       </div>
       <nav class="navigation-links">
         <a href="/about-us" class="link">About Us</a>
-        <a href="/login" class="link">Login</a>
-        <a href="/signup" class="link signup">Sign Up</a>
+        <a href="/login" class="link">로그인</a>
+        <a href="/join" class="link signup">회원가입</a>
       </nav>
     </div>
   </header>
@@ -20,7 +23,7 @@
       <div class="login-form-container">
         <form class="login-form">
           <h2 class="form-heading">Login</h2>
-          <label for="emailInput" class="visually-hidden">Email Address</label>
+          <label for="emailInput" class="visually-hidden" value="email">Email Address</label>
           <input type="email" id="emailInput" class="email-input" placeholder="이메일 입력" aria-label="Email Address" />
           <label for="passwordInput" class="visually-hidden">Password</label>
           <input type="password" id="passwordInput" class="password-input" placeholder="비밀번호 입력" aria-label="Password" />
