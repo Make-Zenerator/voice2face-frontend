@@ -1,13 +1,52 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
+from datetime import datetime
 from databases import Database
 from passlib.context import CryptContext
-from typing import Optional
+from typing import Optional, Annotated
 import os
 
+import models
+from database import engine, SessionLocal
+from sqlalchemy.orm import Session
+
 app = FastAPI()
+models.Base.metadata.create_all(bind=engine)
+
+class UserBase(BaseModel):
+    email: str
+    password: str
+    age: int
+    gender: bool
+    updated_at: Optional[datetime]
+
+class RequestBase(BaseModel):
+    user_id: int
+    age: int
+    gender: bool
+    voice: str
+    status: int
+    eta: Optional[datetime]
+    updated_at: Optional[datetime]
+    
+class ResultBase(BaseModel):
+    request_id: int
+    condition_image_url: Optional[str]
+    condition_gif_url: Optional[str]
+    voice_image_url: Optional[str]
+    voice_gif_url: Optional[str]
+    condition_image_rating: Optional[int]
+    condition_gif_rating: Optional[int]
+    voice_image_rating: Optional[int]
+    voice_gif_rating: Optional[int]
+    condition_image_score: Optional[float]
+    condition_gif_score: Optional[float]
+    voice_image_score: Optional[float]
+    voice_gif_score: Optional[float]
+    updated_at: Optional[datetime]
+    
 
 DATABASE_URL = "mysql://root:1234@localhost/MZ"
 database = Database(DATABASE_URL)
@@ -20,12 +59,23 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 def hash_password(password: str):
     return pwd_context.hash(password)
 
+# class User(BaseModel):
+#     email: str = Field(..., example="user@example.com")
+#     password: str = Field(..., example="password")
+#     gender: Optional[str] = Field(None, example="Man")
+#     age: Optional[int] = Field(None, example=30)
+#     image_path: Optional[str] = Field(None, example="../src/output/image.jpg")
+
 class User(BaseModel):
     email: str = Field(..., example="user@example.com")
-    password: str = Field(..., example="password")
-    gender: Optional[str] = Field(None, example="Man")
-    age: Optional[int] = Field(None, example=30)
-    image_path: Optional[str] = Field(None, example="../src/output/image.jpg")
+    password: str = Field(..., example="example123")
+    age: int = Field(..., example=25)
+    gender: int = Field(..., example=0)  # 0: man, 1: woman
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
+    deleted_at: Optional[datetime] = None
+
+
 
 @app.on_event("startup")
 async def startup():
