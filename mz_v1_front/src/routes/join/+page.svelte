@@ -1,0 +1,566 @@
+<script>
+    import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
+    import RadioBigDefault from "./RadioBigDefault.svelte";
+    import RadioSmallS from "./RadioSmallS.svelte";
+    import PlaceholderImage from "./PlaceholderImage.svelte";
+    let className = "";
+    export { className as class };
+    export let style;
+  </script>
+  <div
+    style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
+  >
+    <div
+      style="
+        background: var(--neutral-0, #ffffff);
+        border-style: solid;
+        border-color: var(--neutral-2, #dee5ed);
+        border-width: 0px 0px 1px 0px;
+        padding: 8px 98px 8px 98px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+        width: 1440px;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div style="flex-shrink: 0; width: 299px; height: 55px; position: static">
+        <div
+          style="
+            color: var(--7b95b7, #6b6b6b);
+            text-align: left;
+            font-family: 'TitanOne-Regular', sans-serif;
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 400;
+            position: absolute;
+            right: 72.43%;
+            left: 13.06%;
+            width: 14.51%;
+            bottom: 23.24%;
+            top: 42.96%;
+            height: 33.8%;
+          "
+        >
+          Make Zenerator
+        </div>
+        <img
+          class="{'image-2 ' + className}"
+          style="
+            position: absolute;
+            right: 86.94%;
+            left: 6.81%;
+            width: 6.25%;
+            bottom: 11.27%;
+            top: 11.27%;
+            height: 77.46%;
+            object-fit: cover;
+          "
+          src="/join/image-20.png"
+        />
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          gap: 48px;
+          align-items: center;
+          justify-content: flex-start;
+          flex-shrink: 0;
+          position: relative;
+        "
+      >
+        <div
+          style="
+            color: var(--7b95b7, #6b6b6b);
+            text-align: center;
+            font-family: var(
+              --body-small-font-family,
+              'DmSans-Regular',
+              sans-serif
+            );
+            font-size: var(--body-small-font-size, 16px);
+            line-height: var(--body-small-line-height, 24px);
+            font-weight: var(--body-small-font-weight, 400);
+            position: relative;
+          "
+        >
+          About us
+        </div>
+        <div
+          style="
+            color: var(--7b95b7, #6b6b6b);
+            text-align: center;
+            font-family: var(
+              --body-small-font-family,
+              'DmSans-Regular',
+              sans-serif
+            );
+            font-size: var(--body-small-font-size, 16px);
+            line-height: var(--body-small-line-height, 24px);
+            font-weight: var(--body-small-font-weight, 400);
+            position: relative;
+          "
+        >
+          로그인
+        </div>
+        <ButtonStyleFilled
+          styleVariant="filled"
+          style="
+            background: var(--6b6b6b, #000000);
+            border-color: var(--7b95b7, #6b6b6b);
+            flex-shrink: 0;
+            width: 96px;
+          "
+          name="회원가입"
+        ></ButtonStyleFilled>
+      </div>
+    </div>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        gap: 41px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          background: #ffffff;
+          border-radius: 10px;
+          border-style: solid;
+          border-color: #878787;
+          border-width: 0.5px;
+          padding: 47px 0px 47px 0px;
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: center;
+          flex-shrink: 0;
+          width: 468px;
+          height: 865px;
+          position: relative;
+          box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.05);
+          overflow: hidden;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 43px;
+            align-items: center;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            height: 822px;
+            position: relative;
+          "
+        >
+          <div
+            style="
+              color: #000000;
+              text-align: center;
+              font-family: 'DmSans-Bold', sans-serif;
+              font-size: 46px;
+              line-height: 40px;
+              font-weight: 700;
+              position: relative;
+              width: 451px;
+              height: 40px;
+            "
+          >
+            회원가입
+          </div>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 22px;
+              align-items: center;
+              justify-content: flex-start;
+              flex-shrink: 0;
+              position: relative;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 13px;
+                align-items: center;
+                justify-content: flex-start;
+                flex-shrink: 0;
+                position: relative;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  align-items: flex-start;
+                  justify-content: flex-start;
+                  flex-shrink: 0;
+                  position: relative;
+                "
+              >
+                <div
+                  style="
+                    color: #000000;
+                    text-align: left;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 19px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 125px;
+                    height: 23px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                  "
+                >
+                  이메일 주소
+                </div>
+                <div
+                  style="
+                    background: #ffffff;
+                    border-radius: 10px;
+                    border-style: solid;
+                    border-color: #000000;
+                    border-width: 1px;
+                    padding: 1px 43px 1px 43px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    width: 337px;
+                    position: relative;
+                    overflow: hidden;
+                  "
+                >
+                  <div
+                    style="
+                      color: rgba(0, 0, 0, 0.4);
+                      text-align: center;
+                      font-family: 'DmSans-Medium', sans-serif;
+                      font-size: 14px;
+                      line-height: 40px;
+                      font-weight: 500;
+                      position: relative;
+                      width: 249px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    이메일 입력
+                  </div>
+                </div>
+                <div
+                  style="
+                    color: #000000;
+                    text-align: left;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 19px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 125px;
+                    height: 23px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                  "
+                >
+                  비밀번호
+                </div>
+                <div
+                  style="
+                    background: #ffffff;
+                    border-radius: 10px;
+                    border-style: solid;
+                    border-color: #000000;
+                    border-width: 1px;
+                    padding: 1px 43px 1px 43px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    width: 337px;
+                    position: relative;
+                    overflow: hidden;
+                  "
+                >
+                  <div
+                    style="
+                      color: rgba(0, 0, 0, 0.4);
+                      text-align: center;
+                      font-family: 'DmSans-Medium', sans-serif;
+                      font-size: 14px;
+                      line-height: 40px;
+                      font-weight: 500;
+                      position: relative;
+                      width: 250px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    비밀번호 입력
+                  </div>
+                </div>
+                <div
+                  style="
+                    color: #000000;
+                    text-align: left;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 19px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 125px;
+                    height: 23px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                  "
+                >
+                  비밀번호 확인
+                </div>
+                <div
+                  style="
+                    background: #ffffff;
+                    border-radius: 10px;
+                    border-style: solid;
+                    border-color: #000000;
+                    border-width: 1px;
+                    padding: 1px 43px 1px 43px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    width: 337px;
+                    position: relative;
+                    overflow: hidden;
+                  "
+                >
+                  <div
+                    style="
+                      color: rgba(0, 0, 0, 0.4);
+                      text-align: center;
+                      font-family: 'DmSans-Medium', sans-serif;
+                      font-size: 14px;
+                      line-height: 40px;
+                      font-weight: 500;
+                      position: relative;
+                      width: 252px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    비밀번호 입력
+                  </div>
+                </div>
+                <div
+                  style="
+                    color: #000000;
+                    text-align: left;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 19px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 125px;
+                    height: 23px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                  "
+                >
+                  성별
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    gap: 18px;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    width: 337px;
+                    position: relative;
+                  "
+                >
+                  <RadioBigDefault
+                    style="flex-shrink: 0; width: 137px"
+                    name="남"
+                  ></RadioBigDefault>
+                  <RadioBigDefault
+                    style="flex-shrink: 0; width: 100px"
+                    name="여"
+                  ></RadioBigDefault>
+                </div>
+                <div
+                  style="
+                    color: #000000;
+                    text-align: left;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 19px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 125px;
+                    height: 23px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                  "
+                >
+                  나이
+                </div>
+                <div
+                  style="
+                    background: #ffffff;
+                    border-radius: 10px;
+                    border-style: solid;
+                    border-color: #000000;
+                    border-width: 1px;
+                    padding: 1px 43px 1px 43px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    width: 337px;
+                    position: relative;
+                    overflow: hidden;
+                  "
+                >
+                  <div
+                    style="
+                      color: rgba(0, 0, 0, 0.4);
+                      text-align: center;
+                      font-family: 'DmSans-Medium', sans-serif;
+                      font-size: 14px;
+                      line-height: 40px;
+                      font-weight: 500;
+                      position: relative;
+                      width: 242px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    나이 입력
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0px;
+                  align-items: flex-start;
+                  justify-content: flex-start;
+                  flex-shrink: 0;
+                  position: relative;
+                "
+              >
+                <div
+                  style="
+                    color: #000000;
+                    text-align: left;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 20px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 339px;
+                    height: 43px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                  "
+                >
+                  개인정보 수집 이용 동의서
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    align-items: flex-end;
+                    justify-content: flex-start;
+                    flex-shrink: 0;
+                    position: relative;
+                  "
+                >
+                  <div
+                    style="
+                      background: #ffffff;
+                      border-radius: 10px;
+                      border-style: solid;
+                      border-color: #000000;
+                      border-width: 1px;
+                      padding: 1px 43px 1px 43px;
+                      display: flex;
+                      flex-direction: row;
+                      gap: 10px;
+                      align-items: center;
+                      justify-content: center;
+                      flex-shrink: 0;
+                      width: 337px;
+                      height: 158px;
+                      position: relative;
+                      overflow: hidden;
+                    "
+                  >
+                    <div
+                      style="
+                        color: rgba(0, 0, 0, 0.4);
+                        text-align: left;
+                        font-family: 'DmSans-Medium', sans-serif;
+                        font-size: 14px;
+                        line-height: 40px;
+                        font-weight: 500;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                      "
+                    >
+                      개인정보 어쩌고 저쩌고
+                    </div>
+                  </div>
+                  <RadioSmallS style="flex-shrink: 0; width: 54px" name="동의"></RadioSmallS>
+                </div>
+              </div>
+            </div>
+            <ButtonStyleFilled
+              styleVariant="filled"
+              style="background: var(--7b95b7, #6b6b6b); flex-shrink: 0"
+              name="회원가입"
+            ></ButtonStyleFilled>
+          </div>
+        </div>
+      </div>
+      <PlaceholderImage
+        style="flex-shrink: 0; width: 564px; height: 865px"
+      ></PlaceholderImage>
+    </div>
+  </div>

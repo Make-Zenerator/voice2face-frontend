@@ -1,13 +1,12 @@
 <script>
-    import ButtonStyleFilled from "./join/ButtonStyleFilled.svelte";
-    import ButtonStyleOutlined from "./join/ButtonStyleOutlined.svelte";
-    import PlaceholderImage from "./join/PlaceholderImage.svelte";
+    import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
+    import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
     let className = "";
     export { className as class };
     export let style;
   </script>
   <div
-    style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 160px 0px; display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 849px; position: relative; ' + style}"
+    style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
   >
     <div
       style="
@@ -99,7 +98,7 @@
             position: relative;
           "
         >
-          로그인
+          로그아웃
         </div>
         <ButtonStyleFilled
           styleVariant="filled"
@@ -107,14 +106,14 @@
             background: var(--6b6b6b, #000000);
             border-color: var(--7b95b7, #6b6b6b);
             flex-shrink: 0;
-            width: 96px;
           "
-          name ="회원가입"
+          name="생성하기"
         ></ButtonStyleFilled>
       </div>
     </div>
     <div
       style="
+        padding: 32px 0px 0px 0px;
         display: flex;
         flex-direction: column;
         gap: 64px;
@@ -123,17 +122,15 @@
         flex-shrink: 0;
         position: relative;
       "
-      name="생성하기"
     >
       <div
         style="
           display: flex;
-          flex-direction: row;
-          gap: 40px;
+          flex-direction: column;
+          gap: 24px;
           align-items: center;
           justify-content: flex-start;
           flex-shrink: 0;
-          width: 1216px;
           position: relative;
         "
       >
@@ -141,11 +138,10 @@
           style="
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            align-items: flex-start;
+            gap: 16px;
+            align-items: center;
             justify-content: flex-start;
             flex-shrink: 0;
-            width: 612px;
             position: relative;
           "
         >
@@ -153,7 +149,7 @@
             style="
               display: flex;
               flex-direction: column;
-              gap: 16px;
+              gap: 8px;
               align-items: flex-start;
               justify-content: flex-start;
               flex-shrink: 0;
@@ -162,117 +158,111 @@
           >
             <div
               style="
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                align-items: flex-start;
-                justify-content: flex-start;
-                flex-shrink: 0;
+                color: var(--6b6b6b, #000000);
+                text-align: center;
+                font-family: var(
+                  --subtitle-large-font-family,
+                  'DmSans-Medium',
+                  sans-serif
+                );
+                font-size: var(--subtitle-large-font-size, 28px);
+                line-height: var(--subtitle-large-line-height, 32px);
+                font-weight: var(--subtitle-large-font-weight, 500);
                 position: relative;
+                align-self: stretch;
+                display: flex;
+                align-items: center;
+                justify-content: center;
               "
             >
-              <div
-                style="
-                  color: #000000;
-                  text-align: left;
-                  font-family: var(
-                    --title-small-font-family,
-                    'DmSans-Bold',
-                    sans-serif
-                  );
-                  font-size: var(--title-small-font-size, 32px);
-                  line-height: var(--title-small-line-height, 40px);
-                  font-weight: var(--title-small-font-weight, 700);
-                  position: relative;
-                  width: 612px;
-                "
-              >
-                10초의 새로운 경험
-              </div>
-              <div
-                style="
-                  color: #000000;
-                  text-align: left;
-                  font-family: var(
-                    --title-large-font-family,
-                    'DmSans-Bold',
-                    sans-serif
-                  );
-                  font-size: var(--title-large-font-size, 60px);
-                  line-height: var(--title-large-line-height, 76px);
-                  font-weight: var(--title-large-font-weight, 700);
-                  position: relative;
-                  width: 612px;
-                "
-              >
-                내 목소리 다른 얼굴
-              </div>
+              무료로 경험하는
             </div>
             <div
               style="
-                color: #8c8686;
-                text-align: left;
+                color: var(--6b6b6b, #000000);
+                text-align: center;
                 font-family: var(
-                  --body-large-font-family,
-                  'DmSans-Regular',
+                  --title-large-font-family,
+                  'DmSans-Bold',
                   sans-serif
                 );
-                font-size: var(--body-large-font-size, 20px);
-                line-height: var(--body-large-line-height, 32px);
-                font-weight: var(--body-large-font-weight, 400);
+                font-size: var(--title-large-font-size, 60px);
+                line-height: var(--title-large-line-height, 76px);
+                font-weight: var(--title-large-font-weight, 700);
                 position: relative;
-                width: 612px;
               "
             >
-              Introducing MZ team&#039;s new voice to face technology
-              <br />
-              where you can experience your own impressions and characters with
-              your voice.
+              얼굴 생성하기
             </div>
           </div>
           <div
             style="
-              display: flex;
-              flex-direction: row;
-              gap: 24px;
-              align-items: flex-start;
-              justify-content: flex-start;
-              flex-shrink: 0;
+              color: var(--7b95b7, #6b6b6b);
+              text-align: center;
+              font-family: var(
+                --body-large-font-family,
+                'DmSans-Regular',
+                sans-serif
+              );
+              font-size: var(--body-large-font-size, 20px);
+              line-height: var(--body-large-line-height, 32px);
+              font-weight: var(--body-large-font-weight, 400);
               position: relative;
+              align-self: stretch;
             "
           >
-            <ButtonStyleFilled
-              styleVariant="filled"
-              style="background: #000000; border-color: #000000; flex-shrink: 0"
-              name="나의 다른 모습 체험하기"
-            ></ButtonStyleFilled>
-            <ButtonStyleOutlined
-              style="border-color: #000000; flex-shrink: 0"
-              name="회원가입"
-            ></ButtonStyleOutlined>
-
-
+            목소리를 통해 나의 또 다른 얼굴을
+            <br />
+            찾아보세요
           </div>
         </div>
-        <PlaceholderImage
-          style="align-self: stretch; flex: 1; height: auto"
-        ></PlaceholderImage>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            width: 196px;
+            position: relative;
+          "
+        >
+          <ButtonStyleFilled
+            styleVariant="filled"
+            style="
+              background: var(--6b6b6b, #000000);
+              border-color: var(--6b6b6b, #000000);
+              flex-shrink: 0;
+              width: 90px;
+            "
+            name="생성하기"
+          ></ButtonStyleFilled>
+          <ButtonStyleOutlined
+            style="
+              border-color: var(--6b6b6b, #000000);
+              flex-shrink: 0;
+              width: 90px;
+            "
+            name="결과확인"
+          ></ButtonStyleOutlined>
+        </div>
       </div>
       <div
         style="
           display: flex;
           flex-direction: column;
           gap: 20px;
-          align-items: flex-start;
-          justify-content: center;
+          align-items: center;
+          justify-content: flex-start;
           flex-shrink: 0;
           position: relative;
         "
       >
         <div
           style="
-            color: #7e7676;
-            text-align: left;
+            color: var(--7b95b7, #6b6b6b);
+            text-align: center;
             font-family: var(
               --subtitle-small-font-family,
               'DmSans-Medium',
@@ -329,7 +319,7 @@
               position: relative;
               overflow: visible;
             "
-            src="/join/frame0.svg"
+            src="frame0.svg"
           />
         </div>
       </div>
