@@ -6,6 +6,7 @@
   const variantsClassName = "style-variant-" + styleVariant;
   export let name = "Do something";
 </script>
+
 <button
   style="{'background: var(--neutral-10, #486284);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
 >

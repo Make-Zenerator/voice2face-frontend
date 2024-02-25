@@ -228,6 +228,7 @@
                   flex-shrink: 0;
                   height: 46px;
                 "
+                name="메인으로 돌아가기"
               ></ButtonStyleOutlined>
             </div>
           </div>
