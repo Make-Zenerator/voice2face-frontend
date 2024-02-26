@@ -3,125 +3,34 @@
     import RadioBigDefault from "./RadioBigDefault.svelte";
     import RadioSmallS from "./RadioSmallS.svelte";
     import PlaceholderImage from "./PlaceholderImage.svelte";
+    import Header from "../../components/header_non.svelte";
     let className = "";
+    let radioValue;
     export { className as class };
     export let style;
+    let ageInput;
+
+    const options = [{
+		value: 'Man',
+		label: '남',
+	},  {
+		value: 'Woman',
+		label: '여',
+	}]
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
+    console.log({ radioValue, ageInput });
+    // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
+  }
   </script>
+<!--  여기에 form 추가??-->
+
   <div
     style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
   >
-    <div
-      style="
-        background: var(--neutral-0, #ffffff);
-        border-style: solid;
-        border-color: var(--neutral-2, #dee5ed);
-        border-width: 0px 0px 1px 0px;
-        padding: 8px 98px 8px 98px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        flex-shrink: 0;
-        width: 1440px;
-        position: relative;
-        overflow: hidden;
-      "
-    >
-      <div style="flex-shrink: 0; width: 299px; height: 55px; position: static">
-        <a href="/">
-        <div
-          style="
-            color: var(--7b95b7, #6b6b6b);
-            text-align: left;
-            font-family: 'TitanOne-Regular', sans-serif;
-            font-size: 24px;
-            line-height: 24px;
-            font-weight: 400;
-            position: absolute;
-            right: 72.43%;
-            left: 13.06%;
-            width: 14.51%;
-            bottom: 23.24%;
-            top: 42.96%;
-            height: 33.8%;
-          "
-        >
-          Make Zenerator
-        </div>
-        <img href="/"
-          class="{'image-2 ' + className}"
-          style="
-            position: absolute;
-            right: 86.94%;
-            left: 6.81%;
-            width: 6.25%;
-            bottom: 11.27%;
-            top: 11.27%;
-            height: 77.46%;
-            object-fit: cover;
-          "
-          src="/join/image-20.png"
-          alt="logo"
-        /></a>
-      </div>
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 48px;
-          align-items: center;
-          justify-content: flex-start;
-          flex-shrink: 0;
-          position: relative;
-        "
-      >
-        <a href="/aboutus_non"
-          style="
-            color: var(--7b95b7, #6b6b6b);
-            text-align: center;
-            font-family: var(
-              --body-small-font-family,
-              'DmSans-Regular',
-              sans-serif
-            );
-            font-size: var(--body-small-font-size, 16px);
-            line-height: var(--body-small-line-height, 24px);
-            font-weight: var(--body-small-font-weight, 400);
-            position: relative;
-          "
-        >
-          About us
-    </a>
-        <a href="/login"
-          style="
-            color: var(--7b95b7, #6b6b6b);
-            text-align: center;
-            font-family: var(
-              --body-small-font-family,
-              'DmSans-Regular',
-              sans-serif
-            );
-            font-size: var(--body-small-font-size, 16px);
-            line-height: var(--body-small-line-height, 24px);
-            font-weight: var(--body-small-font-weight, 400);
-            position: relative;
-          "
-        >
-          로그인
-      </a>
-        <ButtonStyleFilled
-          styleVariant="filled"
-          style="
-            background: var(--6b6b6b, #000000);
-            border-color: var(--7b95b7, #6b6b6b);
-            flex-shrink: 0;
-            width: 96px;
-          "
-          name="회원가입"
-          targetPath="/join"
-        ></ButtonStyleFilled>
-      </div>
-    </div>
+   <Header/>
     <div
       style="
         display: flex;

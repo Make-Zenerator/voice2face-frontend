@@ -22,7 +22,7 @@ on:click={handleClick}
       color: var(--neutral-0, #ffffff);
       text-align: left;
       font-family: var(--body-small-font-family, 'DmSans-Regular', sans-serif);
-      font-size: var(--body-small-font-size, 16px);
+      font-size: var(--body-small-font-size, 24px);
       line-height: var(--body-small-line-height, 24px);
       font-weight: var(--body-small-font-weight, 400);
       position: relative;

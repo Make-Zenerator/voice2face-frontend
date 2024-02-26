@@ -12,6 +12,10 @@
     goto(targetPath); // 버튼 클릭 시 targetPath로 이동
   }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Titan+One&display=swap" rel="stylesheet">
+
 
 <button
 on:click={handleClick} 
@@ -22,7 +26,7 @@ on:click={handleClick}
       color: var(--neutral-0, #ffffff);
       text-align: left;
       font-family: var(--body-small-font-family, 'DmSans-Regular', sans-serif);
-      font-size: var(--body-small-font-size, 16px);
+      font-size: var(--body-small-font-size, 24px);
       line-height: var(--body-small-line-height, 24px);
       font-weight: var(--body-small-font-weight, 400);
       position: relative;

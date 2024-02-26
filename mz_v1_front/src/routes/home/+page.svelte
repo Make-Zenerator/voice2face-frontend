@@ -1,6 +1,7 @@
 <script>
     import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
     import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
+    import Header from "../../components/header_login.svelte"
     let className = "";
     export { className as class };
     export let style;
@@ -8,111 +9,7 @@
   <div
     style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
   >
-    <div
-      style="
-        background: var(--neutral-0, #ffffff);
-        border-style: solid;
-        border-color: var(--neutral-2, #dee5ed);
-        border-width: 0px 0px 1px 0px;
-        padding: 8px 98px 8px 98px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        flex-shrink: 0;
-        width: 1440px;
-        height: 72px;
-        position: relative;
-        overflow: hidden;
-      "
-    >
-      <div style="flex-shrink: 0; width: 299px; height: 55px; position: static">
-        <div
-          style="
-            color: var(--7b95b7, #6b6b6b);
-            text-align: left;
-            font-family: 'TitanOne-Regular', sans-serif;
-            font-size: 24px;
-            line-height: 24px;
-            font-weight: 400;
-            position: absolute;
-            left: 188px;
-            top: 31px;
-          "
-        >
-          Make Zenerator
-        </div>
-        <img
-          class="{'image-2 ' + className}"
-          style="
-            width: 90px;
-            height: 55px;
-            position: absolute;
-            left: 98px;
-            top: 8.5px;
-            object-fit: cover;
-          "
-          src="/join/image-20.png"
-          alt="logo"
-        />
-      </div>
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          gap: 48px;
-          align-items: center;
-          justify-content: flex-start;
-          flex-shrink: 0;
-          position: relative;
-        "
-      >
-        <a href="/aboutus_login"
-          style="
-            color: var(--7b95b7, #6b6b6b);
-            text-align: center;
-            font-family: var(
-              --body-small-font-family,
-              'DmSans-Regular',
-              sans-serif
-            );
-            font-size: var(--body-small-font-size, 16px);
-            line-height: var(--body-small-line-height, 24px);
-            font-weight: var(--body-small-font-weight, 400);
-            position: relative;
-          "
-        >
-          About us
-    </a>
-        <a href="/"
-          style="
-            color: var(--7b95b7, #6b6b6b);
-            text-align: center;
-            font-family: var(
-              --body-small-font-family,
-              'DmSans-Regular',
-              sans-serif
-            );
-            font-size: var(--body-small-font-size, 16px);
-            line-height: var(--body-small-line-height, 24px);
-            font-weight: var(--body-small-font-weight, 400);
-            position: relative;
-          "
-        >
-          로그아웃
-  </a>
-        <ButtonStyleFilled
-          styleVariant="filled"
-          style="
-            background: var(--6b6b6b, #000000);
-            border-color: var(--7b95b7, #6b6b6b);
-            flex-shrink: 0;
-          "
-          name="생성하기"
-          targetPath="/infogather"
-        ></ButtonStyleFilled>
-      </div>
-    </div>
+    <Header/>
     <div
       style="
         padding: 32px 0px 0px 0px;
@@ -228,6 +125,7 @@
             flex-shrink: 0;
             width: 196px;
             position: relative;
+            justify-content: center;
           "
         >
           <ButtonStyleFilled
@@ -236,7 +134,6 @@
               background: var(--6b6b6b, #000000);
               border-color: var(--6b6b6b, #000000);
               flex-shrink: 0;
-              width: 90px;
             "
             name="생성하기"
             targetPath="/infogather"
@@ -245,7 +142,6 @@
             style="
               border-color: var(--6b6b6b, #000000);
               flex-shrink: 0;
-              width: 90px;
             "
             name="결과확인"
             targetPath="/resultlist"
@@ -281,7 +177,7 @@
         >
           Trusted by:
         </div>
-        <div
+        <div 
           style="
             display: flex;
             flex-direction: row;
@@ -302,6 +198,7 @@
               overflow: visible;
             "
             src="/join/group1.svg"
+            alt="google"
           />
           <img
             class="group3"
@@ -313,6 +210,7 @@
               overflow: visible;
             "
             src="/join/group2.svg"
+            alt="youtube"
           />
           <img
             class="frame"
@@ -324,6 +222,7 @@
               overflow: visible;
             "
             src="frame0.svg"
+            alt="facebook"
           />
         </div>
       </div>
