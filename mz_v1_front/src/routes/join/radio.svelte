@@ -6,8 +6,8 @@
     export let options;
     export let legend;
     export let userSelected = options[0].value;
-      export let fontSize = 16;
-      export let flexDirection = 'column'
+      export let fontSize = 30;
+      export let flexDirection = 'row'
       
       const uniqueID = Math.floor(Math.random() * 100)
   
@@ -35,6 +35,8 @@
   </div>
   
   <style>
+
+    
               :root {
           --accent-color: CornflowerBlue;
           --gray: #ccc;
@@ -52,6 +54,13 @@
     label {
       user-select: none;
       line-height: 1.2em;
+      margin-right: 80px;
+    }
+    .radio-button-container {
+        display: flex;
+        justify-content: center; /* 가로 방향 중앙 정렬 */
+        align-items: center; /* 세로 방향 중앙 정렬 */
+        height: 100vh; /* 전체 높이를 차지하도록 설정 (예시) */
     }
   
     .sr-only {

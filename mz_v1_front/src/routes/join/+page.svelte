@@ -28,6 +28,7 @@
       "
     >
       <div style="flex-shrink: 0; width: 299px; height: 55px; position: static">
+        <a href="/">
         <div
           style="
             color: var(--7b95b7, #6b6b6b);
@@ -47,7 +48,7 @@
         >
           Make Zenerator
         </div>
-        <img
+        <img href="/"
           class="{'image-2 ' + className}"
           style="
             position: absolute;
@@ -60,7 +61,8 @@
             object-fit: cover;
           "
           src="/join/image-20.png"
-        />
+          alt="logo"
+        /></a>
       </div>
       <div
         style="
@@ -73,7 +75,7 @@
           position: relative;
         "
       >
-        <div
+        <a href="/aboutus_non"
           style="
             color: var(--7b95b7, #6b6b6b);
             text-align: center;
@@ -89,8 +91,8 @@
           "
         >
           About us
-        </div>
-        <div
+    </a>
+        <a href="/login"
           style="
             color: var(--7b95b7, #6b6b6b);
             text-align: center;
@@ -106,7 +108,7 @@
           "
         >
           로그인
-        </div>
+      </a>
         <ButtonStyleFilled
           styleVariant="filled"
           style="
@@ -116,6 +118,7 @@
             width: 96px;
           "
           name="회원가입"
+          targetPath="/join"
         ></ButtonStyleFilled>
       </div>
     </div>

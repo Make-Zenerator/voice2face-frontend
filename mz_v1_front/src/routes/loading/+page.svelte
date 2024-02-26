@@ -59,7 +59,8 @@
             height: 76.39%;
             object-fit: cover;
           "
-          src="image-20.png"
+          src="/join/image-20.png"
+          alt="logo"
         />
       </div>
       <div
@@ -73,7 +74,7 @@
           position: relative;
         "
       >
-        <div
+        <a href="/aboutus_login"
           style="
             color: var(--7b95b7, #6b6b6b);
             text-align: center;
@@ -89,8 +90,8 @@
           "
         >
           About us
-        </div>
-        <div
+    </a>
+        <a href="/"
           style="
             color: var(--7b95b7, #6b6b6b);
             text-align: center;
@@ -106,7 +107,7 @@
           "
         >
           로그아웃
-        </div>
+  </a>
         <ButtonStyleFilled
           styleVariant="filled"
           style="
@@ -229,6 +230,7 @@
                   height: 46px;
                 "
                 name="메인으로 돌아가기"
+                targetPath="/home"
               ></ButtonStyleOutlined>
             </div>
           </div>

@@ -1,12 +1,32 @@
 <script>
-  import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
-  import RadioBigDefault from "../join/RadioBigDefault.svelte";
+  import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
   import VoiceButtonDefaultVariant3 from "./VoiceButtonDefaultVariant3.svelte";
   import Frame7Default from "./Frame7Default.svelte";
+  import Radio from "../join/radio.svelte";
   let className = "";
+  let radioValue;
   export { className as class };
   export let style;
+  let ageInput;
+
+  const options = [{
+		value: 'Man',
+		label: '남',
+	},  {
+		value: 'Woman',
+		label: '여',
+	}]
+
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
+    console.log({ radioValue, ageInput });
+    // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
+  }
 </script>
+
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
 >
@@ -55,6 +75,7 @@
           object-fit: cover;
         "
         src="/join/image-20.png"
+        alt="logo"
       />
     </div>
     <div
@@ -68,7 +89,7 @@
         position: relative;
       "
     >
-      <div
+      <a href="/aboutus_login"
         style="
           color: var(--7b95b7, #6b6b6b);
           text-align: center;
@@ -84,8 +105,8 @@
         "
       >
         About us
-      </div>
-      <div
+  </a>
+      <a href="/"
         style="
           color: var(--7b95b7, #6b6b6b);
           text-align: center;
@@ -101,7 +122,7 @@
         "
       >
         로그아웃
-      </div>
+</a>
       <ButtonStyleFilled
         styleVariant="filled"
         style="
@@ -110,6 +131,7 @@
           flex-shrink: 0;
         "
         name="생성하기"
+        targetPath="/infogather"
       ></ButtonStyleFilled>
     </div>
   </div>
@@ -220,7 +242,7 @@
               flex-shrink: 0;
               position: relative;
             "
-          >
+          > <form method="POST">
             <div
               style="
                 display: flex;
@@ -264,8 +286,7 @@
                   position: relative;
                 "
               >
-                <RadioBigDefault style="flex-shrink: 0" name="남"></RadioBigDefault>
-                <RadioBigDefault style="flex-shrink: 0"name="여"></RadioBigDefault>
+              <Radio {options} fontSize={20} legend='' bind:userSelected={radioValue}/>
               </div>
             </div>
             <div
@@ -287,43 +308,49 @@
               나이
             </div>
             <div
-              style="
-                background: #ffffff;
-                border-radius: 10px;
-                border-style: solid;
-                border-color: #000000;
-                border-width: 1px;
-                padding: 1px 43px 1px 43px;
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                align-items: center;
-                justify-content: flex-start;
-                flex-shrink: 0;
-                width: 337px;
-                height: 46px;
-                position: relative;
-                overflow: hidden;
-              "
-            >
-              <div
-                style="
-                  color: rgba(0, 0, 0, 0.4);
-                  text-align: center;
-                  font-family: 'DmSans-Medium', sans-serif;
-                  font-size: 14px;
-                  line-height: 40px;
-                  font-weight: 500;
-                  position: relative;
-                  width: 242px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                "
-              >
-                나이 입력
-              </div>
-            </div>
+  style="
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    padding: 1px 43px 1px 43px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center; /* 가운데 정렬 */
+    flex-shrink: 0;
+    width: 337px;
+    height: 46px;
+    position: relative;
+    overflow: hidden;
+  "
+>
+  <input
+    type="number"
+    bind:value="{ageInput}"
+    min=0
+    max=120
+    style="
+      color: rgba(0, 0, 0, 0.87);
+      text-align: center;
+      font-family: 'DmSans-Medium', sans-serif;
+      font-size: 14px;
+      line-height: 40px;
+      font-weight: 500;
+      border: none;
+      width: 100%; /* 입력 상자가 div를 꽉 채우도록 조정 */
+      height: 40px; /* 입력 상자의 높이 조정 */
+      background: transparent; /* 배경색 투명 */
+      -webkit-appearance: none; /* 스타일 초기화 */
+      margin: 0; /* margin 초기화 */
+    "
+
+    placeholder="나이 입력" 
+  />
+</div> </form>
+
             <div
               style="
                 color: #000000;
@@ -453,8 +480,10 @@
             width: 143px;
           "
           name="생성하기"
+          targetPath="/loading"
         ></ButtonStyleFilled>
       </div>
     </div>
   </div>
 </div>
+</form>

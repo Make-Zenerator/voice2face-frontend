@@ -53,6 +53,7 @@
             object-fit: cover;
           "
           src="/join/image-20.png"
+          alt="logo"
         />
       </div>
       <div
@@ -66,7 +67,7 @@
           position: relative;
         "
       >
-        <div
+        <a href="/aboutus_login"
           style="
             color: var(--7b95b7, #6b6b6b);
             text-align: center;
@@ -82,8 +83,8 @@
           "
         >
           About us
-        </div>
-        <div
+    </a>
+        <a href="/"
           style="
             color: var(--7b95b7, #6b6b6b);
             text-align: center;
@@ -99,7 +100,7 @@
           "
         >
           로그아웃
-        </div>
+  </a>
         <ButtonStyleFilled
           styleVariant="filled"
           style="
@@ -108,6 +109,7 @@
             flex-shrink: 0;
           "
           name="생성하기"
+          targetPath="/infogather"
         ></ButtonStyleFilled>
       </div>
     </div>
@@ -237,6 +239,7 @@
               width: 90px;
             "
             name="생성하기"
+            targetPath="/infogather"
           ></ButtonStyleFilled>
           <ButtonStyleOutlined
             style="
@@ -245,6 +248,7 @@
               width: 90px;
             "
             name="결과확인"
+            targetPath="/resultlist"
           ></ButtonStyleOutlined>
         </div>
       </div>

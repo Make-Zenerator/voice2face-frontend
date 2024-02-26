@@ -1,5 +1,5 @@
 <script>
-  import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
+  import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
   let className = "";
   export { className as class };
@@ -27,39 +27,41 @@
     "
   >
     <div style="flex-shrink: 0; width: 299px; height: 55px; position: static">
-      <div
-        style="
-          color: var(--7b95b7, #6b6b6b);
-          text-align: left;
-          font-family: 'TitanOne-Regular', sans-serif;
-          font-size: 24px;
-          line-height: 24px;
-          font-weight: 400;
-          position: absolute;
-          right: 72.43%;
-          left: 13.06%;
-          width: 14.51%;
-          bottom: 23.61%;
-          top: 43.06%;
-          height: 33.33%;
-        "
-      >
-        Make Zenerator
-      </div>
-      <img
-        class="{'image-2 ' + className}"
-        style="
-          position: absolute;
-          right: 86.94%;
-          left: 6.81%;
-          width: 6.25%;
-          bottom: 11.81%;
-          top: 11.81%;
-          height: 76.39%;
-          object-fit: cover;
-        "
-        src="/join/image-20.png"
-      />
+      <a href="/">
+        <div
+          style="
+            color: var(--7b95b7, #6b6b6b);
+            text-align: left;
+            font-family: 'TitanOne-Regular', sans-serif;
+            font-size: 24px;
+            line-height: 24px;
+            font-weight: 400;
+            position: absolute;
+            right: 72.43%;
+            left: 13.06%;
+            width: 14.51%;
+            bottom: 23.24%;
+            top: 42.96%;
+            height: 33.8%;
+          "
+        >
+          Make Zenerator
+        </div>
+        <img href="/"
+          class="{'image-2 ' + className}"
+          style="
+            position: absolute;
+            right: 86.94%;
+            left: 6.81%;
+            width: 6.25%;
+            bottom: 11.27%;
+            top: 11.27%;
+            height: 77.46%;
+            object-fit: cover;
+          "
+          src="/join/image-20.png"
+          alt="logo"
+        /></a>
     </div>
     <div
       style="
@@ -72,7 +74,7 @@
         position: relative;
       "
     >
-      <div
+      <a href="/aboutus_non"
         style="
           color: var(--7b95b7, #6b6b6b);
           text-align: center;
@@ -88,8 +90,8 @@
         "
       >
         About us
-      </div>
-      <div
+  </a>
+      <a href="/login"
         style="
           color: var(--7b95b7, #6b6b6b);
           text-align: center;
@@ -105,7 +107,7 @@
         "
       >
         로그인
-      </div>
+</a>
       <ButtonStyleFilled
         styleVariant="filled"
         style="
@@ -115,6 +117,7 @@
           width: 96px;
         "
         name="회원가입"
+        targetPath="/join"
       ></ButtonStyleFilled>
     </div>
   </div>
@@ -341,6 +344,7 @@
               style=
               "background: var(--7b95b7, #6b6b6b);
               flex-shrink: 0"
+              name="로그인"
             ></ButtonStyleFilled>
           </div>
           <div
