@@ -4,11 +4,17 @@
     import RadioSmallS from "./RadioSmallS.svelte";
     import PlaceholderImage from "./PlaceholderImage.svelte";
     import Header from "../../components/header_non.svelte";
+    import Radio from "./radio.svelte"
     let className = "";
     let radioValue;
     export { className as class };
     export let style;
-    let ageInput;
+    let join_email;
+    let join_pswd;
+    let join_check;
+    let join_gender;
+    let join_age;
+    let join_agree = false
 
     const options = [{
 		value: 'Man',
@@ -17,6 +23,16 @@
 		value: 'Woman',
 		label: '여',
 	}]
+    const agree = [
+      {
+        value:'0',
+        label:'동의 안함'
+      },
+      {
+        value:'1', 
+        label: '동의'
+      },
+  ]
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -159,7 +175,7 @@
                     overflow: hidden;
                   "
                 >
-                  <div
+                  <input type='text' bind:value={join_email} placeholder="이메일 입력"
                     style="
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
@@ -168,14 +184,13 @@
                       line-height: 40px;
                       font-weight: 500;
                       position: relative;
-                      width: 249px;
+                      width: 100%;
                       display: flex;
                       align-items: center;
                       justify-content: center;
                     "
-                  >
-                    이메일 입력
-                  </div>
+                  />
+            
                 </div>
                 <div
                   style="
@@ -214,7 +229,7 @@
                     overflow: hidden;
                   "
                 >
-                  <div
+                  <input type='text' bind:value={join_pswd} placeholder="비밀번호 입력"
                     style="
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
@@ -223,14 +238,13 @@
                       line-height: 40px;
                       font-weight: 500;
                       position: relative;
-                      width: 250px;
+                      width: 100%;
                       display: flex;
                       align-items: center;
                       justify-content: center;
                     "
-                  >
-                    비밀번호 입력
-                  </div>
+                  />
+                  
                 </div>
                 <div
                   style="
@@ -269,7 +283,7 @@
                     overflow: hidden;
                   "
                 >
-                  <div
+                  <input type='text' bind:value={join_check} placeholder="비밀번호 입력"
                     style="
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
@@ -278,14 +292,15 @@
                       line-height: 40px;
                       font-weight: 500;
                       position: relative;
-                      width: 252px;
+                      width: 100%;
                       display: flex;
                       align-items: center;
                       justify-content: center;
+                      margin: 0;
+                      background: transparent;
+                      -webkit-appearance: none;
                     "
-                  >
-                    비밀번호 입력
-                  </div>
+                  />
                 </div>
                 <div
                   style="
@@ -315,16 +330,10 @@
                     flex-shrink: 0;
                     width: 337px;
                     position: relative;
+                    align-items: center;
                   "
                 >
-                  <RadioBigDefault
-                    style="flex-shrink: 0; width: 137px"
-                    name="남"
-                  ></RadioBigDefault>
-                  <RadioBigDefault
-                    style="flex-shrink: 0; width: 100px"
-                    name="여"
-                  ></RadioBigDefault>
+                <Radio {options} fontSize={20} legend='' bind:userSelected={join_gender}/>
                 </div>
                 <div
                   style="
@@ -363,23 +372,28 @@
                     overflow: hidden;
                   "
                 >
-                  <div
-                    style="
-                      color: rgba(0, 0, 0, 0.4);
-                      text-align: center;
-                      font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 14px;
-                      line-height: 40px;
-                      font-weight: 500;
-                      position: relative;
-                      width: 242px;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                    "
-                  >
-                    나이 입력
-                  </div>
+                <input
+                type="number"
+                bind:value="{join_age}"
+                min=0
+                max=120
+                style="
+                  color: rgba(0, 0, 0, 0.87);
+                  text-align: center;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 14px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  border: none;
+                  width: 100%; /* 입력 상자가 div를 꽉 채우도록 조정 */
+                  height: 40px; /* 입력 상자의 높이 조정 */
+                  background: transparent; /* 배경색 투명 */
+                  -webkit-appearance: none; /* 스타일 초기화 */
+                  margin: 0; /* margin 초기화 */
+                "
+            
+                placeholder="나이 입력" 
+              />
                 </div>
               </div>
               <div
@@ -459,7 +473,9 @@
                       개인정보 어쩌고 저쩌고
                     </div>
                   </div>
-                  <RadioSmallS style="flex-shrink: 0; width: 54px" name="동의"></RadioSmallS>
+                  <label style="display: flex; align-items: center; cursor: pointer;">
+                    <input type="checkbox" bind:checked={join_agree}>
+                    <span style="margin-left: 8px;">동의함</span>
                 </div>
               </div>
             </div>

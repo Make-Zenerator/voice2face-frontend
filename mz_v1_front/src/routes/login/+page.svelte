@@ -1,10 +1,12 @@
 <script>
-  import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
+  import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
   import Header from "../../components/header_non.svelte";
   let className = "";
   export { className as class };
   export let style;
+  let login_email;
+  let login_pswd;
 </script>
 <div
   style="{'background: var(--neutral-0, #ffffff); display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
@@ -153,23 +155,21 @@
                     overflow: hidden;
                   "
                 >
-                  <div
-                    style="
-                      color: rgba(0, 0, 0, 0.4);
-                      text-align: center;
-                      font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 14px;
-                      line-height: 40px;
-                      font-weight: 500;
-                      position: relative;
-                      width: 250px;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                    "
-                  >
-                    이메일 입력
-                  </div>
+                <input type='text' bind:value={login_email} placeholder="이메일 입력"
+                style="
+                  color: rgba(0, 0, 0, 0.4);
+                  text-align: center;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 14px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  position: relative;
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              />
                 </div>
                 <div
                   style="
@@ -208,23 +208,24 @@
                     overflow: hidden;
                   "
                 >
-                  <div
-                    style="
-                      color: rgba(0, 0, 0, 0.4);
-                      text-align: center;
-                      font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 14px;
-                      line-height: 40px;
-                      font-weight: 500;
-                      position: relative;
-                      width: 248px;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                    "
-                  >
-                    비밀번호 입력
-                  </div>
+                <input type='text' bind:value={login_pswd} placeholder="비밀번호 입력"
+                style="
+                  color: rgba(0, 0, 0, 0.4);
+                  text-align: center;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 14px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  position: relative;
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: 0;
+                  background: transparent;
+                  -webkit-appearance: none;
+                "
+              />
                 </div>
               </div>
             </div>
@@ -234,6 +235,7 @@
               "background: var(--7b95b7, #6b6b6b);
               flex-shrink: 0"
               name="로그인"
+              targetPath="/home"
             ></ButtonStyleFilled>
           </div>
           <div

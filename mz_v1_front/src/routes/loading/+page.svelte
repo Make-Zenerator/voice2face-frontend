@@ -207,13 +207,10 @@
                     position: relative;
                     width: 451px;
                     height: 40px;
+                    font-size: 16pt;
                   "
                 >
                   <span>
-                    <span class="div-2-span">
-                      로딩 중 이에요...
-                      <br />
-                    </span>
                     <span class="div-2-span2"><br /></span>
                     <span class="div-2-span3">
                       생성 요청했습니다.
@@ -235,7 +232,8 @@
             </div>
           </div>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 564px; height: 405px"
+            style="flex-shrink: 0; width: 405px; height: 405px"
+            filename="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2VuaGd0ZzVtejhvbnQ5YTUzYmQ3ZGpqanQ2MWU2MG9uMWgyMjM0dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjI6SIIHBdRxXI40/giphy.gif"
           ></PlaceholderImage>
         </div>
       </div>

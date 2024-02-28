@@ -92,6 +92,7 @@ style="
     About us
 </a>
   <a href="/"
+  onclick="alert('로그아웃 되었습니다')"
     style="
       color: var(--7b95b7, #6b6b6b);
       text-align: center;

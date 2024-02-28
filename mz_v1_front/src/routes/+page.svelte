@@ -209,7 +209,10 @@
               overflow: visible;
             "
             src="/join/group1.svg"
+            alt="youtube"
+            
           />
+
           <img
             class="group3"
             style="
@@ -220,7 +223,9 @@
               overflow: visible;
             "
             src="/join/group2.svg"
+            alt="facebook"
           />
+          
           <img
             class="frame"
             style="
@@ -231,6 +236,7 @@
               overflow: visible;
             "
             src="/join/frame0.svg"
+            alt="logo"
           />
         </div>
       </div>

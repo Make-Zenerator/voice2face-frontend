@@ -5,7 +5,7 @@
   import Radio from "../join/radio.svelte";
   import Header from "../../components/header_login.svelte"
   let className = "";
-  let radioValue;
+  let gender_info;
   export { className as class };
   export let style;
   let ageInput;
@@ -22,7 +22,8 @@
   function handleSubmit(event) {
     event.preventDefault();
     // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
-    console.log({ radioValue, ageInput });
+    console.log({ gender_info, ageInput });
+    console.log("Help")
     // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
   }
 </script>
@@ -31,6 +32,7 @@
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
 >
+
   <Header/>
   <div
     style="
@@ -183,7 +185,7 @@
                   position: relative;
                 "
               >
-              <Radio {options} fontSize={20} legend='' bind:userSelected={radioValue}/>
+              <Radio {options} fontSize={20} legend='' bind:userSelected={gender_info}/>
               </div>
             </div>
             <div
