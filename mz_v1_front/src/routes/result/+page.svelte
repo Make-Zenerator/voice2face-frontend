@@ -2,7 +2,8 @@
   import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
   import Star1Property1Default from "./Star1Property1Default.svelte";
-  import Header from "../../components/header_login.svelte"
+  import Header from "../../components/header_login.svelte";
+  import StarRating from "../../components/rating/StarRating.svelte";
   let className = "";
   export { className as class };
   export let style;
@@ -136,42 +137,8 @@
               position: relative;
             "
           >
-            <Star1Property1Default
-              style="flex-shrink: 0; width: 60px; height: 60px"
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                border-radius: 1px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
+            <StarRating />
+            
           </div>
           <div
             style="
@@ -194,18 +161,9 @@
                 overflow: visible;
               "
               src="/join/tabler-download0.svg"
+              alt="save"
             />
-            <img
-              class="ph-share-light"
-              style="
-                flex-shrink: 0;
-                width: 48px;
-                height: 47px;
-                position: relative;
-                overflow: visible;
-              "
-              src="/join/ph-share-light0.svg"
-            />
+            
           </div>
         </div>
       </div>
@@ -294,50 +252,13 @@
           <div
             style="
               display: flex;
-              flex-direction: row;
-              align-items: flex-start;
+              flex-direction: column;
+              align-items: center;
               justify-content: flex-start;
               flex-shrink: 0;
               position: relative;
             "
           >
-            <Star1Property1Default
-              style="flex-shrink: 0; width: 60px; height: 60px"
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
-            <Star1Property1Default
-              style="
-                margin: 0 0 0 -15px;
-                border-radius: 1px;
-                flex-shrink: 0;
-                width: 60px;
-                height: 60px;
-              "
-            ></Star1Property1Default>
-          </div>
           <div
             style="
               display: flex;
@@ -359,19 +280,13 @@
                 overflow: visible;
               "
               src="/join/tabler-download1.svg"
+              alt="save"
             />
-            <img
-              class="ph-share-light2"
-              style="
-                flex-shrink: 0;
-                width: 48px;
-                height: 47px;
-                position: relative;
-                overflow: visible;
-              "
-              src="/join/ph-share-light1.svg"
-            />
+            
           </div>
+            <StarRating />
+          </div>
+          
         </div>
       </div>
     </div>
@@ -641,6 +556,7 @@
             left: 360.56px;
             top: 754px;
           "
+          targetPath ="/infogather"
           name="다시 생성하기"
         ></ButtonStyleFilled>
         <ButtonStyleFilled
@@ -652,6 +568,7 @@
             left: 582.13px;
             top: 754px;
           "
+          
           name="설문조사"
         ></ButtonStyleFilled>
         <ButtonStyleFilled
@@ -663,6 +580,7 @@
             left: 796.45px;
             top: 754px;
           "
+          targetPath="/resultlist"
           name="결과 목록 보기"
         ></ButtonStyleFilled>
       </div>
