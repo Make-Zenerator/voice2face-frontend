@@ -1,7 +1,5 @@
 <script>
-    import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
-    import RadioBigDefault from "./RadioBigDefault.svelte";
-    import RadioSmallS from "./RadioSmallS.svelte";
+    import ButtonStyleFilled from "../../components/button/join_filled.svelte";
     import PlaceholderImage from "./PlaceholderImage.svelte";
     import Header from "../../components/header_non.svelte";
     import Radio from "./radio.svelte"

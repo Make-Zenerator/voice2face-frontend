@@ -1,5 +1,4 @@
 <script>
-  
   export let styleVariant = "outlined";
   let className = "";
   export { className as class };
@@ -7,9 +6,17 @@
   const variantsClassName = "style-variant-" + styleVariant;
   export let name = "Do something";
   import { goto } from '$app/navigation';
+  import { page } from '$app/stores'; // SvelteKit의 페이지 정보에 접근하기 위해 import
+  import { get } from 'svelte/store'; // store 값을 직접 읽기 위해 import
   export let targetPath = "/";
+  
   function handleClick() {
-    goto(targetPath); // 버튼 클릭 시 targetPath로 이동
+    const currentPath = get(page).url.pathname; // 현재 페이지의 경로를 가져옴
+    if (currentPath === targetPath) {
+      window.location.reload(); // 현재 경로와 targetPath가 같으면 페이지 새로고침
+    } else {
+      goto(targetPath); // 다르면 targetPath로 이동
+    }
   }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">

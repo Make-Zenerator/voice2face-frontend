@@ -8,7 +8,9 @@
   import { goto } from '$app/navigation';
   export let targetPath = "/";
   function handleClick() {
+    alert("로그인 되었습니다.")
     goto(targetPath); // 버튼 클릭 시 targetPath로 이동
+    
   }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">

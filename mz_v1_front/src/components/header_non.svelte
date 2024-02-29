@@ -3,6 +3,8 @@
     let className = "";
     export { className as class };
     export let style;
+
+    
   </script>
 <style global>
      a {
@@ -93,7 +95,7 @@
 >
       About us
 </a>
-    <a href="/login"
+    <a href="/login" 
     style="
     color: var(--7b95b7, #6b6b6b);
     text-align: center;

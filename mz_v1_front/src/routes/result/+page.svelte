@@ -2,6 +2,7 @@
   import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
   import Star1Property1Default from "./Star1Property1Default.svelte";
+  import Header from "../../components/header_login.svelte"
   let className = "";
   export { className as class };
   export let style;
@@ -9,115 +10,7 @@
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: flex-start; position: relative; ' + style}"
 >
-  <div
-    style="
-      background: var(--neutral-0, #ffffff);
-      border-style: solid;
-      border-color: var(--neutral-2, #dee5ed);
-      border-width: 0px 0px 1px 0px;
-      padding: 8px 98px 8px 98px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-      width: 1440px;
-      height: 72px;
-      position: relative;
-      overflow: hidden;
-    "
-  >
-    <div style="flex-shrink: 0; width: 299px; height: 55px; position: static">
-      <div
-        style="
-          color: var(--7b95b7, #6b6b6b);
-          text-align: left;
-          font-family: 'TitanOne-Regular', sans-serif;
-          font-size: 24px;
-          line-height: 24px;
-          font-weight: 400;
-          position: absolute;
-          right: 72.43%;
-          left: 13.06%;
-          width: 14.51%;
-          bottom: 23.61%;
-          top: 43.06%;
-          height: 33.33%;
-        "
-      >
-        Make Zenerator
-      </div>
-      <img
-        class="{'image-2 ' + className}"
-        style="
-          position: absolute;
-          right: 86.94%;
-          left: 6.81%;
-          width: 6.25%;
-          bottom: 11.81%;
-          top: 11.81%;
-          height: 76.39%;
-          object-fit: cover;
-        "
-        src="/join/image-20.png"
-      />
-    </div>
-    <div
-      style="
-        display: flex;
-        flex-direction: row;
-        gap: 48px;
-        align-items: center;
-        justify-content: flex-start;
-        flex-shrink: 0;
-        position: relative;
-      "
-    >
-      <div
-        style="
-          color: var(--7b95b7, #6b6b6b);
-          text-align: center;
-          font-family: var(
-            --body-small-font-family,
-            'DmSans-Regular',
-            sans-serif
-          );
-          font-size: var(--body-small-font-size, 16px);
-          line-height: var(--body-small-line-height, 24px);
-          font-weight: var(--body-small-font-weight, 400);
-          position: relative;
-        "
-      >
-        About us
-      </div>
-      <div
-        style="
-          color: var(--7b95b7, #6b6b6b);
-          text-align: center;
-          font-family: var(
-            --body-small-font-family,
-            'DmSans-Regular',
-            sans-serif
-          );
-          font-size: var(--body-small-font-size, 16px);
-          line-height: var(--body-small-line-height, 24px);
-          font-weight: var(--body-small-font-weight, 400);
-          position: relative;
-        "
-      >
-        로그아웃
-      </div>
-      <ButtonStyleFilled
-        styleVariant="filled"
-        style="
-          background: var(--6b6b6b, #000000);
-          border-color: var(--7b95b7, #6b6b6b);
-          flex-shrink: 0;
-        "
-        name="생성하기"
-      ></ButtonStyleFilled>
-    </div>
-  </div>
+  <Header/>
   <img
     class="image-22"
     style="
@@ -497,7 +390,7 @@
         style="
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 10px;
           align-items: center;
           justify-content: flex-start;
           flex-shrink: 0;
@@ -537,6 +430,7 @@
           "
         >
           생성된 이미지를 영상에 입힐 수 있습니다
+          
         </div>
         <div
           style="
@@ -742,7 +636,7 @@
           styleVariant="filled"
           style="
             background: var(--7b95b7, #6b6b6b);
-            width: 178.92px;
+            width: 190px;
             position: absolute;
             left: 360.56px;
             top: 754px;
@@ -764,7 +658,7 @@
           styleVariant="filled"
           style="
             background: var(--7b95b7, #6b6b6b);
-            width: 172.99px;
+            width: 190px;
             position: absolute;
             left: 796.45px;
             top: 754px;
