@@ -1,12 +1,16 @@
 <script>
   import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
-  import Star1Property1Default from "./Star1Property1Default.svelte";
   import Header from "../../components/header_login.svelte";
   import StarRating from "../../components/rating/StarRating.svelte";
+  import SaveImage from "../../components/button/result_save.svelte";
   let className = "";
   export { className as class };
   export let style;
+  let voice_face_path = "/join/placeholder-image.svg";
+  let condition_face_path = "/join/placeholder-image.svg";
+
+  
 </script>
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: flex-start; position: relative; ' + style}"
@@ -113,7 +117,8 @@
             </div>
           </div>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 393px; height: 393px"
+            style="flex-shrink: 0; width: 393px; height: 393px";
+            filename={voice_face_path}
           ></PlaceholderImage>
         </div>
         <div
@@ -130,16 +135,13 @@
           <div
             style="
               display: flex;
-              flex-direction: row;
-              align-items: flex-start;
+              flex-direction: column;
+              align-items: center;
               justify-content: flex-start;
               flex-shrink: 0;
               position: relative;
             "
           >
-            <StarRating />
-            
-          </div>
           <div
             style="
               display: flex;
@@ -151,20 +153,13 @@
               position: relative;
             "
           >
-            <img
-              class="tabler-download"
-              style="
-                flex-shrink: 0;
-                width: 48px;
-                height: 48px;
-                position: relative;
-                overflow: visible;
-              "
-              src="/join/tabler-download0.svg"
-              alt="save"
-            />
+          <StarRating />
+          <SaveImage targetImage= {voice_face_path}/>
             
           </div>
+            
+          </div>
+          
         </div>
       </div>
       <div
@@ -236,6 +231,7 @@
           </div>
           <PlaceholderImage
             style="flex-shrink: 0; width: 390px; height: 390px"
+            targetPath={condition_face_path}
           ></PlaceholderImage>
         </div>
         <div
@@ -270,21 +266,11 @@
               position: relative;
             "
           >
-            <img
-              class="tabler-download2"
-              style="
-                flex-shrink: 0;
-                width: 48px;
-                height: 48px;
-                position: relative;
-                overflow: visible;
-              "
-              src="/join/tabler-download1.svg"
-              alt="save"
-            />
+          <StarRating />
+          <SaveImage saveImage={condition_face_path} />
             
           </div>
-            <StarRating />
+            
           </div>
           
         </div>
@@ -341,7 +327,7 @@
             font-weight: var(--body-large-font-weight, 400);
             position: relative;
             width: 615px;
-            height: 32px;
+            height: 150px;
           "
         >
           생성된 이미지를 영상에 입힐 수 있습니다

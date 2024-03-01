@@ -36,6 +36,7 @@
     event.preventDefault();
     // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
     console.log({ radioValue, ageInput });
+    alert("회원가입 완료했습니다. ")
     // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
   }
   </script>
@@ -63,14 +64,14 @@
           border-style: solid;
           border-color: #878787;
           border-width: 0.5px;
-          padding: 47px 0px 47px 0px;
+          padding: 47px 0px 80px 0px;
           display: flex;
           flex-direction: row;
           align-items: flex-start;
           justify-content: center;
           flex-shrink: 0;
           width: 468px;
-          height: 865px;
+
           position: relative;
           box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.05);
           overflow: hidden;

@@ -1,6 +1,5 @@
 <script>
-	import { fade, slide } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+
 	import Star from './Star.svelte';
 	
 	// User rating states
@@ -11,44 +10,12 @@
 	let collectFeedback = false;
 	let feedbackCompleted = false;
 	
-	// "$:" triggers when something in the line changes
-	// When these variables reach true/false, they trigger these functions
-	$: collectFeedback && addWatchListeners();
-	$: !collectFeedback && feedbackFormClosed();
-	
-	function feedbackFormClosed() {
-		feedbackCompleted = false;
-		removeWatchListeners()
-	}
-	
-	function addWatchListeners() {
-		document.addEventListener('keydown', userDismissFeedback);
-		document.addEventListener('click', userClickedOutsideOfFeedback);
-	}
-	function removeWatchListeners() {
-		document.removeEventListener('keydown', userDismissFeedback);
-		document.removeEventListener('click', userClickedOutsideOfFeedback);
-	}
-	function userClickedOutsideOfFeedback(event) {
-		const container = document.getElementById('feedbackContiner');
-		if (!container.contains(event.target)) {
-			collectFeedback = false;
-		}
-	}
-	function userDismissFeedback(event) {
-			switch(event.key) {
-				case 'Escape':
-					collectFeedback = false;
-					break;
-				default:
-					return;
-			}
-		}
+
 	
 	// using curried function to initialize hover with id
 	const handleHover = (id) => () => {
 		hoverRating = id;
-	}
+	} 
 	const handleRate = (id) => (event) => {
 		if (collectFeedback && 
 				rating && 
@@ -59,7 +26,7 @@
 		}
 		rating = id;
 		collectFeedback = true;
-	}
+	} 
 	
 	let stars = [
 		{ id: 1, title: 'One Star' },
@@ -74,7 +41,7 @@
         } else {
             alert(`선택된 별점: ${rating}점`);
         }
-    }
+    } 
     
 </script>
 <style>
