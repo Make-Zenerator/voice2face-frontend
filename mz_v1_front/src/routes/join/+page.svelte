@@ -1,8 +1,10 @@
 <script>
-    import ButtonStyleFilled from "../../components/button/join_filled.svelte";
+    import BasicFilled from "../../components/button/basic_filled.svelte";
     import PlaceholderImage from "./PlaceholderImage.svelte";
     import Header from "../../components/header_non.svelte";
     import Radio from "./radio.svelte"
+    import { goto } from '$app/navigation';
+    export let targetPath = "/";
     let className = "";
     let radioValue;
     export { className as class };
@@ -12,36 +14,51 @@
     let join_check;
     let join_gender;
     let join_age;
-    let join_agree = false
+    let join_agree = false;
+    let passwordMismatch = false;
 
     const options = [{
-		value: 'Man',
+		value: 'man',
 		label: '남',
 	},  {
-		value: 'Woman',
+		value: 'woman',
 		label: '여',
 	}]
-    const agree = [
-      {
-        value:'0',
-        label:'동의 안함'
-      },
-      {
-        value:'1', 
-        label: '동의'
-      },
-  ]
+
+  $: {
+    if (join_pswd !== join_check && join_check) {
+      passwordMismatch = true;
+    } else {
+      passwordMismatch = false;
+    }
+  }
+
 
   function handleSubmit(event) {
     event.preventDefault();
     // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
-    console.log({ radioValue, ageInput });
-    alert("회원가입 완료했습니다. ")
+
+    if (join_agree ==false){
+      alert("개인정보 수집 이용에 동의를 체크해주셔야 서비스를 이용하실 수 있습니다.");
+      return ;
+    }
+    
+    else if (passwordMismatch) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    else{
+      console.log({ join_agree,  });
+      alert("회원가입 완료했습니다. ");
+      goto(targetPath);
     // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
+    }
+    
+    
   }
   </script>
-<!--  여기에 form 추가??-->
-
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
   <div
     style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
   >
@@ -174,7 +191,7 @@
                     overflow: hidden;
                   "
                 >
-                  <input type='text' bind:value={join_email} placeholder="이메일 입력"
+                  <input type='email' bind:value={join_email} placeholder="이메일 입력"
                     style="
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
@@ -187,6 +204,7 @@
                       display: flex;
                       align-items: center;
                       justify-content: center;
+                      border: none;
                     "
                   />
             
@@ -228,7 +246,7 @@
                     overflow: hidden;
                   "
                 >
-                  <input type='text' bind:value={join_pswd} placeholder="비밀번호 입력"
+                  <input type='password' bind:value={join_pswd} placeholder="비밀번호 입력"
                     style="
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
@@ -241,6 +259,7 @@
                       display: flex;
                       align-items: center;
                       justify-content: center;
+                      border: none;
                     "
                   />
                   
@@ -282,7 +301,7 @@
                     overflow: hidden;
                   "
                 >
-                  <input type='text' bind:value={join_check} placeholder="비밀번호 입력"
+                  <input type='password' bind:value={join_check} placeholder="비밀번호 입력"
                     style="
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
@@ -298,6 +317,7 @@
                       margin: 0;
                       background: transparent;
                       -webkit-appearance: none;
+                      border: none;
                     "
                   />
                 </div>
@@ -478,11 +498,12 @@
                 </div>
               </div>
             </div>
-            <ButtonStyleFilled
+            <BasicFilled
               styleVariant="filled"
               style="background: var(--7b95b7, #6b6b6b); flex-shrink: 0"
               name="회원가입"
-            ></ButtonStyleFilled>
+              type="submit"
+            ></BasicFilled>
           </div>
         </div>
       </div>
@@ -491,3 +512,4 @@
       ></PlaceholderImage>
     </div>
   </div>
+  </form>

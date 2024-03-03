@@ -155,7 +155,7 @@
                     overflow: hidden;
                   "
                 >
-                <input type='text' bind:value={login_email} placeholder="이메일 입력"
+                <input type='email' bind:value={login_email} placeholder="이메일 입력"
                 style="
                   color: rgba(0, 0, 0, 0.4);
                   text-align: center;
@@ -168,6 +168,7 @@
                   display: flex;
                   align-items: center;
                   justify-content: center;
+                  border: none;
                 "
               />
                 </div>
@@ -208,7 +209,7 @@
                     overflow: hidden;
                   "
                 >
-                <input type='text' bind:value={login_pswd} placeholder="비밀번호 입력"
+                <input type='password' bind:value={login_pswd} placeholder="비밀번호 입력"
                 style="
                   color: rgba(0, 0, 0, 0.4);
                   text-align: center;
@@ -224,6 +225,7 @@
                   margin: 0;
                   background: transparent;
                   -webkit-appearance: none;
+                  border: none;
                 "
               />
                 </div>

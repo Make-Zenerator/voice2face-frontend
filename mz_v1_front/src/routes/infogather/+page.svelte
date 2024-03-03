@@ -1,9 +1,13 @@
 <script>
-  import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
+  import BasicButton from "../../components/button/basic_filled.svelte";
   import VoiceButtonDefaultVariant3 from "./VoiceButtonDefaultVariant3.svelte";
   import Frame7Default from "./Frame7Default.svelte";
   import Radio from "../join/radio.svelte";
   import Header from "../../components/header_login.svelte"
+
+  import { goto } from '$app/navigation';
+  export let targetPath = "/loading";
+
   let className = "";
   let info_gender;
   export { className as class };
@@ -11,21 +15,23 @@
   let info_age;
 
   const options = [{
-		value: 'Man',
+		value: 'man',
 		label: '남',
 	},  {
-		value: 'Woman',
+		value: 'woman',
 		label: '여',
 	}]
 
 
   function handleSubmit(event) {
-    event.preventDefault();
-    // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
-    console.log({info_gender,info_age });
-    alert('gender: ${info_gender} \n age: $:{info_age}')
-    // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
-  }
+  event.preventDefault(); // 폼의 기본 제출 동작 방지
+
+  // 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
+  console.log({ info_gender, info_age });
+  alert(`gender: ${info_gender} \n age: ${info_age}`);
+  goto(targetPath);
+
+}
 </script>
 
 <form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
@@ -141,7 +147,7 @@
               flex-shrink: 0;
               position: relative;
             "
-          > <form method="POST">
+          > 
             <div
               style="
                 display: flex;
@@ -248,7 +254,7 @@
 
     placeholder="나이 입력" 
   />
-</div> </form>
+</div> 
 
             <div
               style="
@@ -370,7 +376,7 @@
           position: relative;
         "
       >
-        <ButtonStyleFilled
+        <BasicButton
           styleVariant="filled"
           style="
             background: var(--6b6b6b, #000000);
@@ -379,8 +385,8 @@
             width: 143px;
           "
           name="생성하기"
-          targetPath="/loading"
-        ></ButtonStyleFilled>
+          type="submit"
+        ></BasicButton>
       </div>
     </div>
   </div>
