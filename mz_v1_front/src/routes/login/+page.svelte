@@ -1,13 +1,43 @@
 <script>
-  import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
+  import BasicFilled from "../../components/button/basic_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
   import Header from "../../components/header_non.svelte";
+  // import { browser } from '$app/env';   // 여기가 아마 백엔드 부분 아닐까
+  import { goto } from '$app/navigation';
+
   let className = "";
   export { className as class };
   export let style;
   let login_email;
   let login_pswd;
+  let targetPath = "/home";
+
+  async function login() {
+        const response = await fetch('http://localhost:5050/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: login_email, password: login_pswd }),
+        });
+
+        if (response.ok) {
+            const data = await response.json(); // 백엔드로부터 받은 데이터를 JSON으로 파싱
+            const { token, email } = data; // 파싱된 JSON 객체에서 token과 email을 추출
+
+            // 토큰과 이메일을 로컬 스토리지에 저장
+            localStorage.setItem('auth_token', token);
+            
+
+            goto({targetPath}); // 사용자를 홈 페이지로 리다이렉트
+        } else {
+            alert('로그인 실패 \n 이메일과 비밀번호를 확인해주세요');
+        }
+  }
+
+
 </script>
+<form on:submit|preventDefault={login} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
 <div
   style="{'background: var(--neutral-0, #ffffff); display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
 >
@@ -160,7 +190,7 @@
                   color: rgba(0, 0, 0, 0.4);
                   text-align: center;
                   font-family: 'DmSans-Medium', sans-serif;
-                  font-size: 14px;
+                  font-size: 18px;
                   line-height: 40px;
                   font-weight: 500;
                   position: relative;
@@ -214,7 +244,7 @@
                   color: rgba(0, 0, 0, 0.4);
                   text-align: center;
                   font-family: 'DmSans-Medium', sans-serif;
-                  font-size: 14px;
+                  font-size: 18px;
                   line-height: 40px;
                   font-weight: 500;
                   position: relative;
@@ -231,14 +261,14 @@
                 </div>
               </div>
             </div>
-            <ButtonStyleFilled
+            <BasicFilled
               styleVariant="filled"
               style=
               "background: var(--7b95b7, #6b6b6b);
               flex-shrink: 0"
               name="로그인"
-              targetPath="/home"
-            ></ButtonStyleFilled>
+              type="submit"
+            ></BasicFilled>
           </div>
           <div
             style="
@@ -257,3 +287,5 @@
     </div>
   </div>
 </div>
+
+</form>
