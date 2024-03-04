@@ -38,7 +38,7 @@
         width: 612px;
       "
     >
-      좋은 문구 생각나는 것 있으면 바로바로 적어주세유
+    안녕하세요! <br/>사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br/>Voice2Face를 개발 중인 Make Zenerator 팀입니다. 
     </div>
     <PlaceholderImage
       style="flex-shrink: 0; width: 769px; height: 392px"

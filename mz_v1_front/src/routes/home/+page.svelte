@@ -5,6 +5,8 @@
     let className = "";
     export { className as class };
     export let style;
+
+    
   </script>
   <div
     style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
@@ -159,24 +161,6 @@
           position: relative;
         "
       >
-        <div
-          style="
-            color: var(--7b95b7, #6b6b6b);
-            text-align: center;
-            font-family: var(
-              --subtitle-small-font-family,
-              'DmSans-Medium',
-              sans-serif
-            );
-            font-size: var(--subtitle-small-font-size, 21px);
-            line-height: var(--subtitle-small-line-height, 22px);
-            font-weight: var(--subtitle-small-font-weight, 500);
-            position: relative;
-            width: 645px;
-          "
-        >
-          Trusted by:
-        </div>
         <div 
           style="
             display: flex;
@@ -186,45 +170,25 @@
             justify-content: center;
             flex-shrink: 0;
             position: relative;
+            margin-top: 20px;
           "
         >
-          <img
-            class="group2"
-            style="
-              flex-shrink: 0;
-              width: 120px;
-              height: 39.31px;
-              position: relative;
-              overflow: visible;
-            "
-            src="/join/group1.svg"
-            alt="google"
-          />
-          <img
-            class="group3"
-            style="
-              flex-shrink: 0;
-              width: 109.23px;
-              height: 24.43px;
-              position: relative;
-              overflow: visible;
-            "
-            src="/join/group2.svg"
-            alt="youtube"
-          />
-          <img
-            class="frame"
-            style="
-              flex-shrink: 0;
-              width: 135px;
-              height: 31px;
-              position: relative;
-              overflow: visible;
-            "
-            src="frame0.svg"
-            alt="facebook"
-          />
+        <img
+        class="group3"
+        style="
+          flex-shrink: 0;
+          width: 30%;
+          height: 100%;
+          position: relative;
+          overflow: visible;
+        "
+        src="/boostcampLogo.jpg"
+        alt="boostcamp"
+      />
         </div>
       </div>
     </div>
   </div>
+
+
+

@@ -196,7 +196,7 @@
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
                       font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 14px;
+                      font-size: 18px;
                       line-height: 40px;
                       font-weight: 500;
                       position: relative;
@@ -251,7 +251,7 @@
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
                       font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 14px;
+                      font-size: 18px;
                       line-height: 40px;
                       font-weight: 500;
                       position: relative;
@@ -306,7 +306,7 @@
                       color: rgba(0, 0, 0, 0.4);
                       text-align: center;
                       font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 14px;
+                      font-size: 18px;
                       line-height: 40px;
                       font-weight: 500;
                       position: relative;
@@ -400,7 +400,7 @@
                   color: rgba(0, 0, 0, 0.87);
                   text-align: center;
                   font-family: 'DmSans-Medium', sans-serif;
-                  font-size: 14px;
+                  font-size: 18px;
                   line-height: 40px;
                   font-weight: 500;
                   border: none;
