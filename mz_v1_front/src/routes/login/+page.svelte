@@ -13,12 +13,15 @@
   let targetPath = "/home";
 
   async function login() {
-        const response = await fetch('http://localhost:5050/api/login', {
+    try{
+        const response = await fetch("http://175.45.194.59:5050/auth", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ email: login_email, password: login_pswd }),
+            mode: 'no-cors',
+            credentials: 'include',
         });
 
         if (response.ok) {
@@ -32,7 +35,11 @@
             goto({targetPath}); // 사용자를 홈 페이지로 리다이렉트
         } else {
             alert('로그인 실패 \n 이메일과 비밀번호를 확인해주세요');
-        }
+        }}
+        catch (error) {
+      console.error('로그인 중 에러 발생:', error);
+      alert('로그인 중 에러가 발생했습니다.');
+    }
   }
 
 

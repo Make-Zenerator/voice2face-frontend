@@ -49,20 +49,26 @@ async function handleSubmit(event) {
       return;
     }
 
+    // const formData = new FormData();
+    // formData.append('email', join_email);
+    // formData.append('password', join_pswd);
+    // formData.append('age', join_age);
+    // formData.append('gender', join_gender);
+    
+
     // 폼 데이터를 JSON으로 서버에 전송
     try {
-      const response = await fetch('http://175.45.194.59:5050/users/', {
+      const response = await fetch('http://175.45.194.59:5050/users', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
         body: JSON.stringify({
           email: join_email,
           password: join_pswd,
-          age: join_age,
+          age: join_age.toString(),
           gender: join_gender,
         }),
-        mode: 'cors'
+        // body: formData,
+        mode: 'no-cors',
+        credentials: 'include',
       });
 
       if (response.ok) {
