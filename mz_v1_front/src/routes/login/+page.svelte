@@ -30,6 +30,8 @@
             // 토큰과 이메일을 로컬 스토리지에 저장
             localStorage.setItem('auth_token', token);
 
+            alert(`로그인 성공!`);
+
 
             goto(targetPath); // 사용자를 홈 페이지로 리다이렉트
         } else {

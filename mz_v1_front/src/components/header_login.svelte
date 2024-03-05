@@ -101,7 +101,7 @@ style="
   >
     About us
 </a>
-  <a 
+  <a href="/"
   on:click={handleLogout}
     style="
       color: var(--7b95b7, #6b6b6b);
