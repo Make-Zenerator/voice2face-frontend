@@ -34,29 +34,51 @@ $: {
 }
 
 
-function handleSubmit(event) {
-  event.preventDefault();
-  // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
+async function handleSubmit(event) {
+    event.preventDefault();
 
-  if (join_agree ==false){
-    alert("개인정보 수집 이용에 동의를 체크해주셔야 서비스를 이용하실 수 있습니다.");
-    return ;
-  }
-  
-  else if (passwordMismatch) {
-    alert("비밀번호가 일치하지 않습니다.");
-    return;
-  }
+    // 개인정보 수집 동의 확인
+    if (!join_agree) {
+      alert("개인정보 수집 이용에 동의를 체크해주셔야 서비스를 이용하실 수 있습니다.");
+      return;
+    }
 
-  else{
-    console.log({ join_agree,  });
-    alert("회원가입 완료했습니다. ");
-    goto(targetPath);
-  // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
+    // 비밀번호 일치 확인
+    if (join_pswd !== join_check) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    // 폼 데이터를 JSON으로 서버에 전송
+    try {
+      const response = await fetch('http://175.45.194.59:5050/users/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: join_email,
+          password: join_pswd,
+          age: join_age,
+          gender: join_gender,
+        }),
+        mode: 'cors'
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('회원가입 성공:', result);
+        alert("회원가입 완료했습니다.");
+        goto('/'); // 성공 시 리디렉션
+      } else {
+        const error = await response.json();
+        alert(`회원가입 실패: ${error.message}`);
+      }
+    } catch (error) {
+      console.error('회원가입 중 에러 발생:', error);
+      alert('회원가입 중 에러가 발생했습니다.');
+    }
   }
-  
-  
-}
 </script>
 <form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
 <div
