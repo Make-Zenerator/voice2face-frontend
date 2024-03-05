@@ -61,16 +61,19 @@ async function handleSubmit(event) {
       const response = await fetch('http://175.45.194.59:5050/api/v1/users', {
         method: 'POST',
         body: formData,
-        mode: 'no-cors',
         credentials: 'include',
       });
 
       if (response.ok) {
         const result = await response.json();
         console.log('회원가입 성공:', result);
-        alert("회원가입 완료했습니다.");
-        goto('/'); // 성공 시 리디렉션
-      } else {
+        alert("회원가입 완료했습니다!!");
+        goto(targetPath); // 성공 시 리디렉션
+
+      } else if (response.status === 409){
+        alert(`이메일이 중복되었습니다. 다른 이메일을 입력해주세요. `);
+      }
+        else {
         const error = await response.json();
         alert(`회원가입 실패: ${error.message}`);
       }

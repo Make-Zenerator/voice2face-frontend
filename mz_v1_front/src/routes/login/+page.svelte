@@ -21,11 +21,11 @@
         const response = await fetch("http://175.45.194.59:5050/api/v1/auth", {
             method: 'POST',
             body: formData,
-            mode: 'no-cors',
+            // mode: 'no-cors',
             credentials: 'include',
         });
 
-        if (response == 200) {
+        if (response.status === 200) {
             const data = await response.json(); // 백엔드로부터 받은 데이터를 JSON으로 파싱
             const { token, email } = data; // 파싱된 JSON 객체에서 token과 email을 추출
 
@@ -35,9 +35,6 @@
 
             goto({targetPath}); // 사용자를 홈 페이지로 리다이렉트
         } 
-        else if (response == 409){
-          alert("이메일이 중복되었습니다.")
-        }
         else {
             alert('로그인 실패 \n 이메일과 비밀번호를 확인해주세요');
         }}
