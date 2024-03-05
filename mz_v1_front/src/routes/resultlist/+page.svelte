@@ -1,5 +1,5 @@
 <script>
-  import ButtonStyleFilled from "./ButtonStyleFilled.svelte";
+  import ButtonStyleFilled from "../../components/button/basic_filled.svelte";
   import Header from "../../components/header_login.svelte";
   let className = "";
   export { className as class };
