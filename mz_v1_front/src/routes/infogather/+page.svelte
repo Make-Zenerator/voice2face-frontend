@@ -26,16 +26,41 @@
 		label: '여',
 	}]
 
+  const token = localStorage.getItem('auth_token');
 
-  function handleSubmit(event) {
-  event.preventDefault(); // 폼의 기본 제출 동작 방지
 
-  // 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
-  console.log({ info_gender, info_age });
-  alert(`gender: ${info_gender} \n age: ${info_age}`);
-  goto(targetPath);
+  async function requestimage(){
+    const formData = new FormData();
+    formData.append('age', info_age);
+    formData.append('gender', info_gender);
+    formData.append('file', audioUrl);
 
+    const token = localStorage.getItem('auth_token');
+
+    try{
+        const response = await fetch('http://175.45.194.59:5050/api/v1/mz-request', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+            body: formData,
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            alert(`성공적으로 요청했습니다.`);
+            goto(targetPath); // 사용자를 홈 페이지로 리다이렉트
+        } else {
+            const errorResponse = await response.json(); // 에러 응답을 받아 처리
+            alert(`요청 실패: ${errorResponse.message}`);
+            console.log(response);
+        }
+    } catch (error) {
+        console.error('생성 요청 중 에러 발생:', error);
+        alert('요청 중 에러가 발생했습니다.');
+    }
 }
+
 
   let showExample = false; // 초기 상태는 예시 문장을 숨김니다.
 
@@ -44,7 +69,7 @@
   }
 </script>
 
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
+<form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
 >
