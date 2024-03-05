@@ -1,131 +1,142 @@
 <script>
-    import BasicFilled from "../../components/button/basic_filled.svelte";
-    import PlaceholderImage from "./PlaceholderImage.svelte";
-    import Header from "../../components/header_non.svelte";
-    import Radio from "./radio.svelte"
-    import { goto } from '$app/navigation';
-    export let targetPath = "/";
-    let className = "";
-    let radioValue;
-    export { className as class };
-    export let style;
-    let join_email;
-    let join_pswd;
-    let join_check;
-    let join_gender;
-    let join_age;
-    let join_agree = false;
-    let passwordMismatch = false;
+  import BasicFilled from "../../components/button/basic_filled.svelte";
+  import PlaceholderImage from "./PlaceholderImage.svelte";
+  import Header from "../../components/header_non.svelte";
+  import Radio from "./radio.svelte"
+  import { goto } from '$app/navigation';
+  export let targetPath = "/";
+  let className = "";
+  let radioValue;
+  export { className as class };
+  export let style;
+  let join_email;
+  let join_pswd;
+  let join_check;
+  let join_gender;
+  let join_age;
+  let join_agree = false;
+  let passwordMismatch = false;
 
-    const options = [{
-		value: 'man',
-		label: '남',
-	},  {
-		value: 'woman',
-		label: '여',
-	}]
+  const options = [{
+  value: 'man',
+  label: '남',
+},  {
+  value: 'woman',
+  label: '여',
+}]
 
-  $: {
-    if (join_pswd !== join_check && join_check) {
-      passwordMismatch = true;
-    } else {
-      passwordMismatch = false;
-    }
+$: {
+  if (join_pswd !== join_check && join_check) {
+    passwordMismatch = true;
+  } else {
+    passwordMismatch = false;
+  }
+}
+
+
+function handleSubmit(event) {
+  event.preventDefault();
+  // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
+
+  if (join_agree ==false){
+    alert("개인정보 수집 이용에 동의를 체크해주셔야 서비스를 이용하실 수 있습니다.");
+    return ;
+  }
+  
+  else if (passwordMismatch) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
   }
 
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    // 여기에서 폼 데이터를 처리합니다. 예를 들어, 서버로 전송
-
-    if (join_agree ==false){
-      alert("개인정보 수집 이용에 동의를 체크해주셔야 서비스를 이용하실 수 있습니다.");
-      return ;
-    }
-    
-    else if (passwordMismatch) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-
-    else{
-      console.log({ join_agree,  });
-      alert("회원가입 완료했습니다. ");
-      goto(targetPath);
-    // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
-    }
-    
-    
+  else{
+    console.log({ join_agree,  });
+    alert("회원가입 완료했습니다. ");
+    goto(targetPath);
+  // 필요한 경우 여기에서 페이지 이동 로직을 추가합니다.
   }
-  </script>
+  
+  
+}
+</script>
 <form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
+<div
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
+>
+ <Header/>
   <div
-    style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
+    style="
+      display: flex;
+      flex-direction: row;
+      gap: 41px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      position: relative;
+    "
   >
-   <Header/>
     <div
       style="
+        background: #ffffff;
+        border-radius: 10px;
+        border-style: solid;
+        border-color: #878787;
+        border-width: 0.5px;
+        padding: 47px 0px 80px 0px;
         display: flex;
         flex-direction: row;
-        gap: 41px;
         align-items: flex-start;
-        justify-content: flex-start;
+        justify-content: center;
         flex-shrink: 0;
+        width: 468px;
+
         position: relative;
+        box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
       "
     >
       <div
         style="
-          background: #ffffff;
-          border-radius: 10px;
-          border-style: solid;
-          border-color: #878787;
-          border-width: 0.5px;
-          padding: 47px 0px 80px 0px;
           display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-          justify-content: center;
+          flex-direction: column;
+          gap: 43px;
+          align-items: center;
+          justify-content: flex-start;
           flex-shrink: 0;
-          width: 468px;
-
+          height: 822px;
           position: relative;
-          box-shadow: 0px 4px 64px 0px rgba(0, 0, 0, 0.05);
-          overflow: hidden;
         "
       >
         <div
           style="
+            color: #000000;
+            text-align: center;
+            font-family: 'DmSans-Bold', sans-serif;
+            font-size: 46px;
+            line-height: 40px;
+            font-weight: 700;
+            position: relative;
+            width: 451px;
+            height: 40px;
+          "
+        >
+          회원가입
+        </div>
+        <div
+          style="
             display: flex;
             flex-direction: column;
-            gap: 43px;
+            gap: 22px;
             align-items: center;
             justify-content: flex-start;
             flex-shrink: 0;
-            height: 822px;
             position: relative;
           "
         >
           <div
             style="
-              color: #000000;
-              text-align: center;
-              font-family: 'DmSans-Bold', sans-serif;
-              font-size: 46px;
-              line-height: 40px;
-              font-weight: 700;
-              position: relative;
-              width: 451px;
-              height: 40px;
-            "
-          >
-            회원가입
-          </div>
-          <div
-            style="
               display: flex;
               flex-direction: column;
-              gap: 22px;
+              gap: 13px;
               align-items: center;
               justify-content: flex-start;
               flex-shrink: 0;
@@ -136,8 +147,8 @@
               style="
                 display: flex;
                 flex-direction: column;
-                gap: 13px;
-                align-items: center;
+                gap: 10px;
+                align-items: flex-start;
                 justify-content: flex-start;
                 flex-shrink: 0;
                 position: relative;
@@ -145,371 +156,374 @@
             >
               <div
                 style="
-                  display: flex;
-                  flex-direction: column;
-                  gap: 10px;
-                  align-items: flex-start;
-                  justify-content: flex-start;
-                  flex-shrink: 0;
-                  position: relative;
-                "
-              >
-                <div
-                  style="
-                    color: #000000;
-                    text-align: left;
-                    font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 19px;
-                    line-height: 40px;
-                    font-weight: 500;
-                    position: relative;
-                    width: 125px;
-                    height: 23px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                  "
-                >
-                  이메일 주소
-                </div>
-                <div
-                  style="
-                    background: #ffffff;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-color: #000000;
-                    border-width: 1px;
-                    padding: 1px 43px 1px 43px;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                    align-items: center;
-                    justify-content: flex-start;
-                    flex-shrink: 0;
-                    width: 337px;
-                    position: relative;
-                    overflow: hidden;
-                  "
-                >
-                  <input type='email' bind:value={join_email} placeholder="이메일 입력"
-                    style="
-                      color: rgba(0, 0, 0, 0.4);
-                      text-align: center;
-                      font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 18px;
-                      line-height: 40px;
-                      font-weight: 500;
-                      position: relative;
-                      width: 100%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      border: none;
-                    "
-                  />
-            
-                </div>
-                <div
-                  style="
-                    color: #000000;
-                    text-align: left;
-                    font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 19px;
-                    line-height: 40px;
-                    font-weight: 500;
-                    position: relative;
-                    width: 125px;
-                    height: 23px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                  "
-                >
-                  비밀번호
-                </div>
-                <div
-                  style="
-                    background: #ffffff;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-color: #000000;
-                    border-width: 1px;
-                    padding: 1px 43px 1px 43px;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                    align-items: center;
-                    justify-content: flex-start;
-                    flex-shrink: 0;
-                    width: 337px;
-                    position: relative;
-                    overflow: hidden;
-                  "
-                >
-                  <input type='password' bind:value={join_pswd} placeholder="비밀번호 입력"
-                    style="
-                      color: rgba(0, 0, 0, 0.4);
-                      text-align: center;
-                      font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 18px;
-                      line-height: 40px;
-                      font-weight: 500;
-                      position: relative;
-                      width: 100%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      border: none;
-                    "
-                  />
-                  
-                </div>
-                <div
-                  style="
-                    color: #000000;
-                    text-align: left;
-                    font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 19px;
-                    line-height: 40px;
-                    font-weight: 500;
-                    position: relative;
-                    width: 125px;
-                    height: 23px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                  "
-                >
-                  비밀번호 확인
-                </div>
-                <div
-                  style="
-                    background: #ffffff;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-color: #000000;
-                    border-width: 1px;
-                    padding: 1px 43px 1px 43px;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                    align-items: center;
-                    justify-content: flex-start;
-                    flex-shrink: 0;
-                    width: 337px;
-                    position: relative;
-                    overflow: hidden;
-                  "
-                >
-                  <input type='password' bind:value={join_check} placeholder="비밀번호 입력"
-                    style="
-                      color: rgba(0, 0, 0, 0.4);
-                      text-align: center;
-                      font-family: 'DmSans-Medium', sans-serif;
-                      font-size: 18px;
-                      line-height: 40px;
-                      font-weight: 500;
-                      position: relative;
-                      width: 100%;
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      margin: 0;
-                      background: transparent;
-                      -webkit-appearance: none;
-                      border: none;
-                    "
-                  />
-                </div>
-                <div
-                  style="
-                    color: #000000;
-                    text-align: left;
-                    font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 19px;
-                    line-height: 40px;
-                    font-weight: 500;
-                    position: relative;
-                    width: 125px;
-                    height: 23px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                  "
-                >
-                  성별
-                </div>
-                <div
-                  style="
-                    display: flex;
-                    flex-direction: row;
-                    gap: 18px;
-                    align-items: center;
-                    justify-content: center;
-                    flex-shrink: 0;
-                    width: 337px;
-                    position: relative;
-                    align-items: center;
-                  "
-                >
-                <Radio {options} fontSize={20} legend='' bind:userSelected={join_gender}/>
-                </div>
-                <div
-                  style="
-                    color: #000000;
-                    text-align: left;
-                    font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 19px;
-                    line-height: 40px;
-                    font-weight: 500;
-                    position: relative;
-                    width: 125px;
-                    height: 23px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                  "
-                >
-                  나이
-                </div>
-                <div
-                  style="
-                    background: #ffffff;
-                    border-radius: 10px;
-                    border-style: solid;
-                    border-color: #000000;
-                    border-width: 1px;
-                    padding: 1px 43px 1px 43px;
-                    display: flex;
-                    flex-direction: row;
-                    gap: 10px;
-                    align-items: center;
-                    justify-content: flex-start;
-                    flex-shrink: 0;
-                    width: 337px;
-                    position: relative;
-                    overflow: hidden;
-                  "
-                >
-                <input
-                type="number"
-                bind:value="{join_age}"
-                min=0
-                max=120
-                style="
-                  color: rgba(0, 0, 0, 0.87);
-                  text-align: center;
+                  color: #000000;
+                  text-align: left;
                   font-family: 'DmSans-Medium', sans-serif;
-                  font-size: 18px;
+                  font-size: 19px;
                   line-height: 40px;
                   font-weight: 500;
-                  border: none;
-                  width: 100%; /* 입력 상자가 div를 꽉 채우도록 조정 */
-                  height: 40px; /* 입력 상자의 높이 조정 */
-                  background: transparent; /* 배경색 투명 */
-                  -webkit-appearance: none; /* 스타일 초기화 */
-                  margin: 0; /* margin 초기화 */
+                  position: relative;
+                  width: 125px;
+                  height: 23px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
                 "
-            
-                placeholder="나이 입력" 
-              />
-                </div>
+              >
+                이메일 주소
+              </div>
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-color: #000000;
+                  border-width: 1px;
+                  padding: 1px 43px 1px 43px;
+                  display: flex;
+                  flex-direction: row;
+                  gap: 10px;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-shrink: 0;
+                  width: 337px;
+                  position: relative;
+                  overflow: hidden;
+                "
+              >
+                <input type='email' bind:value={join_email} placeholder="이메일 입력"
+                  style="
+                    color: rgba(0, 0, 0, 0.4);
+                    text-align: center;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 14px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                  "
+                />
+          
+              </div>
+              <div
+                style="
+                  color: #000000;
+                  text-align: left;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 19px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  position: relative;
+                  width: 125px;
+                  height: 23px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+                비밀번호
+              </div>
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-color: #000000;
+                  border-width: 1px;
+                  padding: 1px 43px 1px 43px;
+                  display: flex;
+                  flex-direction: row;
+                  gap: 10px;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-shrink: 0;
+                  width: 337px;
+                  position: relative;
+                  overflow: hidden;
+                "
+              >
+                <input type='password' bind:value={join_pswd} placeholder="비밀번호 입력"
+                  style="
+                    color: rgba(0, 0, 0, 0.4);
+                    text-align: center;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 14px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                  "
+                />
+                
+              </div>
+              <div
+                style="
+                  color: #000000;
+                  text-align: left;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 19px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  position: relative;
+                  width: 125px;
+                  height: 23px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+                비밀번호 확인
+              </div>
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-color: #000000;
+                  border-width: 1px;
+                  padding: 1px 43px 1px 43px;
+                  display: flex;
+                  flex-direction: row;
+                  gap: 10px;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-shrink: 0;
+                  width: 337px;
+                  position: relative;
+                  overflow: hidden;
+                "
+              >
+                <input type='password' bind:value={join_check} placeholder="비밀번호 입력"
+                  style="
+                    color: rgba(0, 0, 0, 0.4);
+                    text-align: center;
+                    font-family: 'DmSans-Medium', sans-serif;
+                    font-size: 14px;
+                    line-height: 40px;
+                    font-weight: 500;
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0;
+                    background: transparent;
+                    -webkit-appearance: none;
+                    border: none;
+                  "
+                />
+              </div>
+              <div
+                style="
+                  color: #000000;
+                  text-align: left;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 19px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  position: relative;
+                  width: 125px;
+                  height: 23px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+                성별
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  gap: 18px;
+                  align-items: center;
+                  justify-content: center;
+                  flex-shrink: 0;
+                  width: 337px;
+                  position: relative;
+                  align-items: center;
+                "
+              >
+              <Radio {options} fontSize={20} legend='' bind:userSelected={join_gender}/>
+              </div>
+              <div
+                style="
+                  color: #000000;
+                  text-align: left;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 19px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  position: relative;
+                  width: 125px;
+                  height: 23px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+                나이
+              </div>
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 10px;
+                  border-style: solid;
+                  border-color: #000000;
+                  border-width: 1px;
+                  padding: 1px 43px 1px 43px;
+                  display: flex;
+                  flex-direction: row;
+                  gap: 10px;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-shrink: 0;
+                  width: 337px;
+                  position: relative;
+                  overflow: hidden;
+                "
+              >
+              <input
+              type="number"
+              bind:value="{join_age}"
+              min=0
+              max=120
+              style="
+                color: rgba(0, 0, 0, 0.87);
+                text-align: center;
+                font-family: 'DmSans-Medium', sans-serif;
+                font-size: 14px;
+                line-height: 40px;
+                font-weight: 500;
+                border: none;
+                width: 100%; /* 입력 상자가 div를 꽉 채우도록 조정 */
+                height: 40px; /* 입력 상자의 높이 조정 */
+                background: transparent; /* 배경색 투명 */
+                -webkit-appearance: none; /* 스타일 초기화 */
+                margin: 0; /* margin 초기화 */
+              "
+          
+              placeholder="나이 입력" 
+            />
+              </div>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 0px;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-shrink: 0;
+                position: relative;
+              "
+            >
+              <div
+                style="
+                  color: #000000;
+                  text-align: left;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 20px;
+                  line-height: 40px;
+                  font-weight: 500;
+                  position: relative;
+                  width: 339px;
+                  height: 43px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-start;
+                "
+              >
+                개인정보 수집 이용 동의서
               </div>
               <div
                 style="
                   display: flex;
                   flex-direction: column;
-                  gap: 0px;
-                  align-items: flex-start;
+                  gap: 5px;
+                  align-items: flex-end;
                   justify-content: flex-start;
                   flex-shrink: 0;
                   position: relative;
                 "
               >
-                <div
-                  style="
-                    color: #000000;
-                    text-align: left;
-                    font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 20px;
-                    line-height: 40px;
-                    font-weight: 500;
-                    position: relative;
-                    width: 339px;
-                    height: 43px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                  "
-                >
-                  개인정보 수집 이용 동의서
+              <div
+  style="
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 337px;
+    height: 158px;
+    max-height: 200px;
+    color: rgba(0, 0, 0, 0.87);
+    text-align: left;
+    font-family: 'DmSans-Medium', sans-serif;
+    font-size: 10px;
+    line-height: 15px;
+    font-weight: 500;
+    margin: 0px;
+  "
+>
+                
+                  <p><strong>본인은 아래와 같이 개인정보의 수집 및 이용에 동의합니다.</strong></p>
+                  
+                  <p><strong>1. 수집하는 개인정보의 항목:</strong></p>
+                  <ul>
+                      <li>이메일 (Email)</li>
+                      <li>성별 (Gender)</li>
+                      <li>나이 (Age)</li>
+                      <li>목소리 (Voice)</li>
+                  </ul>
+                  
+                  <p><strong>2. 개인정보의 수집 및 이용 목적:</strong></p>
+                  <ul>
+                      <li>회원 서비스 제공을 위한 이메일 통보 및 연락</li>
+                      <li>회원의 특성에 따른 맞춤형 서비스 제공</li>
+                      <li>목소리 데이터를 활용한 음성인식 기술 개발 및 서비스 향상</li>
+                      <li>수집된 데이터를 기반으로 한 모델 학습을 통한 개선된 서비스 제공</li>
+                  </ul>
+                  
+                  <p><strong>3. 개인정보의 보유 및 이용 기간:</strong></p>
+                  <p>개인정보 수집 및 이용 목적 달성 후 즉시 파기합니다. 단, 관련 법령에 따라 보존할 필요가 있는 경우에는 해당 법령의 규정에 따라 보존합니다.</p>
+                  
+                  <p><strong>4. 동의 거부 권리:</strong></p>
+                  <p>본인은 개인정보 제공에 대한 동의를 거부할 권리가 있습니다. 단, 필수 항목에 대한 동의를 거부할 경우 회원 가입이 제한될 수 있습니다.</p>
+                  
+                  <p><strong>본인은 위와 같이 개인정보 수집 및 이용에 동의합니다.</strong></p>
                 </div>
-                <div
-                  style="
-                    display: flex;
-                    flex-direction: column;
-                    gap: 5px;
-                    align-items: flex-end;
-                    justify-content: flex-start;
-                    flex-shrink: 0;
-                    position: relative;
-                  "
-                >
-                  <div
-                    style="
-                      background: #ffffff;
-                      border-radius: 10px;
-                      border-style: solid;
-                      border-color: #000000;
-                      border-width: 1px;
-                      padding: 1px 43px 1px 43px;
-                      display: flex;
-                      flex-direction: row;
-                      gap: 10px;
-                      align-items: center;
-                      justify-content: center;
-                      flex-shrink: 0;
-                      width: 337px;
-                      height: 158px;
-                      position: relative;
-                      overflow: hidden;
-                    "
-                  >
-                    <div
-                      style="
-                        color: rgba(0, 0, 0, 0.4);
-                        text-align: left;
-                        font-family: 'DmSans-Medium', sans-serif;
-                        font-size: 14px;
-                        line-height: 40px;
-                        font-weight: 500;
-                        position: relative;
-                        display: flex;
-                        align-items: center;
-                        justify-content: flex-start;
-                      "
-                    >
-                      개인정보 어쩌고 저쩌고
-                    </div>
-                  </div>
-                  <label style="display: flex; align-items: center; cursor: pointer;">
-                    <input type="checkbox" bind:checked={join_agree}>
-                    <span style="margin-left: 8px;">동의함</span>
-                </div>
+                <label style="display: flex; align-items: center; cursor: pointer;">
+                  <input type="checkbox" bind:checked={join_agree}>
+                  <span style="margin-left: 8px;">동의함</span>
               </div>
             </div>
-            <BasicFilled
-              styleVariant="filled"
-              style="background: var(--7b95b7, #6b6b6b); flex-shrink: 0"
-              name="회원가입"
-              type="submit"
-            ></BasicFilled>
           </div>
+          <BasicFilled
+            styleVariant="filled"
+            style="background: var(--7b95b7, #6b6b6b); flex-shrink: 0"
+            name="회원가입"
+            type="submit"
+          ></BasicFilled>
         </div>
       </div>
-      <PlaceholderImage
-        style="flex-shrink: 0; width: 564px; height: 865px"
-      ></PlaceholderImage>
     </div>
+    <PlaceholderImage
+      style="flex-shrink: 0; width: 564px; height: 865px"
+    ></PlaceholderImage>
   </div>
-  </form>
+</div>
+</form>

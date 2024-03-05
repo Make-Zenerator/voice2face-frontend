@@ -8,9 +8,9 @@
     export let style;
   </script>
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
 >
-  <Header /> 
+  <Header /> <div></div>
     <div
       style="
         color: #000000;
@@ -38,11 +38,11 @@
         width: 612px;
       "
     >
-      좋은 문구 생각나는 것 있으면 바로바로 적어주세유
+    안녕하세요! <br/>사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br/>Voice2Face를 개발 중인 Make Zenerator 팀입니다. 
+
     </div>
-    <PlaceholderImage
-      style="flex-shrink: 0; width: 769px; height: 392px"
-    ></PlaceholderImage>
+    <img src = "/logo/MZ_aboutus.jpg" alt = "MZ_members">
+    <div></div>
     <div
       style="
         display: flex;

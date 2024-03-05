@@ -107,8 +107,12 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
               <audio src="sound.mp3" autoplay loop controls id="myAudio"></audio>
             </TableBodyCell>
           <TableBodyCell>
-            <ButtonStyleFilled targetPath='/result' name="결과 확인"> </ButtonStyleFilled>
-          </TableBodyCell>
+            {#if item.make ==1}
+              <ButtonStyleFilled targetPath='/result' name="결과 확인"> </ButtonStyleFilled>
+            {:else if item.make ==2}
+              Error
+              {/if}
+            </TableBodyCell>
         </TableBodyRow>
           {/each}
     </TableBody>
