@@ -61,7 +61,6 @@ async function handleSubmit(event) {
       const response = await fetch('http://175.45.194.59:5050/api/v1/users', {
         method: 'POST',
         body: formData,
-        credentials: 'include',
       });
 
       if (response.ok) {

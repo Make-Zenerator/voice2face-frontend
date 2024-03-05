@@ -21,11 +21,10 @@
         const response = await fetch("http://175.45.194.59:5050/api/v1/auth", {
             method: 'POST',
             body: formData,
-            // mode: 'no-cors',
-            credentials: 'include',
+
         });
 
-        if (response.status === 200) {
+        if (response.ok) {
             const data = await response.json(); // 백엔드로부터 받은 데이터를 JSON으로 파싱
             const { token, email } = data; // 파싱된 JSON 객체에서 token과 email을 추출
 
@@ -39,7 +38,7 @@
             alert('로그인 실패 \n 이메일과 비밀번호를 확인해주세요');
         }}
         catch (error) {
-      console.error('로그인 중 에러 발생:', error);
+      console.error(`로그인 실패: ${error.message}`);
       alert('로그인 중 에러가 발생했습니다.');
     }
   }
