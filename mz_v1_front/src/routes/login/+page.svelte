@@ -2,7 +2,6 @@
   import BasicFilled from "../../components/button/basic_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
   import Header from "../../components/header_non.svelte";
-  // import { browser } from '$app/env';   // 여기가 아마 백엔드 부분 아닐까
   import { goto } from '$app/navigation';
 
   let className = "";
