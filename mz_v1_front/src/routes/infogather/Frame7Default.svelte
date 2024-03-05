@@ -3,7 +3,12 @@
   let className = "";
   export { className as class };
   export let style;
+  export let audioUrl;
   const variantsClassName = "unknown-prop-69-" + unknownProp69;
+  $: if (audioUrl) {
+    const audio = new Audio(audioUrl);
+    audio.play().catch(error => console.error('오디오 재생 실패:', error));
+  }
 </script>
 <img
   class="{'frame-7-default ' + className + ' ' + variantsClassName}"

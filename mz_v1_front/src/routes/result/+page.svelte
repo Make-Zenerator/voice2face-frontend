@@ -9,7 +9,9 @@
   export let style;
   let voice_face_path = "/join/placeholder-image.svg";
   let condition_face_path = "/join/placeholder-image.svg";
-
+  let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";
+  let voice_stretch_path = "https://blog.teamtailor.com/hs-fs/hubfs/giphy%20(3).gif?width=500&height=245&name=giphy%20(3).gif";
+  let condition_stretch_path = "https://social-phinf.pstatic.net/20211122_62/1637573927058bhdFb_GIF/23ee09341fb3d26c2b57efc4dd3b928ea3364f68.gif";
   
 </script>
 <div
@@ -401,21 +403,19 @@
             <PlaceholderImage
               style="
                 width: 393px;
-                height: 393px;
+                height: 250px;
                 position: absolute;
                 left: 0px;
                 top: 105px;
               "
+              targetPath={gt_stretch_path};
             ></PlaceholderImage>
           </div>
           <div
             style="
-              display: flex;
-              flex-direction: column;
-              gap: 15px;
-              align-items: center;
-              justify-content: flex-start;
               flex-shrink: 0;
+              width: 393px;
+              height: 498px;
               position: relative;
             "
           >
@@ -426,8 +426,9 @@
                 gap: 18px;
                 align-items: flex-start;
                 justify-content: flex-start;
-                flex-shrink: 0;
-                position: relative;
+                position: absolute;
+                left: 49.5px;
+                top: 0px;
               "
             >
               <div
@@ -465,17 +466,21 @@
               </div>
             </div>
             <PlaceholderImage
-              style="flex-shrink: 0; width: 393px; height: 393px"
+              style="
+                width: 393px;
+                height: 250px;
+                position: absolute;
+                left: 0px;
+                top: 105px;
+              "
+              targetPath={voice_stretch_path};
             ></PlaceholderImage>
           </div>
           <div
             style="
-              display: flex;
-              flex-direction: column;
-              gap: 15px;
-              align-items: center;
-              justify-content: flex-start;
               flex-shrink: 0;
+              width: 393px;
+              height: 498px;
               position: relative;
             "
           >
@@ -486,8 +491,9 @@
                 gap: 18px;
                 align-items: flex-start;
                 justify-content: flex-start;
-                flex-shrink: 0;
-                position: relative;
+                position: absolute;
+                left: 49.5px;
+                top: 0px;
               "
             >
               <div
@@ -521,11 +527,18 @@
                   width: 294px;
                 "
               >
-                성별, 나이만으로 만들어진 얼굴
+              성별, 나이만으로 만들어진 얼굴
               </div>
             </div>
             <PlaceholderImage
-              style="flex-shrink: 0; width: 390px; height: 390px"
+              style="
+                width: 393px;
+                height: 250px;
+                position: absolute;
+                left: 0px;
+                top: 105px;
+              "
+              targetPath={condition_stretch_path};
             ></PlaceholderImage>
           </div>
         </div>

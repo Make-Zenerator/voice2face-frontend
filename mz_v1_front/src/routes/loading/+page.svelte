@@ -229,6 +229,15 @@
                 name="메인으로 돌아가기"
                 targetPath="/home"
               ></ButtonStyleOutlined>
+              <ButtonStyleOutlined
+                style="
+                  border-color: var(--7b95b7, #6b6b6b);
+                  flex-shrink: 0;
+                  height: 46px;
+                "
+                name="결과목록으로 가기"
+                targetPath="/resultlist"
+              ></ButtonStyleOutlined>
             </div>
           </div>
           <PlaceholderImage
