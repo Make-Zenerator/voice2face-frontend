@@ -1,5 +1,7 @@
 # exclude input data
 data/
+mz_v1/node_modules/
+mz_v1/public/build/
 
 # exclude custom config files (only include base.yml)
 !config/
