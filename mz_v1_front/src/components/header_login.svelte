@@ -1,8 +1,18 @@
 <script>
     import ButtonStyleFilled from "../routes/join/ButtonStyleFilled.svelte";
+    import { goto } from '$app/navigation';
+
     let className = "";
     export { className as class };
     export let style;
+
+
+    function handleLogout() {
+    // 로컬 스토리지에서 'auth_token' 제거
+    localStorage.removeItem('auth_token');
+    alert("로그아웃 되었습니다.");
+    goto('/');
+  }
   </script>
 <style global>
     a {
@@ -91,8 +101,8 @@ style="
   >
     About us
 </a>
-  <a href="/"
-  onclick="alert('로그아웃 되었습니다')"
+  <a 
+  on:click={handleLogout}
     style="
       color: var(--7b95b7, #6b6b6b);
       text-align: center;
