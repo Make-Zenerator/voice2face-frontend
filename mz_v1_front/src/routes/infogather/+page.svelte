@@ -1,19 +1,23 @@
 <script>
   import BasicButton from "../../components/button/basic_filled.svelte";
   import VoiceButtonDefaultVariant3 from "./VoiceButtonDefaultVariant3.svelte";
-  import Frame7Default from "./Frame7Default.svelte";
+  import { Progressbar, Button } from 'flowbite-svelte';
+  import { sineOut } from 'svelte/easing';
   import Radio from "../join/radio.svelte";
   import Header from "../../components/header_login.svelte"
-
+  import { createEventDispatcher } from 'svelte';
+  export { className as class };
+  export let style;
   import { goto } from '$app/navigation';
   export let targetPath = "/loading";
 
   let className = "";
   let info_gender;
-  export { className as class };
-  export let style;
-  let info_age;
 
+  let info_age;
+  let progress = 0;
+
+  let audioUrl = '';
   const options = [{
 		value: 'man',
 		label: '남',
@@ -32,6 +36,12 @@
   goto(targetPath);
 
 }
+
+  let showExample = false; // 초기 상태는 예시 문장을 숨김니다.
+
+    function toggleExample() {
+    showExample = !showExample; // showExample 값을 토글하여 문장의 표시/숨김을 제어합니다.
+  }
 </script>
 
 <form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
@@ -49,7 +59,7 @@
       justify-content: center;
       flex-shrink: 0;
       width: 1103px;
-      height: 512px;
+      height: 412px;
       position: relative;
     "
   >
@@ -70,7 +80,7 @@
           display: flex;
           flex-direction: row;
           gap: 82px;
-          align-items: center;
+          align-items: flex-start;
           justify-content: flex-start;
           flex-shrink: 0;
           height: 401px;
@@ -279,18 +289,49 @@
                 display: flex;
                 flex-direction: row;
                 gap: 57px;
-                align-items: flex-start;
-                justify-content: center;
+                align-items: center;
+                justify-content: flex-start;
                 flex-shrink: 0;
                 width: 337px;
                 position: relative;
               "
             >
-              <VoiceButtonDefaultVariant3
-                style="flex-shrink: 0"
-              ></VoiceButtonDefaultVariant3>
-              <Frame7Default style="flex-shrink: 0"></Frame7Default>
+            <VoiceButtonDefaultVariant3 
+              on:audioRecorded={(event) => {
+              audioUrl = event.detail; 
+              }} 
+              on:progressUpdated={(event) => {progress = event.detail;}}
+/>
+            {#if audioUrl == ''}
+            <Progressbar {progress}
+            animate
+            precision={2}
+            tweenDuration={15100}
+            easing={sineOut}
+            size="h-6" />
+          
+              {:else}
+                <audio controls src = {audioUrl}></audio>
+              {/if}
             </div>
+            <div>
+              주의사항 <br/>
+              1. 마이크가 제대로 작동하는지 확인해주세요 <br/>
+              2. 조용한 장소에서 녹음해주세요 <br/>
+              3. 마이크를 누르면 3초 뒤 녹음을 시작합니다 <br/>
+              4. 15초 동안 아무 말이나 해주세요
+            </div>
+            <button type ="button" style="color: gray;" on:click={toggleExample}>예시 문장</button> 
+
+              {#if showExample} <!-- showExample이 true일 때만 아래 문장을 표시 -->
+              <div>
+                <!-- 여기에 표시하고 싶은 내용을 작성합니다. -->
+                <p>안녕하세요, 저희는 엠지 팀입니다.</p>
+                <p>현재 목소리를 통해 얼굴을 만들어주는 </p>
+                <p>프로젝트를 진행하고 있습니다.</p>
+                <p>내 목소리의 또 다른 나를 만들어보세요!</p>
+              </div>
+              {/if}
           </div>
         </div>
       </div>
