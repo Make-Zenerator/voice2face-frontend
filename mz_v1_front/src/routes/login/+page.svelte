@@ -12,16 +12,15 @@
   let login_pswd;
   let targetPath = "/home";
 
-  const formData = new FormData();
+  async function login() {
+    const formData = new FormData();
     formData.append('email', login_email);
     formData.append('password', login_pswd);
 
-  async function login() {
     try{
-        const response = await fetch("http://175.45.194.59:5050/api/v1/auth", {
+        const response = await fetch('http://175.45.194.59:5050/api/v1/auth', {
             method: 'POST',
             body: formData,
-
         });
 
         if (response.ok) {
@@ -30,15 +29,15 @@
 
             // 토큰과 이메일을 로컬 스토리지에 저장
             localStorage.setItem('auth_token', token);
-            
 
-            goto({targetPath}); // 사용자를 홈 페이지로 리다이렉트
-        } 
-        else {
+
+            goto(targetPath); // 사용자를 홈 페이지로 리다이렉트
+        } else {
             alert('로그인 실패 \n 이메일과 비밀번호를 확인해주세요');
-        }}
-        catch (error) {
-      console.error(`로그인 실패: ${error.message}`);
+            console.log(response);
+        }
+    } catch (error) {
+      console.error('로그인 중 에러 발생:', error);
       alert('로그인 중 에러가 발생했습니다.');
     }
   }
