@@ -9,6 +9,7 @@
   import { page } from '$app/stores'; // SvelteKit의 페이지 정보에 접근하기 위해 import
   import { get } from 'svelte/store'; // store 값을 직접 읽기 위해 import
   export let targetPath = "/";
+  export let type="button";
   
   function handleClick() {
     const currentPath = get(page).url.pathname; // 현재 페이지의 경로를 가져옴
@@ -25,7 +26,7 @@
 
 
 <button
-on:click={handleClick} 
+on:click={handleClick} type={type}
   style="{'background: var(--neutral-10, #486284);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
 >
   <div
