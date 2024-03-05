@@ -6,16 +6,11 @@
   export let style;
   import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Checkbox} from 'flowbite-svelte';
 
+ 
   let items = [
-    { id: 1, maker: 'Toyota', type: 'ABC', make: 1 },
-    { id: 2, maker: 'Ford', type: 'CDE', make: 2 },
-    { id: 3, maker: 'Volvo', type: 'FGH', make: 0 },
-    { id: 4, maker: 'Saab', type: 'IJK', make: 1 }
+    { id: 1, request_date: 'Toyota', end_date: 'ABC', result_gender: 1 , result_age:1, make:0, result_audio: "url"},
+  
   ];
-  // let items = [
-  //   { id: 1, request_date: 'Toyota', end_date: 'ABC', result_gender: 1 , result_age:1, make:0, result_audio: "url"},
-  //
-  // ];
   </script>
 
 
@@ -83,16 +78,11 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
     <TableBody class="divide-y">
       {#each items as item}
         <TableBodyRow>
-          <TableBodyCell  >{item.id}</TableBodyCell>
-          <TableBodyCell  >{item.maker}</TableBodyCell>
-          <TableBodyCell  >{item.type}</TableBodyCell>
-          <TableBodyCell  >{item.make}</TableBodyCell>
-          <TableBodyCell  >{item.make}</TableBodyCell>
-          <!-- <TableBodyCell>{item.id}</TableBodyCell>
+          <TableBodyCell>{item.id}</TableBodyCell>
           <TableBodyCell>{item.request_date}</TableBodyCell>
           <TableBodyCell>{item.end_date}</TableBodyCell>
           <TableBodyCell>{item.result_gender}</TableBodyCell>
-          <TableBodyCell>{item.result_age}</TableBodyCell> -->
+          <TableBodyCell>{item.result_age}</TableBodyCell>
 
           <TableBodyCell>
             {#if item.make == 0}<img src = "/resultlist/생성중.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
@@ -101,10 +91,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
             {/if}
           </TableBodyCell>
           <TableBodyCell>
-            <!-- <input type="button"
-              src="/resultlist/Frame_7.png"/> -->
-              <!-- <audio src={item.result_audio} autoplay loop controls id="myAudio"></audio> -->
-              <audio src="sound.mp3" autoplay loop controls id="myAudio"></audio>
+              <audio src={`/audio/${item.result_audio}`} controls></audio>
             </TableBodyCell>
           <TableBodyCell>
             {#if item.make ==1}
