@@ -40,9 +40,8 @@
       <div
       style="
       color: var(--7b95b7, #6b6b6b);
-      text-align: left;
-      font-family: 'Titan One', sans-serif;
-      font-style: normal;
+      text-align: center;
+      font-family: 'DmSans-Bold', sans-serif;
       line-height: 24px;
       font-weight: 400;
       font-size: 26px;
@@ -63,7 +62,7 @@
       top: 8.5px;
       object-fit: cover;
     "
-        src="/join/image-20.png"
+        src="/logo/logo4.png"
         alt="logo"
       /></a>
   </div>
@@ -121,6 +120,7 @@
       "
       name ="회원가입"
       targetPath="/join"
+      
     ></ButtonStyleFilled>
   </div>
 </div>
