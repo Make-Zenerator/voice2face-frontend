@@ -27,7 +27,7 @@
 		label: '여',
 	}]
 
-  const token = () => sessionStorage.getItem('auth_token');
+  const token = sessionStorage.getItem('auth_token');
 
   console.log(token);
 
