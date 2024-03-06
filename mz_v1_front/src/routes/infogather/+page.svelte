@@ -27,7 +27,8 @@
 		label: '여',
 	}]
 
-  const token = localStorage.getItem('auth_token');
+  const token = () => sessionStorage.getItem('auth_token');
+
   console.log(token);
 
 
@@ -37,7 +38,7 @@
     formData.append('gender', info_gender);
     if (audioBlob) {
       console.log(typeof(audioBlob));
-    formData.append('file', audioBlob, 'recorded_audio.wav');
+    formData.append('file', audioBlob, 'svelte_audio.wav');
   }
 
     try{

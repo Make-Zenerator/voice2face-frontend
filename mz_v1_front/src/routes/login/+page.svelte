@@ -27,7 +27,7 @@
             const { token, email } = data; // 파싱된 JSON 객체에서 token과 email을 추출
 
             // 토큰과 이메일을 로컬 스토리지에 저장
-            localStorage.setItem('auth_token', token);
+            sessionStorage.setItem('auth_token', token);
 
             alert(`로그인 성공!`);
 
