@@ -1,5 +1,6 @@
 <script>
   import ButtonStyleFilled from "../../components/button/basic_filled.svelte";
+  import MovingFilled from "../../components/button/moving_filled.svelte";
   import Header from "../../components/header_login.svelte";
   let className = "";
   export { className as class };
@@ -8,7 +9,7 @@
 
  
   let items = [
-    { id: 1, request_date: 'Toyota', end_date: 'ABC', result_gender: 1 , result_age:1, make:0, result_audio: "url"},
+    { id: 1, request_date: 'Toyota', end_date: 'ABC', result_gender: 1 , result_age:1, make:1, result_audio: "url"},
   
   ];
   </script>
@@ -91,11 +92,11 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
             {/if}
           </TableBodyCell>
           <TableBodyCell>
-              <audio src={`/audio/${item.result_audio}`} controls></audio>
+              <audio src={`/a4d0-472e-bb6d-d11ccac43e21`} controls></audio>
             </TableBodyCell>
           <TableBodyCell>
             {#if item.make ==1}
-              <ButtonStyleFilled targetPath='/result' name="결과 확인"> </ButtonStyleFilled>
+              <MovingFilled targetPath='/result' name="결과 확인"> </MovingFilled>
             {:else if item.make ==2}
               Error
               {/if}
