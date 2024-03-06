@@ -1,5 +1,4 @@
 <script>
-    import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
     import PlaceholderImage from "../aboutus_non/PlaceholderImage.svelte";
     import SocialProperty1Github from "../aboutus_non/SocialProperty1Github.svelte";
     import Header from "../../components/header_login.svelte"
