@@ -18,6 +18,7 @@
   let progress = 0;
 
   let audioUrl = '';
+  let audioBlob= null;
   const options = [{
 		value: 'man',
 		label: '남',
@@ -27,21 +28,23 @@
 	}]
 
   const token = localStorage.getItem('auth_token');
+  console.log(token);
 
 
   async function requestimage(){
     const formData = new FormData();
     formData.append('age', info_age);
     formData.append('gender', info_gender);
-    formData.append('file', audioUrl);
-
-    const token = localStorage.getItem('auth_token');
+    if (audioBlob) {
+      console.log(typeof(audioBlob));
+    formData.append('file', audioBlob, 'recorded_audio.wav');
+  }
 
     try{
         const response = await fetch('http://175.45.194.59:5050/api/v1/mz-request', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Token': token,
             },
             body: formData,
         });
@@ -50,7 +53,12 @@
             const data = await response.json();
             alert(`성공적으로 요청했습니다.`);
             goto(targetPath); // 사용자를 홈 페이지로 리다이렉트
-        } else {
+        } else if (response.status === 401){
+          alert("권한 에러");
+        } else if (response.status === 400){
+          alert("데이터베이스 에러");
+        }
+        else {
             const errorResponse = await response.json(); // 에러 응답을 받아 처리
             alert(`요청 실패: ${errorResponse.message}`);
             console.log(response);
@@ -322,10 +330,11 @@
               "
             >
             <VoiceButtonDefaultVariant3 
-              on:audioRecorded={(event) => {
-              audioUrl = event.detail; 
-              }} 
-              on:progressUpdated={(event) => {progress = event.detail;}}
+            on:audioRecorded={(event) => {
+              audioUrl = event.detail.audioUrl; // 오디오 URL을 설정
+              audioBlob = event.detail.audioBlob; // 오디오 Blob을 받음
+            }} 
+            on:progressUpdated={(event) => {progress = event.detail;}}
 />
             {#if audioUrl == ''}
             <Progressbar {progress}
