@@ -353,7 +353,8 @@
               1. 마이크가 제대로 작동하는지 확인해주세요 <br/>
               2. 조용한 장소에서 녹음해주세요 <br/>
               3. 마이크를 누르면 3초 뒤 녹음을 시작합니다 <br/>
-              4. 15초 동안 아무 말이나 해주세요
+              4. 15초 동안 아무 말이나 해주세요 <br />
+              <strong><span style="color: red;">5. 생성 횟수는 5회로 제한합니다,</span></strong>
             </div>
             <button type ="button" style="color: gray;" on:click={toggleExample}>예시 문장</button> 
 
