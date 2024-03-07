@@ -97,7 +97,7 @@
                     text-align: center;
                     position: relative;
                     width: 451px;
-                    height: 40px;
+                    height: 30px;
                     font-size: 16pt;
                   "
                 >
@@ -106,7 +106,7 @@
                     <span class="div-2-span3">
                       생성 요청했습니다.
                       <br />
-                      완료되면 화면이 자동으로 변환됩니다.
+                      예상 소요시간은 ~분 입니다.
                     </span>
                   </span>
                 </div>
