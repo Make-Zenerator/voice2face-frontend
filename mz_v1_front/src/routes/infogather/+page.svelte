@@ -4,7 +4,7 @@
   import { Progressbar, Button } from 'flowbite-svelte';
   import { sineOut } from 'svelte/easing';
   import Radio from "../join/radio.svelte";
-  import Header from "../../components/header_login.svelte"
+  import Header from "../../components/header/header_login.svelte"
   export { className as class };
   export let style;
   import { goto } from '$app/navigation';
@@ -281,8 +281,8 @@
   <input
     type="number"
     bind:value="{info_age}"
-    min=0
-    max=120
+    min=20
+    max=50
     style="
       color: rgba(0, 0, 0, 0.87);
       text-align: center;
@@ -334,10 +334,10 @@
             >
             <VoiceButtonDefaultVariant3 
             on:audioRecorded={(event) => {
-              audioUrl = event.detail.audioUrl; // 오디오 URL을 설정
-              audioBlob = event.detail.audioBlob; // 오디오 Blob을 받음
+              audioUrl = event.detail; // 오디오 URL을 설정
             }} 
             on:progressUpdated={(event) => {progress = event.detail;}}
+            on:blobUpdated={(event) => { audioBlob = event.detail; }}
 />
             {#if audioUrl == ''}
             <Progressbar {progress}

@@ -1,6 +1,6 @@
 <script>
   import MovingFilled from "../../components/button/moving_filled.svelte";
-  import Header from "../../components/header_login.svelte";
+  import Header from "../../components/header/header_login.svelte";
   import { onMount } from 'svelte';
   let className = "";
   export { className as class };
@@ -34,7 +34,7 @@
 
 
 <div
-style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 70px; align-items: center; justify-content: flex-start; min-height: 100vh; position: relative ' + style}"
 >
 <Header></Header>
 <div>
@@ -72,7 +72,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
   <Table hoverable={true}
     style="
         flex-shrink: 0;
-        width: 1200px;
+        width: 1400px;
         font-size: 14pt;
         <!-- height: 120px; -->
         <!-- position: relative; -->
@@ -81,16 +81,16 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
         <!-- margin-right: auto; -->
     ">
     <TableHead>
-      <TableHeadCell style="width:15%; font-size:14pt;">요청 시간</TableHeadCell>
-      <TableHeadCell style="width:15%; font-size:14pt;">완료 시간</TableHeadCell>
-      <TableHeadCell style="width: 8%; font-size:14pt;">성별</TableHeadCell>
-      <TableHeadCell style="width: 8%; font-size:14pt;">나이</TableHeadCell>
-      <TableHeadCell style="width:15%; font-size:14pt;">진행 상태</TableHeadCell>
-      <TableHeadCell style="width:8%; font-size:14pt;">목소리 듣기</TableHeadCell>
-      <TableHeadCell style="width:5%; font-size:14pt;">결과 보기</TableHeadCell>
-      <TableHeadCell>
+      <TableHeadCell style="font-size:14pt;">요청 시간</TableHeadCell>
+      <TableHeadCell style="font-size:14pt;">완료 시간</TableHeadCell>
+      <TableHeadCell style="font-size:14pt;">성별</TableHeadCell>
+      <TableHeadCell style="width:10%; font-size:14pt;">나이</TableHeadCell>
+      <TableHeadCell style="width: 50%; font-size:14pt;">진행 상태</TableHeadCell>
+      <TableHeadCell style="font-size:14pt;">목소리 듣기</TableHeadCell>
+      <TableHeadCell style="font-size:14pt;">결과 보기</TableHeadCell>
+      <!-- <TableHeadCell>
         <span class="sr-only">Edit</span>
-      </TableHeadCell>
+      </TableHeadCell> -->
     </TableHead>
     <TableBody class="divide-y">
       {#each items as item}
@@ -103,9 +103,9 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
           <TableBodyCell>{item.age}</TableBodyCell>
 
           <TableBodyCell>
-            {#if item.status == null}<img src = "/resultlist/생성중.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
-            {:else if item.status == "Success"}<img src = "/resultlist/생성완료.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
-            {:else}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
+            {#if item.status == null}<img src = "/resultlist/생성중.png" style="width: 50%; height: 45%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
+            {:else if item.status == "Success"}<img src = "/resultlist/생성완료.png" style="width: 50%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
+            {:else}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 50%; max-height: 100%;" alt="생성 실패"/>
             {/if}
           </TableBodyCell>
           <TableBodyCell>

@@ -1,5 +1,5 @@
 <script>
-    import ButtonStyleFilled from "../routes/join/ButtonStyleFilled.svelte";
+    import ButtonStyleFilled from "../../routes/join/ButtonStyleFilled.svelte";
     import { goto } from '$app/navigation';
 
     let className = "";

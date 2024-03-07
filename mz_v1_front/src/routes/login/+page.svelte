@@ -1,7 +1,7 @@
 <script>
   import BasicFilled from "../../components/button/basic_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
-  import Header from "../../components/header_non.svelte";
+  import Header from "../../components/header/header_non.svelte";
   import { goto } from '$app/navigation';
 
   let className = "";

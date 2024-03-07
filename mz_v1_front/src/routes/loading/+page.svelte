@@ -1,6 +1,6 @@
 <script>
     import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
-    import HeaderLogin from "../../components/header_login.svelte";
+    import HeaderLogin from "../../components/header/header_login.svelte";
     import PlaceholderImage from "../join/PlaceholderImage.svelte";
     let className = "";
     export { className as class };

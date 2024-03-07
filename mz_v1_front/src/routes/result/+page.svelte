@@ -2,7 +2,7 @@
   import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
   import RequestFilled from "../../components/button/request_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
-  import Header from "../../components/header_login.svelte";
+  import Header from "../../components/header/header_login.svelte";
   import StarRating from "../../components/rating/StarRating.svelte";
   import SaveImage from "../../components/button/result_save.svelte";
   import { onMount } from 'svelte';

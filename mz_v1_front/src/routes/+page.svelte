@@ -2,7 +2,7 @@
     import ButtonStyleFilled from "./join/ButtonStyleFilled.svelte";
     import ButtonStyleOutlined from "./join/ButtonStyleOutlined.svelte";
     import PlaceholderImage from "./join/PlaceholderImage.svelte";
-    import Header from "../components/header_non.svelte";
+    import Header from "../components/header/header_non.svelte";
     let className = "";
     export { className as class };
     export let style;

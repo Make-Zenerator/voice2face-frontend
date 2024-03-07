@@ -1,8 +1,8 @@
 <script>
     import PlaceholderImage from "../../components/image/PlaceholderImage.svelte";
     import SocialProperty1Github from "../../components/image/SocialProperty1Github.svelte";
-    import Header from "../../components/header_login.svelte";
-    import HeaderNon from "../../components/header_non.svelte";
+    import Header from "../../components/header/header_login.svelte";
+    import HeaderNon from "../../components/header/header_non.svelte";
     import { onMount } from 'svelte';
     let className = "";
     export { className as class };
