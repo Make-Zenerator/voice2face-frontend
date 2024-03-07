@@ -2,9 +2,9 @@ name: Frontend
 
 on:
   pull_request:
-    branches: ['main'] # main 브랜치에 pull request될 때 동작 
+    branches: ['develop'] # main 브랜치에 pull request될 때 동작 
   push:
-    branches: ['main'] # main 브랜치에 push될 때 동작
+    branches: ['develop'] # main 브랜치에 push될 때 동작
 
 jobs:
   ci:
