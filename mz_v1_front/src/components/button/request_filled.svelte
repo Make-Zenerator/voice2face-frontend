@@ -1,5 +1,5 @@
 <script>
-  
+    import { goto } from '$app/navigation';
     export let styleVariant = "outlined";
     let className = "";
     export { className as class };
@@ -7,7 +7,7 @@
     const variantsClassName = "style-variant-" + styleVariant;
     export let name = "Do something";
     export let type = "";
-    export let result_id;
+    export let result_id= sessionStorage.getItem('id');
 
     async function reRequest() {
       const token = sessionStorage.getItem('auth_token');
@@ -21,6 +21,7 @@
           });
           if (response.ok) {
             alert('재생성 요청했습니다.');
+            goto('/home');
           }
           else{
             const errorResponse = await response.json();
