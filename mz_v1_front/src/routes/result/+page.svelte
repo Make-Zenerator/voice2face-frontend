@@ -594,18 +594,6 @@
           styleVariant="filled"
           style="
             background: var(--7b95b7, #6b6b6b);
-            width: 177.73px;
-            position: absolute;
-            left: 582.13px;
-            top: 754px;
-          "
-          
-          name="설문조사"
-        ></ButtonStyleFilled>
-        <ButtonStyleFilled
-          styleVariant="filled"
-          style="
-            background: var(--7b95b7, #6b6b6b);
             width: 190px;
             position: absolute;
             left: 796.45px;
@@ -617,4 +605,61 @@
       </div>
     </div>
   </div>
+  <div
+          style="
+            color: #000000;
+            text-align: center;
+            font-family: 'DmSans-Bold', sans-serif;
+            font-size: 52px;
+            line-height: 76px;
+            font-weight: 700;
+            position: relative;
+            width: 742px;
+            height: 65px;
+          "
+        >
+          설문조사
+        </div>
+  <div style="text-align:center; font-size: 20pt; "> 
+    안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, Voice2Face를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
+    <br />
+    ~서비스에 대한 간단 소개 및 향후 계획~
+    <br /><br />
+    지금까지의 서비스 이용 경험을 바탕으로 아래의 설문 조사에 참여해주시면 감사드리겠습니다.
+    <br />
+    설문 예상 소요 시간은 <span><strong>약 5분 내외</strong></span>이며 참여하신 분들 중 ~분을 대상으로 추첨을 통해 <span><strong>스타벅스 카페 아메리카노</strong></span> 기프티콘을 드릴 예정입니다.
+    <br />
+    (50명 넘으면 치킨으로 바뀔수도..? ^^)</div>
+
+    <div style="items-align:center; ">
+      
+
+    </div>
+
+    <div
+          style="
+            color: #000000;
+            text-align: center;
+            font-family: 'DmSans-Bold', sans-serif;
+            font-size: 52px;
+            line-height: 76px;
+            font-weight: 700;
+            position: relative;
+            width: 742px;
+            height: 65px;
+          "
+        >
+          설문에 응해주셔서 감사합니다!
+        </div>
+
+        <div
+          style="
+            color: #000000;
+            text-align: center;
+            font-size: 30px;
+          "
+        >
+        더 좋은 서비스 제공을 위해 노력하는
+        <span><strong>Make Zenerator</strong></span> 되겠습니다. 
+        </div>
 </div>
