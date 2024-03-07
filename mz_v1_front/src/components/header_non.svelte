@@ -77,7 +77,7 @@
       position: relative;
     "
   >
-    <a href="aboutus_non"
+    <a href="/aboutus"
     style="
     color: var(--7b95b7, #6b6b6b);
     text-align: center;

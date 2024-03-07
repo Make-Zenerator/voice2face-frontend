@@ -506,7 +506,7 @@
                 left: 0px;
                 top: 105px;
               "
-              targetPath={voice_stretch_path};
+              targetPath={results.voice_gif_url};
             ></PlaceholderImage>
           </div>
           <div
@@ -571,7 +571,7 @@
                 left: 0px;
                 top: 105px;
               "
-              targetPath={condition_stretch_path};
+              targetPath={results.condition_gif_url};
             ></PlaceholderImage>
           </div>
         </div>

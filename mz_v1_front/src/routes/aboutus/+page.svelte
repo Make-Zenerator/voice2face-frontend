@@ -1,15 +1,30 @@
 <script>
-    import PlaceholderImage from "../aboutus_non/PlaceholderImage.svelte";
-    import SocialProperty1Github from "../aboutus_non/SocialProperty1Github.svelte";
-    import Header from "../../components/header_login.svelte"
+    import PlaceholderImage from "../../components/image/PlaceholderImage.svelte";
+    import SocialProperty1Github from "../../components/image/SocialProperty1Github.svelte";
+    import Header from "../../components/header_login.svelte";
+    import HeaderNon from "../../components/header_non.svelte";
+    import { onMount } from 'svelte';
     let className = "";
     export { className as class };
     export let style;
+    let token;
+    let isUserLoggedIn = false;
+
+    onMount(() => {
+    // 컴포넌트가 마운트된 후 실행되는 코드
+    token = sessionStorage.getItem('auth_token');
+    isUserLoggedIn = !!token; // token이 있다면 true, 없다면 false
+  });
+
   </script>
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; height: 2000px; position: relative; ' + style}"
 >
-  <Header /> <div></div>
+{#if isUserLoggedIn}
+<Header />
+{:else}
+<HeaderNon />
+{/if} <div></div>
     <div
       style="
         color: #000000;
@@ -41,7 +56,7 @@
 
     </div>
     <img src = "/logo/MZ_aboutus.jpg" alt = "MZ_members">
-    <div></div>
+    <div></div><div></div>
     <div
       style="
         display: flex;
@@ -57,7 +72,7 @@
         style="
           display: flex;
           flex-direction: row;
-          gap: 81px;
+          gap: 10px;
           align-items: flex-start;
           justify-content: flex-start;
           flex-shrink: 0;
@@ -91,7 +106,7 @@
                 color: #000000;
                 text-align: center;
                 font-family: 'DmSans-Bold', sans-serif;
-                font-size: 46px;
+                font-size: 30px;
                 line-height: 40px;
                 font-weight: 700;
                 position: relative;
@@ -104,7 +119,8 @@
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 343px; height: 343px"
+            style="flex-shrink: 0;"
+            targetPath="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/hojun.jpg"
           ></PlaceholderImage>
         </div>
         <div
@@ -134,7 +150,7 @@
                 color: #000000;
                 text-align: center;
                 font-family: 'DmSans-Bold', sans-serif;
-                font-size: 46px;
+                font-size: 30px;
                 line-height: 40px;
                 font-weight: 700;
                 position: relative;
@@ -147,7 +163,8 @@
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 343px; height: 343px"
+            style="flex-shrink: 0;"
+            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/taeyang.jpg "
           ></PlaceholderImage>
         </div>
         <div
@@ -177,7 +194,7 @@
                 color: #000000;
                 text-align: center;
                 font-family: 'DmSans-Bold', sans-serif;
-                font-size: 46px;
+                font-size: 30px;
                 line-height: 40px;
                 font-weight: 700;
                 position: relative;
@@ -190,7 +207,8 @@
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 343px; height: 343px"
+            style="flex-shrink: 0;"
+            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/soyoon.jpg "
           ></PlaceholderImage>
         </div>
       </div>
@@ -198,7 +216,7 @@
         style="
           display: flex;
           flex-direction: row;
-          gap: 81px;
+          gap: 10px;
           align-items: flex-start;
           justify-content: flex-start;
           flex-shrink: 0;
@@ -232,7 +250,7 @@
                 color: #000000;
                 text-align: center;
                 font-family: 'DmSans-Bold', sans-serif;
-                font-size: 46px;
+                font-size: 30px;
                 line-height: 40px;
                 font-weight: 700;
                 position: relative;
@@ -245,7 +263,8 @@
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 343px; height: 343px"
+            style="flex-shrink: 0;"
+            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/haeji.jpg "
           ></PlaceholderImage>
         </div>
         <div
@@ -275,7 +294,7 @@
                 color: #000000;
                 text-align: center;
                 font-family: 'DmSans-Bold', sans-serif;
-                font-size: 46px;
+                font-size: 30px;
                 line-height: 40px;
                 font-weight: 700;
                 position: relative;
@@ -288,7 +307,8 @@
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 343px; height: 343px"
+            style="flex-shrink: 0;"
+            targetPath="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/seohyun.jpg"
           ></PlaceholderImage>
         </div>
         <div
@@ -318,7 +338,7 @@
                 color: #000000;
                 text-align: center;
                 font-family: 'DmSans-Bold', sans-serif;
-                font-size: 46px;
+                font-size: 30px;
                 line-height: 40px;
                 font-weight: 700;
                 position: relative;
@@ -331,8 +351,8 @@
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 343px; height: 343px"
-            targetPath="aboutus/SJH.jpg"
+            style="flex-shrink: 0;"
+            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/juhy.jpg "
           ></PlaceholderImage>
         </div>
       </div>

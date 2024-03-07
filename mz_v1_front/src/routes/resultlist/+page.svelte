@@ -72,7 +72,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
   <Table hoverable={true}
     style="
         flex-shrink: 0;
-        width: 1500px;
+        width: 1200px;
         font-size: 14pt;
         <!-- height: 120px; -->
         <!-- position: relative; -->
@@ -81,14 +81,13 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
         <!-- margin-right: auto; -->
     ">
     <TableHead>
-      <TableHeadCell style="width:150px; font-size:14pt;">요청 순서</TableHeadCell>
-      <TableHeadCell style="width:150px; font-size:14pt;">요청 시간</TableHeadCell>
-      <TableHeadCell style="width:150px; font-size:14pt;">완료 시간</TableHeadCell>
-      <TableHeadCell style="width:100px; font-size:14pt;">성별</TableHeadCell>
-      <TableHeadCell style="width:100px; font-size:14pt;">나이</TableHeadCell>
-      <TableHeadCell style="width:150px; font-size:14pt;">진행 상태</TableHeadCell>
-      <TableHeadCell style="width:100px; font-size:14pt;">목소리 듣기</TableHeadCell>
-      <TableHeadCell style="width:20%; font-size:14pt;">결과 보기</TableHeadCell>
+      <TableHeadCell style="width:15%; font-size:14pt;">요청 시간</TableHeadCell>
+      <TableHeadCell style="width:15%; font-size:14pt;">완료 시간</TableHeadCell>
+      <TableHeadCell style="width: 8%; font-size:14pt;">성별</TableHeadCell>
+      <TableHeadCell style="width: 8%; font-size:14pt;">나이</TableHeadCell>
+      <TableHeadCell style="width:15%; font-size:14pt;">진행 상태</TableHeadCell>
+      <TableHeadCell style="width:8%; font-size:14pt;">목소리 듣기</TableHeadCell>
+      <TableHeadCell style="width:5%; font-size:14pt;">결과 보기</TableHeadCell>
       <TableHeadCell>
         <span class="sr-only">Edit</span>
       </TableHeadCell>
@@ -96,7 +95,6 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
     <TableBody class="divide-y">
       {#each items as item}
         <TableBodyRow>
-          <TableBodyCell>{item.id}</TableBodyCell>
           <TableBodyCell>{item.created_at}</TableBodyCell>
           <TableBodyCell>
             {#if item.updated_at != null} {item.updated_at}{/if}
