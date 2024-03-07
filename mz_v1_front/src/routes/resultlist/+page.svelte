@@ -22,7 +22,6 @@
     if (response.ok) {
       const data = await response.json();
       items = data.mz_request_list; // 서버로부터 받은 데이터로 items 업데이트
-      console.log(items[0]);
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
     }else {

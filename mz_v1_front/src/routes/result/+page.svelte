@@ -1,5 +1,6 @@
 <script>
   import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
+  import RequestFilled from "../../components/button/request_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
   import Header from "../../components/header_login.svelte";
   import StarRating from "../../components/rating/StarRating.svelte";
@@ -578,7 +579,7 @@
       <div
         style="flex-shrink: 0; width: 608.89px; height: 48px; position: static"
       >
-        <ButtonStyleFilled
+        <RequestFilled
           styleVariant="filled"
           style="
             background: var(--7b95b7, #6b6b6b);
@@ -587,9 +588,8 @@
             left: 360.56px;
             top: 754px;
           "
-          targetPath ="/infogather"
           name="다시 생성하기"
-        ></ButtonStyleFilled>
+        ></RequestFilled>
         <ButtonStyleFilled
           styleVariant="filled"
           style="
