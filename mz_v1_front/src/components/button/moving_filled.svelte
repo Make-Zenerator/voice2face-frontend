@@ -31,7 +31,7 @@
         color: var(--neutral-0, #ffffff);
         text-align: left;
         font-family: var(--body-small-font-family, 'DmSans-Regular', sans-serif);
-        font-size: var(--body-small-font-size, 21px);
+        font-size: var(--body-small-font-size, 14px);
         line-height: var(--body-small-line-height, 14px);
         font-weight: var(--body-small-font-weight, 400);
         position: relative;
