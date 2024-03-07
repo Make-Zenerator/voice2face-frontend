@@ -99,7 +99,7 @@
                 height: 40px;
               "
             >
-              name
+              신호준
             </div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
@@ -142,7 +142,7 @@
                 height: 40px;
               "
             >
-              name
+              김태양
             </div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
@@ -185,7 +185,7 @@
                 height: 40px;
               "
             >
-              name
+              정소윤
             </div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
@@ -240,7 +240,7 @@
                 height: 40px;
               "
             >
-              name
+              김혜지
             </div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
@@ -283,7 +283,7 @@
                 height: 40px;
               "
             >
-              name
+              임서현
             </div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
@@ -326,12 +326,13 @@
                 height: 40px;
               "
             >
-              name
+              성주희
             </div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0"></SocialProperty1Github>
           <PlaceholderImage
             style="flex-shrink: 0; width: 343px; height: 343px"
+            targetPath="aboutus/SJH.jpg"
           ></PlaceholderImage>
         </div>
       </div>

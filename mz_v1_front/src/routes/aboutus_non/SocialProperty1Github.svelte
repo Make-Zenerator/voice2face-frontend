@@ -4,6 +4,7 @@
   export { className as class };
   export let style;
   const variantsClassName = "property-1-" + property1;
+  export let targetPath = "";
 </script>
 <img
   class="{'social-property-1-github ' + className + ' ' + variantsClassName}"
