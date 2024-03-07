@@ -5,10 +5,11 @@
   import { sineOut } from 'svelte/easing';
   import Radio from "../join/radio.svelte";
   import Header from "../../components/header_login.svelte"
-  import { createEventDispatcher } from 'svelte';
   export { className as class };
   export let style;
   import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
+
   export let targetPath = "/loading";
 
   let className = "";
@@ -19,6 +20,7 @@
 
   let audioUrl = '';
   let audioBlob= null;
+  let token; 
   const options = [{
 		value: 'man',
 		label: '남',
@@ -27,9 +29,9 @@
 		label: '여',
 	}]
 
-  const token = sessionStorage.getItem('auth_token');
-
-  console.log(token);
+  onMount(() => {
+    token = sessionStorage.getItem('auth_token');
+  });
 
 
   async function requestimage(){

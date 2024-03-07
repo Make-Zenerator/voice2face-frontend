@@ -8,8 +8,6 @@
   let className = "";
   export { className as class };
   export let style;
-  let voice_face_path = "/join/placeholder-image.svg";
-  let condition_face_path = "/join/placeholder-image.svg";
   let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";
   let voice_stretch_path = "https://blog.teamtailor.com/hs-fs/hubfs/giphy%20(3).gif?width=500&height=245&name=giphy%20(3).gif";
   let condition_stretch_path = "https://social-phinf.pstatic.net/20211122_62/1637573927058bhdFb_GIF/23ee09341fb3d26c2b57efc4dd3b928ea3364f68.gif";
@@ -31,9 +29,7 @@
     if (response.ok) {
       const data = await response.json();
       results = data.mz_result; // 서버로부터 받은 데이터로 items 업데이트
-
-      console.log(results.voice_image_url)
-      console.log(results.condition_image_url)
+      console.log(token);
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
     }else {
@@ -191,7 +187,7 @@
               position: relative;
             "
           >
-          <StarRating />
+          <StarRating ABtype='voice' result_id={id} latest_id={latest_id} />
           <SaveImage targetImage= {results.voice_image_url}/>
             
           </div>
@@ -304,8 +300,8 @@
               position: relative;
             "
           >
-          <StarRating />
-          <SaveImage saveImage={results.condition_image_url} />
+          <StarRating ABtype= 'condition' result_id={id} latest_id={latest_id}/>
+          <SaveImage targetImage={results.condition_image_url} />
             
           </div>
             
