@@ -1,17 +1,35 @@
 <script>
-  import ButtonStyleFilled from "../../components/button/basic_filled.svelte";
   import MovingFilled from "../../components/button/moving_filled.svelte";
   import Header from "../../components/header_login.svelte";
+  import { onMount } from 'svelte';
   let className = "";
   export { className as class };
   export let style;
-  import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Checkbox} from 'flowbite-svelte';
+  import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell} from 'flowbite-svelte';
 
- 
-  let items = [
-    { id: 1, request_date: 'Toyota', end_date: 'ABC', result_gender: 1 , result_age:1, make:1, result_audio: "url"},
-  
-  ];
+  let items = [];
+  // [id, user_id, age, gender, voice_url, created_at, latest_mz_result_id, statuss, updated_at]
+
+  onMount(async () => {
+    const token = sessionStorage.getItem('auth_token'); // sessionStorage에서 토큰 가져오기
+    const response = await fetch('http://175.45.194.59:5050/api/v1/mz-request', {
+      method: 'GET',
+      headers: {
+                'Token': token,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      items = data.mz_request_list; // 서버로부터 받은 데이터로 items 업데이트
+      console.log(items[0]);
+    } else if(response.status === 400) {
+      alert("데이터베이스 에러");
+    }else {
+      console.error('데이터를 가져오는 데 실패했습니다.');
+      alert("요청 중 에러가 발생했습니다.")
+    }
+  });
   </script>
 
 
@@ -80,24 +98,26 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
       {#each items as item}
         <TableBodyRow>
           <TableBodyCell>{item.id}</TableBodyCell>
-          <TableBodyCell>{item.request_date}</TableBodyCell>
-          <TableBodyCell>{item.end_date}</TableBodyCell>
-          <TableBodyCell>{item.result_gender}</TableBodyCell>
-          <TableBodyCell>{item.result_age}</TableBodyCell>
+          <TableBodyCell>{item.created_at}</TableBodyCell>
+          <TableBodyCell>
+            {#if item.updated_at != null} {item.updated_at}{/if}
+          </TableBodyCell>
+          <TableBodyCell>{item.gender}</TableBodyCell>
+          <TableBodyCell>{item.age}</TableBodyCell>
 
           <TableBodyCell>
-            {#if item.make == 0}<img src = "/resultlist/생성중.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
-            {:else if item.make == 1}<img src = "/resultlist/생성완료.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
-            {:else if item.make == 2}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
+            {#if item.status == null}<img src = "/resultlist/생성중.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
+            {:else if item.status == "Success"}<img src = "/resultlist/생성완료.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
+            {:else}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
             {/if}
           </TableBodyCell>
           <TableBodyCell>
-              <audio src={`/a4d0-472e-bb6d-d11ccac43e21`} controls></audio>
+              <audio src={item.voice_url} controls></audio>
             </TableBodyCell>
           <TableBodyCell>
-            {#if item.make ==1}
-              <MovingFilled targetPath='/result' name="결과 확인"> </MovingFilled>
-            {:else if item.make ==2}
+            {#if item.status =="Success"}
+              <MovingFilled targetPath='/result' name="결과 확인" id = {item.id} latest_id = {item.latest_mz_result_id}> </MovingFilled>
+            {:else if item.status == "Failed"}
               Error
               {/if}
             </TableBodyCell>

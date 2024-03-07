@@ -8,12 +8,24 @@
     export let name = "Do something";
     export let type = "button";
     export let targetPath = "/";
+    export let id;
+    export let latest_id;
+
+    async function handleClick() {
+        // id와 latest_id를 sessionStorage에 저장
+        sessionStorage.setItem('id', id);
+        sessionStorage.setItem('latest_id', latest_id);
+        alert(id, latest_id);
+
+        // targetPath로 페이지 이동
+        goto(targetPath);
+    }
     
   </script>
   
   <button
   type = {type}
-  on:click={goto(targetPath)}
+  on:click={handleClick}
     style="{'background: var(--neutral-10, #486284);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
   >
     <div

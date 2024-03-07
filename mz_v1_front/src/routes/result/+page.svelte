@@ -4,6 +4,7 @@
   import Header from "../../components/header_login.svelte";
   import StarRating from "../../components/rating/StarRating.svelte";
   import SaveImage from "../../components/button/result_save.svelte";
+  import { onMount } from 'svelte';
   let className = "";
   export { className as class };
   export let style;
@@ -13,6 +14,41 @@
   let voice_stretch_path = "https://blog.teamtailor.com/hs-fs/hubfs/giphy%20(3).gif?width=500&height=245&name=giphy%20(3).gif";
   let condition_stretch_path = "https://social-phinf.pstatic.net/20211122_62/1637573927058bhdFb_GIF/23ee09341fb3d26c2b57efc4dd3b928ea3364f68.gif";
   
+  let results = [];
+  let id = sessionStorage.getItem('id'); // 수정된 부분
+  let latest_id = sessionStorage.getItem('latest_id'); // 수정된 부분
+
+  onMount(async () => {
+    const token = sessionStorage.getItem('auth_token'); // sessionStorage에서 토큰 가져오기
+    const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
+      method: 'GET',
+      headers: {
+                'Token': token,
+      },
+      
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      results = data.mz_result; // 서버로부터 받은 데이터로 items 업데이트
+
+      console.log(results.voice_image_url)
+      console.log(results.condition_image_url)
+    } else if(response.status === 400) {
+      alert("데이터베이스 에러");
+    }else {
+      console.error('데이터를 가져오는 데 실패했습니다.');
+      alert("요청 중 에러가 발생했습니다.")
+    }
+  });
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+  }
+  
+
+
 </script>
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: flex-start; position: relative; ' + style}"
@@ -119,8 +155,8 @@
             </div>
           </div>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 393px; height: 393px";
-            filename={voice_face_path}
+            style="flex-shrink: 0; width: 390px; height: 390px"
+            targetPath={results.voice_image_url}
           ></PlaceholderImage>
         </div>
         <div
@@ -156,7 +192,7 @@
             "
           >
           <StarRating />
-          <SaveImage targetImage= {voice_face_path}/>
+          <SaveImage targetImage= {results.voice_image_url}/>
             
           </div>
             
@@ -233,7 +269,7 @@
           </div>
           <PlaceholderImage
             style="flex-shrink: 0; width: 390px; height: 390px"
-            targetPath={condition_face_path}
+            targetPath={results.condition_image_url}
           ></PlaceholderImage>
         </div>
         <div
@@ -269,7 +305,7 @@
             "
           >
           <StarRating />
-          <SaveImage saveImage={condition_face_path} />
+          <SaveImage saveImage={results.condition_image_url} />
             
           </div>
             
