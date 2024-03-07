@@ -1,13 +1,14 @@
 <script>
+  import { goto } from '$app/navigation';
+  import { page } from '$app/stores'; // SvelteKit의 페이지 정보에 접근하기 위해 import
+  import { get } from 'svelte/store'; // store 값을 직접 읽기 위해 import
   export let styleVariant = "outlined";
   let className = "";
   export { className as class };
   export let style;
   const variantsClassName = "style-variant-" + styleVariant;
   export let name = "Do something";
-  import { goto } from '$app/navigation';
-  import { page } from '$app/stores'; // SvelteKit의 페이지 정보에 접근하기 위해 import
-  import { get } from 'svelte/store'; // store 값을 직접 읽기 위해 import
+  
   export let targetPath = "/";
   export let type="button";
   
