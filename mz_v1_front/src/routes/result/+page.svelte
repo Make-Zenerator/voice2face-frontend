@@ -18,7 +18,7 @@
   let latest_id = sessionStorage.getItem('latest_id'); // 수정된 부분
 
   onMount(async () => {
-    const token = sessionStorage.getItem('auth_token'); // sessionStorage에서 토큰 가져오기
+        const token = sessionStorage.getItem('auth_token'); // sessionStorage에서 토큰 가져오기
     const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
       method: 'GET',
       headers: {
@@ -621,13 +621,17 @@
           설문조사
         </div>
   <div style="text-align:center; font-size: 20pt; "> 
-    안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, Voice2Face를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
+    안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <span><strong>Voice2Face</strong></span>를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
     <br />
     ~서비스에 대한 간단 소개 및 향후 계획~
     <br /><br />
     지금까지의 서비스 이용 경험을 바탕으로 아래의 설문 조사에 참여해주시면 감사드리겠습니다.
     <br />
-    설문 예상 소요 시간은 <span><strong>약 5분 내외</strong></span>이며 참여하신 분들 중 ~분을 대상으로 추첨을 통해 <span><strong>스타벅스 카페 아메리카노</strong></span> 기프티콘을 드릴 예정입니다.
+    설문 예상 소요 시간은 <span><strong>약 5분 내외</strong></span>이며  
+    <br /> 
+    참여하신 분들 중 추첨을 통해 5분께 <span><strong>스타벅스 카페 아메리카노</strong></span> 기프티콘을 드릴 예정입니다
+    <br />
+    생성된 이미지 결과별로 설문 가능합니다. 많이 작성해주시면 확률이 올라갑니다.
     <br />
     (50명 넘으면 치킨으로 바뀔수도..? ^^)</div>
 
@@ -636,30 +640,5 @@
 
     </div>
 
-    <div
-          style="
-            color: #000000;
-            text-align: center;
-            font-family: 'DmSans-Bold', sans-serif;
-            font-size: 52px;
-            line-height: 76px;
-            font-weight: 700;
-            position: relative;
-            width: 742px;
-            height: 65px;
-          "
-        >
-          설문에 응해주셔서 감사합니다!
-        </div>
-
-        <div
-          style="
-            color: #000000;
-            text-align: center;
-            font-size: 30px;
-          "
-        >
-        더 좋은 서비스 제공을 위해 노력하는
-        <span><strong>Make Zenerator</strong></span> 되겠습니다. 
-        </div>
+    
 </div>
