@@ -1,0 +1,208 @@
+<script>
+    import Radio from "../../routes/join/radio.svelte";
+    const SNS_time =[{
+        value: 0,
+        label: '1시간 미만'},
+        {value: 1, label:'1시간 ~ 3시간 미만'},
+        {value: 2,label: '3시간 ~ 5시간 미만'},
+        {value: 3, label: '5시간 이상'}
+    ]
+
+    let reason_img_rate; 
+    
+    const voice_to_face_well=[
+        {value: 0, label: '매우 아니다'},
+        {value: 1, label: '아니다'},
+        {value: 2, label: '보통이다'},
+        {value: 3, label: '그렇다'},
+        {value: 4, label: '매우 그렇다'}
+    ]
+
+    const dissatisfied_generated_image=[
+        {value: 0, label: '외국인이라 어색하다'},
+        {value: 1, label: '생성된 이미지가 깨끗하지 않다'},
+        {value: 2, label: '목소리가 잘 반영된 것인지 의문스럽다'},
+        {value: 3, label: '성별이 바뀌어 생성된 것 같다'},
+    ] //checkbox
+
+    let image_add_function;
+
+    const face_to_gif_well=[
+        {value: 0, label: '매우 아니다'},
+        {value: 1, label: '아니다'},
+        {value: 2, label: '보통이다'},
+        {value: 3, label: '그렇다'},
+        {value: 4, label: '매우 그렇다'}
+    ]
+    const more_based_gif=[
+        {value: true, label: '예'},
+        {value: false, label: '아니요'}
+    ] //bool
+    const gif_based_additional_function=[
+        {value: 0, label: '드라마/영화 명장면'},
+        {value: 1, label: '예능 움짤'},
+        {value: 2, label: '뮤비'},
+        {value: 3, label: '뉴스'},
+    ] // checkbox
+    
+    const waiting_or_not=[
+        {value: 0, label: '이정도면 기다릴 수 있다'},
+        {value: 1, label: '대기하지 않을 것 같다'}
+    ] //bool
+    const waiting_about=[
+        {value: 0, label: '1분 이내 생성 결과 확인하기'},
+        {value: 1, label: '생성된 결과를 가입한 이메일로 전달받기'},
+        {value: 2, label: '예시 영상 구경하기'}
+    ]
+
+    const dissatified_service=[
+        {value: true, label: '있다'},
+        {value: false, label: '없다'}
+    ] //bool
+    const agree=[
+        {value: false, label: '동의 안함'},
+
+    ]
+
+    let service_comments;
+    
+    let call_number;
+    let survey_email;
+    let survey_id 
+    let servey_latest_id;
+    
+    // 생성 얼굴 만족도
+    let selectedValues1 = [];
+    $: sortedSelectedValues1 = [...selectedValues1].sort((a, b) => a - b);
+    $: selectedString1 = sortedSelectedValues1.join(", ");
+
+    // 짤 추천
+    let selectedValues2 = [];
+    $: sortedSelectedValues2 = [...selectedValues2].sort((a, b) => a - b);
+    $: selectedString2 = sortedSelectedValues2.join(", ");
+
+    let selectedValues3 = [];
+    $: sortedSelectedValues3 = [...selectedValues3].sort((a, b) => a - b);
+    $: selectedString3 = sortedSelectedValues3.join(", ");
+
+
+</script>
+<div style="'font-size: 20pt">
+    <div>
+        <p>SNS나 인터넷, 유튜브를 하루 평균 몇 시간 사용하시나요?</p>
+        <Radio {SNS_time} fontSize={20} legend=''/>
+    </div>
+    <div>
+        
+        <p>생성된 이미지들에 대해 해당 별점을 주신 이유가 무엇인가요? </p>
+        <input type="text" value={reason_img_rate} />
+        <p> 목소리를 기반으로 생성된 얼굴이 본인의 목소리를 잘 반영한 것 같다 생각하시나요?</p>
+        <Radio {voice_to_face_well} fontSize={20} legend='' />
+        {#if voice_to_face_well in [0, 1]} 
+            <div>
+                <p>생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요?</p>
+                {#each dissatisfied_generated_image as item (item.value)}
+                <label>
+                    <input
+                        type="checkbox"
+                        bind:group={selectedValues1}
+                        value={item.value}
+                    /> {item.label}
+                </label><br>
+            {/each}
+            </div>
+        {/if}
+        <p> 생성된 이미지를 기반하여 추가되면 좋을 듯한 기능 혹은 아이디어가 있으신가요?</p>
+        <input type="text" value={image_add_function} />
+
+    </div>
+    <div>
+        <p>생성된 얼굴이 영상에 자연스럽게 적용되었다고 생각하시나요?</p>
+        <Radio {face_to_gif_well} fontSize={20} legend=''/>
+        <p> 더 다양한 영상이 추가되길 원하시나요?</p>
+        <Radio {more_based_gif} fontSize={20} legend='' />
+        {#if more_based_gif}
+            <div>
+                <p> 합성의 기반이 될 영상을 추가한다면 어떤 종류를 원하시나요? (복수 선택 가능)</p>
+                {#each gif_based_additional_function as item (item.value)}
+                <label>
+                    <input 
+                        type="checkbox"
+                        bind:group={selectedValues2}
+                        value={item.value}
+                    /> {item.label}
+                </label><br>
+                {/each}
+            </div>
+            {/if}
+    </div>
+    <div>
+        <p>현재 얼굴 이미지 및 GIF를 생성하는데 2분 정도 소요됩니다.</p>
+        <p>대기 페이지에서 해당 시간을 대기하실 의향이 있으신가요?</p>
+        <Radio {waiting_or_not} fontSize={20} legend=''/>
+        {#if waiting_or_not} 
+        <div>
+            <p>대기하지 않기를 원하신다면 어떤 방향으로 서비스가 개선되기를 희망하시나요?</p>
+            <p> 합성의 기반이 될 영상을 추가한다면 어떤 종류를 원하시나요? (복수 선택 가능)</p>
+                {#each waiting_about as item (item.value)}
+                <label>
+                    <input 
+                        type="checkbox"
+                        bind:group={selectedValues3}
+                        value={item.value}
+                    /> {item.label}
+                </label><br>
+                {/each}
+        </div>
+        {/if}
+    </div>
+    <div>
+        <p>이 서비스를 친구나 가족에게 추천할 의향이 있으신가요?</p>
+        <Radio {dissatified_service} font-size={20} />
+        <p>해당 서비스에 대한 건의사항이나 불편했던 점, 좋았던 점 등에 대해 자유롭게 작성해주세요</p>
+        <input type="text" value={service_comments} />
+    </div>
+    <div> 
+        <h2>개인정보 수집 이용 동의서 (선택)</h2>
+        <p> - 추첨을 통한 기프티콘 제공을 위해 개인정보 수집 이용 동의를 받고 있습니다.</p>
+        <p> 본인은 위와 같이 개인정보 수집 및 이용에 동의 합니다.</p>
+        <Radio {agree} font-size{10} />
+
+        {#if agree} 
+        <div>
+            <p> 전화번호 입력 (ex. 000-0000-0000)</p>
+            <input type="text" default='010-XXXX-XXXX' />
+        </div>
+        {/if}
+    </div>
+    
+
+        
+</div>
+
+<div
+    style="
+    color: #000000;
+    text-align: center;
+    font-family: 'DmSans-Bold', sans-serif;
+    font-size: 52px;
+    line-height: 76px;
+    font-weight: 700;
+    position: relative;
+    width: 742px;
+    height: 65px;
+    "
+>
+    설문에 응해주셔서 감사합니다!
+</div>
+
+<div
+    style="
+    color: #000000;
+    text-align: center;
+    font-size: 30px;
+    "
+>
+더 좋은 서비스 제공을 위해 노력하는
+<span><strong>Make Zenerator</strong></span> 되겠습니다. 
+</div>
