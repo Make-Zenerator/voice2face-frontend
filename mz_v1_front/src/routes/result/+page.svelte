@@ -12,11 +12,11 @@
   export let style;
   let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";  
   let results = [];
-  let id = sessionStorage.getItem('id'); // 수정된 부분
-  let latest_id = sessionStorage.getItem('latest_id'); // 수정된 부분
+  let id = sessionStorage.getItem('id');
+  let latest_id = sessionStorage.getItem('latest_id');
 
   onMount(async () => {
-        const token = sessionStorage.getItem('auth_token'); // sessionStorage에서 토큰 가져오기
+        const token = sessionStorage.getItem('auth_token'); 
     const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
       method: 'GET',
       headers: {
@@ -27,11 +27,13 @@
 
     if (response.ok) {
       const data = await response.json();
-      results = data.mz_result; // 서버로부터 받은 데이터로 items 업데이트
-      console.log(token);
+      results = data.mz_result; 
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
-    }else {
+    } else if (response.status ===401) {
+      alert(`세션이 만료되었습니다. $:{\n} 다시 로그인 해주세요.`);
+    }
+      else {
       console.error('데이터를 가져오는 데 실패했습니다.');
       alert("요청 중 에러가 발생했습니다.")
     }
@@ -70,6 +72,7 @@ style="
       object-fit: cover;
     "
     src="/join/image-21.png"
+    alt="logo"
   />
   <div
     style="
@@ -442,16 +445,15 @@ style="
                 스트레칭 동영상
               </div>
             </div>
-            <PlaceholderImage
-              style="
+            <video 
+                style="
                 width: 393px;
-                height: 250px;
+                height: 393px;
                 position: absolute;
                 left: 0px;
                 top: 105px;
               "
-              targetPath={gt_stretch_path};
-            ></PlaceholderImage>
+           src= {gt_stretch_path} type="video/mp4" controls />
           </div>
           <div
             style="
@@ -507,16 +509,15 @@ style="
                 목소리에 어울리는 얼굴
               </div>
             </div>
-            <PlaceholderImage
-              style="
+            <video 
+                style="
                 width: 393px;
-                height: 250px;
+                height: 393px;
                 position: absolute;
                 left: 0px;
                 top: 105px;
               "
-              targetPath={results.voice_gif_url};
-            ></PlaceholderImage>
+           src= {results.voice_gif_url} type="video/mp4" controls />
           </div>
           <div
             style="
@@ -572,16 +573,17 @@ style="
               성별, 나이만으로 만들어진 얼굴
               </div>
             </div>
-            <PlaceholderImage
-              style="
+
+            <video 
+                style="
                 width: 393px;
-                height: 250px;
+                height: 393px;
                 position: absolute;
                 left: 0px;
                 top: 105px;
               "
-              targetPath={results.condition_gif_url};
-            ></PlaceholderImage>
+           src= {results.condition_gif_url} type="video/mp4" controls />
+
           </div>
         </div>
       </div>
@@ -614,6 +616,8 @@ style="
       </div>
     </div>
   </div>
+
+  {#if results.survey == 0}
   <div
           style="
             color: #000000;
@@ -661,8 +665,9 @@ style="
 
     
 </div>
-    
+{/if}
 </div>
+
 
 
 

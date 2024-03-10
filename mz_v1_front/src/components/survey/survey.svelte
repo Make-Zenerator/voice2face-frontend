@@ -137,7 +137,7 @@
       });
 
       if (response.ok) {
-        alert('성공적 저장!');
+        alert("설문에 응해주셔서 감사합니다!더 좋은 서비스 제공을 위해 노력하는 Make Zenerator 되겠습니다.");
         goto(targetPath);
       }
       else {
@@ -192,15 +192,15 @@
     <div class= survey-container>
         
         <p class="question">2. 생성된 이미지들에 대해 해당 별점을 주신 이유가 무엇인가요? </p>
-        <!-- <input class="t_box" type="text" value={reason_img_rate} /> -->
         <TextArea bind:value={reason_img_rate} />
         <br>
         <p class="question"> 3. 목소리를 기반으로 생성된 얼굴이 본인의 목소리를 잘 반영한 것 같다 생각하시나요?</p>
         <Radio options={voice_to_face_well} fontSize={20} legend=''  bind:userSelected={v2f} />
         <br>
         {#if v2f in [0, 1]} 
-            <div>
+            <div style="font-size: 15pt; " >
                 <p class="question">3+. 생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요? (복수선택 가능)</p>
+                <div style="display: flex; items-align:flex-start; gap: 15px;">
                 {#each dissatisfied_generated_image as item (item.value)}
                 <label>
                     <input
@@ -210,6 +210,7 @@
                     /> {item.label}
                 </label><br>
             {/each}
+            </div>
             </div>
         {/if}
         <br>
@@ -319,32 +320,10 @@
             <input class="t_box" style="width: 50%;"type="text" placeholder='010-XXXX-XXXX' value={call_number} />
         {/if}
         <br>
-        <div
-    style="
-    color: #000000;
-    text-align: center;
-    font-family: 'DmSans-Bold', sans-serif;
-    font-size: 50px;
-    font-weight: 700;
-    position: relative;
-    height: 65px;
-    "
->
-    설문에 응해주셔서 감사합니다!
-</div>
+        
 
-<div
-    style="
-    color: #000000;
-    text-align: center;
-    font-size: 30px;
-    "
->
-더 좋은 서비스 제공을 위해 노력하는
-<span><strong>Make Zenerator</strong></span> 되겠습니다. 
-</div>
         <button type="submit"
-    style="{'background: var(--neutral-10, #486284);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
+    style="{'background: var(--neutral-10, #000000);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
     >
 
     
@@ -364,9 +343,4 @@
     </div>
     </button>
     </div>
-    
-    
-
-
-        
 </form>

@@ -8,26 +8,39 @@
   import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell} from 'flowbite-svelte';
 
   let items = [];
-  // [id, user_id, age, gender, voice_url, created_at, latest_mz_result_id, statuss, updated_at]
 
-  onMount(async () => {
-    const token = sessionStorage.getItem('auth_token'); // sessionStorage에서 토큰 가져오기
+  async function fetchData() {
+    const token = sessionStorage.getItem('auth_token'); 
+
+    
     const response = await fetch('http://175.45.194.59:5050/api/v1/mz-request', {
       method: 'GET',
       headers: {
-                'Token': token,
+        'Token': token,
       },
     });
 
     if (response.ok) {
       const data = await response.json();
-      items = data.mz_request_list; // 서버로부터 받은 데이터로 items 업데이트
+      items = data.mz_request_list; 
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
-    }else {
+    } else if(response.status === 401) {
+      alert(`세션이 만료되었습니다. $:{\n} 다시 로그인 해주세요`);
+    }
+    else {
       console.error('데이터를 가져오는 데 실패했습니다.');
       alert("요청 중 에러가 발생했습니다.")
     }
+  }
+
+  onMount(() => {
+    fetchData(); 
+    const interval = setInterval(fetchData, 5000); 
+
+    return () => {
+      clearInterval(interval); 
+    };
   });
   </script>
 

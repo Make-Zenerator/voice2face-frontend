@@ -82,7 +82,7 @@ async function handleSubmit(event) {
     }
   }
 </script>
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: auto; position: relative; ' + style}">
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
 >
@@ -97,7 +97,7 @@ async function handleSubmit(event) {
       flex-shrink: 0;
       position: relative;
     "
-  >
+  ><div style=" display: flex; justify-contents: center; items-align: center;">
     <div
       style="
         background: #ffffff;
@@ -545,10 +545,12 @@ async function handleSubmit(event) {
         </div>
       </div>
     </div>
-    
+
     <PlaceholderImage
-      style="flex-shrink: 0; width: 564px; height: 865px"
+      style="flex-shrink: 0; width: 700px; height: 700px"
+      targetPath="logo/join_placeholder.png"
     ></PlaceholderImage>
+  </div>
   </div>
 </div>
 </form>
