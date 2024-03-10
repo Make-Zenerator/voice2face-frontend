@@ -23,6 +23,7 @@
         box-sizing: border-box; /* 패딩을 포함한 총 너비 유지 */
         border: 1px solid #ccc; /* 테두리 스타일 */
         resize: none; /* 사용자가 크기 조절 못하게 함 */
+        font-size: 15pt;
     }
 </style>
 

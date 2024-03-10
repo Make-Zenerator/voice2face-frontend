@@ -88,7 +88,7 @@
 
     let service_comments;
     
-    let call_number;
+    let call_number= "";
     export let survey_id ;
     export let survey_latest_id;
     
@@ -166,7 +166,7 @@
     .survey-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     border-radius: 10px;
     box-shadow: 0 4px 64px rgba(0, 0, 0, 0.05);
@@ -175,6 +175,7 @@
     margin-top: 56px;
     letter-spacing: 0.5px;
     padding: 44px 60px;
+    gap: 20px;
   }
   </style>
 
@@ -185,19 +186,21 @@
 
 <div style="'font-size: 20pt">
     <div class= survey-container >
-        <p class="question">SNS나 인터넷, 유튜브를 하루 평균 몇 시간 사용하시나요?</p>
+        <p class="question">1. SNS나 인터넷, 유튜브를 하루 평균 몇 시간 사용하시나요?</p>
         <Radio options={SNS_time} fontSize={20} legend=''  bind:userSelected={SNS}/>
     </div>
     <div class= survey-container>
         
-        <p class="question">생성된 이미지들에 대해 해당 별점을 주신 이유가 무엇인가요? </p>
+        <p class="question">2. 생성된 이미지들에 대해 해당 별점을 주신 이유가 무엇인가요? </p>
         <!-- <input class="t_box" type="text" value={reason_img_rate} /> -->
         <TextArea bind:value={reason_img_rate} />
-        <p class="question"> 목소리를 기반으로 생성된 얼굴이 본인의 목소리를 잘 반영한 것 같다 생각하시나요?</p>
+        <br>
+        <p class="question"> 3. 목소리를 기반으로 생성된 얼굴이 본인의 목소리를 잘 반영한 것 같다 생각하시나요?</p>
         <Radio options={voice_to_face_well} fontSize={20} legend=''  bind:userSelected={v2f} />
+        <br>
         {#if v2f in [0, 1]} 
             <div>
-                <p class="question">생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요?</p>
+                <p class="question">3+. 생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요? (복수선택 가능)</p>
                 {#each dissatisfied_generated_image as item (item.value)}
                 <label>
                     <input
@@ -209,18 +212,22 @@
             {/each}
             </div>
         {/if}
-        <p class="question"> 생성된 이미지를 기반하여 추가되면 좋을 듯한 기능 혹은 아이디어가 있으신가요?</p>
-        <input class="t_box" type="text" value={image_add_function} />
+        <br>
+        <p class="question"> 4. 생성된 이미지를 기반하여 추가되면 좋을 듯한 기능 혹은 아이디어가 있으신가요?</p>
+        <TextArea bind:value={image_add_function} />
+        <br>
 
     </div>
     <div class= survey-container>
-        <p class="question">생성된 얼굴이 영상에 자연스럽게 적용되었다고 생각하시나요?</p>
+        <p class="question">5. 생성된 얼굴이 영상에 자연스럽게 적용되었다고 생각하시나요?</p>
         <Radio options={face_to_gif_well} fontSize={20} legend=''  bind:userSelected={f2g}/>
-        <p class="question"> 더 다양한 영상이 추가되길 원하시나요?</p>
+        <br>
+        <p class="question"> 6. 더 다양한 영상이 추가되길 원하시나요?</p>
         <Radio options={more_based_gif} fontSize={20} legend=''  bind:userSelected={mbg} />
+        <br>
         {#if mbg}
-            <div>
-                <p class="question"> 합성의 기반이 될 영상을 추가한다면 어떤 종류를 원하시나요? (복수 선택 가능)</p>
+            <div style="font-size: 15pt">
+                <p class="question"> 6+. 합성의 기반이 될 영상을 추가한다면 어떤 종류를 원하시나요? (복수선택 가능)</p>
                 {#each gif_based_additional_function as item (item.value)}
                 <label>
                     <input 
@@ -234,13 +241,12 @@
             {/if}
     </div>
     <div class= survey-container>
-        <p class="question">현재 얼굴 이미지 및 GIF를 생성하는데 2분 정도 소요됩니다.</p>
-        <p class="question">대기 페이지에서 해당 시간을 대기하실 의향이 있으신가요?</p>
+        <p class="question">7. 현재 얼굴 이미지 및 GIF를 생성하는데 2분 정도 소요됩니다.</p>
+        <p class="question">&nbsp;&nbsp;&nbsp;&nbsp;대기 페이지에서 해당 시간을 대기하실 의향이 있으신가요?</p>
         <Radio options={waiting_or_not} fontSize={20} legend=''  bind:userSelected={won}/>
         {#if won} 
         <div>
-            <p class="question">대기하지 않기를 원하신다면 어떤 방향으로 서비스가 개선되기를 희망하시나요?</p>
-            <p class="question"> 합성의 기반이 될 영상을 추가한다면 어떤 종류를 원하시나요? (복수 선택 가능)</p>
+            <p class="question">7+. 대기하지 않기를 원하신다면 어떤 방향으로 서비스가 개선되기를 희망하시나요?</p>
                 {#each waiting_about as item (item.value)}
                 <label>
                     <input 
@@ -254,45 +260,66 @@
         {/if}
     </div>
     <div class= survey-container>
-        <p class="question">이 서비스를 친구나 가족에게 추천할 의향이 있으신가요?</p>
-        <Radio options={dissatified_service} font-size={20}  bind:userSelected={service}/>
-        <p class="question">해당 서비스에 대한 건의사항이나 불편했던 점, 좋았던 점 등에 대해 자유롭게 작성해주세요</p>
-        <input class="t_box" type="text" value={service_comments} />
+        <p class="question">8. 이 서비스를 친구나 가족에게 추천할 의향이 있으신가요?</p>
+        <Radio options={dissatified_service} fontSize={20}  legend='' bind:userSelected={service}/>
+        <p class="question">9. 해당 서비스에 대한 건의사항이나 불편했던 점, 좋았던 점 등에 대해 자유롭게 작성해주세요</p>
+        <TextArea bind:value={service_comments} />
     </div>
-    <div class= survey-container> 
-        <h2>개인정보 수집 이용 동의서 (선택)</h2>
-        <p class="question"> - 추첨을 통한 기프티콘 제공을 위해 개인정보 수집 이용 동의를 받고 있습니다.</p>
-        <p class="question"> 본인은 위와 같이 개인정보 수집 및 이용에 동의 합니다.</p>
-        <Radio options={agree} font-size{10} legend='' bind:userSelected={agree2} />
+    <div class= survey-container style="align-items: center;"> 
+        <div> 
+            <p class= question >개인정보 수집 이용 동의서 (선택)</p>
+            <p style="font-size: 15pt;"> - 추첨을 통한 기프티콘 제공을 위해 개인정보 수집 이용 동의를 받고 있습니다.</p>
 
-        {#if agree2} 
-        <div>
-            <p class="question"> 전화번호 입력</p>
-            <input class="t_box" type="text" default='010-XXXX-XXXX' value={call_number} />
         </div>
-        {/if}
-    </div>
-    
-    <button type="submit"
-    style="{'background: var(--neutral-10, #486284);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
-    >
-    <div
-     
-      style="
-        color: var(--neutral-0, #ffffff);
-        text-align: left;
-        font-family: var(--body-small-font-family, 'DmSans-Regular', sans-serif);
-        font-size: var(--body-small-font-size, 24px);
-        line-height: var(--body-small-line-height, 24px);
-        font-weight: var(--body-small-font-weight, 400);
-        position: relative;
-      "
-    >
-      제출하기
-    </div>
-    </button>
+        <div
+        style="
+            overflow-y: auto;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid #000000;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 55%;
+            height: 30%x;
+            max-height: 300px;
+            color: rgba(0, 0, 0, 0.87);
+            text-align: left;
+            font-family: 'DmSans-Medium', sans-serif;
+            font-size: 14px;
+            line-height: 15px;
+            font-weight: 500;
+            margin: 0px;
+        "
+        >
+        
+        <p><strong>1. 수집하는 개인정보의 항목:</strong></p>
+        <ul>
+            <li>전화번호</li>
+        </ul>
+        <p><strong>2. 개인정보의 수집 및 이용 목적:</strong></p>
+        <ul>
+            <li>- 설문조사 응답 결과 확인 및 통보</li>
+            <li>- 응답자와의 연락 및 안내</li>
+        </ul>
+        <p><strong>3. 개인정보의 보유 및 이용 기간:</strong></p>
+        <ul>개인정보 수집 및 이용 목적 달성 후 즉시 파기합니다.</ul>
+        <p><strong>4. 동의 거부 권리:</strong></p>
 
-<div
+        <p>본인은 개인정보 제공에 대한 동의를 거부할 권리가 있습니다. <br>
+            단, 동의를 거부할 경우 설문조사 경품 추첨에 제한이 있음을 인지합니다.  </p>
+    </div>
+            <p class="question"> 본인은 위와 같이 개인정보 수집 및 이용에 동의 합니다.</p>
+            <Radio options={agree} fontSize={20} legend='' bind:userSelected={agree2} />
+        {#if agree2} 
+            <p class="question"> 전화번호 입력</p>
+            <input class="t_box" style="width: 50%;"type="text" placeholder='010-XXXX-XXXX' value={call_number} />
+        {/if}
+        <br>
+        <div
     style="
     color: #000000;
     text-align: center;
@@ -316,5 +343,30 @@
 더 좋은 서비스 제공을 위해 노력하는
 <span><strong>Make Zenerator</strong></span> 되겠습니다. 
 </div>
+        <button type="submit"
+    style="{'background: var(--neutral-10, #486284);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
+    >
+
+    
+    <div
+     
+      style="
+        color: var(--neutral-0, #ffffff);
+        text-align: left;
+        font-family: var(--body-small-font-family, 'DmSans-Regular', sans-serif);
+        font-size: var(--body-small-font-size, 24px);
+        line-height: var(--body-small-line-height, 24px);
+        font-weight: var(--body-small-font-weight, 400);
+        position: relative;
+      "
+    >
+      제출하기
+    </div>
+    </button>
+    </div>
+    
+    
+
+
         
 </form>

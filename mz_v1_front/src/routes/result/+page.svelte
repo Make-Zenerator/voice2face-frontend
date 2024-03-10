@@ -630,7 +630,8 @@ style="
           설문조사
         </div>
   <div style="text-align:center; font-size: 20pt; "> 
-    안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <span><strong>Voice2Face</strong></span>를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
+    안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br >
+    <span><strong>Voice2Face</strong></span>를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
     <br />
     ~서비스에 대한 간단 소개 및 향후 계획~
     <br /><br />
@@ -647,11 +648,11 @@ style="
     <div 
       style="
       display: flex; 
-      flex-direction: column; /* 세로 방향으로 요소들을 쌓습니다 */
-      align-items: center; /* 요소들을 가로축 기준으로 중앙에 배치합니다 */
-      justify-content: center; /* 세로축에서의 정렬을 중앙으로 설정합니다. 필요에 따라 조정가능 */
-      text-align: center; /* 텍스트를 중앙 정렬합니다 */
-      width: 100%; /* 필요한 경우, 너비를 100%로 설정 */
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      width: 100%; 
     ">
     <div style="items-align:center; ">
       
@@ -663,13 +664,5 @@ style="
     
 </div>
 
-<div
-  class="flex justify-center items-center px-16 py-11 mt-14 tracking-wide bg-white rounded-xl border border-solid shadow-2xl border-zinc-500 max-md:px-5 max-md:mt-10 max-md:max-w-full"
->
-  <div
-    class="flex flex-col justify-center px-6 py-px max-w-full w-[635px] max-md:px-5"
-  >
-    
-  </div>
-</div>
+
 

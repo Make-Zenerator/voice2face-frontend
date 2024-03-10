@@ -518,7 +518,7 @@ async function handleSubmit(event) {
                   <ul>
                       <li>회원 서비스 제공을 위한 이메일 통보 및 연락</li>
                       <li>회원의 특성에 따른 맞춤형 서비스 제공</li>
-                      <li>목소리 데이터를 활용한 음성인식 기술 개발 및 서비스 향상</li>
+                      <li>목소리 데이터를 활용한 얼굴 생성 기술 개발 및 서비스 향상</li>
                       <li>수집된 데이터를 기반으로 한 모델 학습을 통한 개선된 서비스 제공</li>
                   </ul>
                   
@@ -545,6 +545,7 @@ async function handleSubmit(event) {
         </div>
       </div>
     </div>
+    
     <PlaceholderImage
       style="flex-shrink: 0; width: 564px; height: 865px"
     ></PlaceholderImage>

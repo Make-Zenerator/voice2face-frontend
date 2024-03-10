@@ -81,16 +81,13 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
         <!-- margin-right: auto; -->
     ">
     <TableHead>
-      <TableHeadCell style="font-size:14pt;">요청 시간</TableHeadCell>
-      <TableHeadCell style="font-size:14pt;">완료 시간</TableHeadCell>
-      <TableHeadCell style="font-size:14pt;">성별</TableHeadCell>
-      <TableHeadCell style="width:10%; font-size:14pt;">나이</TableHeadCell>
-      <TableHeadCell style="width: 50%; font-size:14pt;">진행 상태</TableHeadCell>
+      <TableHeadCell style="width: 15%; font-size:14pt;">요청 시간</TableHeadCell>
+      <TableHeadCell style="width: 15%; font-size:14pt;">완료 시간</TableHeadCell>
+      <TableHeadCell style="width: 8%; font-size:14pt;">성별</TableHeadCell>
+      <TableHeadCell style="width: 8%; font-size:14pt;">나이</TableHeadCell>
+      <TableHeadCell style="width: 10%; font-size:14pt;">진행 상태</TableHeadCell>
       <TableHeadCell style="font-size:14pt;">목소리 듣기</TableHeadCell>
       <TableHeadCell style="font-size:14pt;">결과 보기</TableHeadCell>
-      <!-- <TableHeadCell>
-        <span class="sr-only">Edit</span>
-      </TableHeadCell> -->
     </TableHead>
     <TableBody class="divide-y">
       {#each items as item}
@@ -103,9 +100,9 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
           <TableBodyCell>{item.age}</TableBodyCell>
 
           <TableBodyCell>
-            {#if item.status == null}<img src = "/resultlist/생성중.png" style="width: 50%; height: 45%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
-            {:else if item.status == "Success"}<img src = "/resultlist/생성완료.png" style="width: 50%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
-            {:else}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 50%; max-height: 100%;" alt="생성 실패"/>
+            {#if item.status == null}<img src = "/resultlist/생성중.png" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
+            {:else if item.status == "Success"}<img src = "/resultlist/생성완료.png" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
+            {:else}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
             {/if}
           </TableBodyCell>
           <TableBodyCell>
@@ -115,7 +112,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
             {#if item.status =="Success"}
               <MovingFilled targetPath='/result' name="결과 확인" id = {item.id} latest_id = {item.latest_mz_result_id}> </MovingFilled>
             {:else if item.status == "Failed"}
-              Error
+              생성실패
               {/if}
             </TableBodyCell>
         </TableBodyRow>
