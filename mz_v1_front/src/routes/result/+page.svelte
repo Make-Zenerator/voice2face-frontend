@@ -5,14 +5,12 @@
   import Header from "../../components/header/header_login.svelte";
   import StarRating from "../../components/rating/StarRating.svelte";
   import SaveImage from "../../components/button/result_save.svelte";
+  import Survey from "../../components/survey/survey.svelte";
   import { onMount } from 'svelte';
   let className = "";
   export { className as class };
   export let style;
-  let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";
-  let voice_stretch_path = "https://blog.teamtailor.com/hs-fs/hubfs/giphy%20(3).gif?width=500&height=245&name=giphy%20(3).gif";
-  let condition_stretch_path = "https://social-phinf.pstatic.net/20211122_62/1637573927058bhdFb_GIF/23ee09341fb3d26c2b57efc4dd3b928ea3364f68.gif";
-  
+  let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";  
   let results = [];
   let id = sessionStorage.getItem('id'); // 수정된 부분
   let latest_id = sessionStorage.getItem('latest_id'); // 수정된 부분
@@ -48,7 +46,18 @@
 
 </script>
 <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: flex-start; position: relative; ' + style}"
+style="
+  background: var(--neutral-0, #ffffff);
+  padding: 0px 0px 120px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center; /* 가로축 중앙 정렬 */
+  justify-content: flex-start; /* 세로축 시작 지점부터 요소 쌓기 */
+  width: 100%; /* div의 너비를 지정하거나 부모 요소에 맞춤 */
+  height: auto; /* div의 높이를 내용물에 맞춤 */
+  position: relative;
+"
 >
   <Header/>
   <img
@@ -635,10 +644,32 @@
     <br />
     (50명 넘으면 치킨으로 바뀔수도..? ^^)</div>
 
+    <div 
+      style="
+      display: flex; 
+      flex-direction: column; /* 세로 방향으로 요소들을 쌓습니다 */
+      align-items: center; /* 요소들을 가로축 기준으로 중앙에 배치합니다 */
+      justify-content: center; /* 세로축에서의 정렬을 중앙으로 설정합니다. 필요에 따라 조정가능 */
+      text-align: center; /* 텍스트를 중앙 정렬합니다 */
+      width: 100%; /* 필요한 경우, 너비를 100%로 설정 */
+    ">
     <div style="items-align:center; ">
       
-
+      <Survey survey_id={id} survey_latest_id={latest_id} />
     </div>
 
     
 </div>
+    
+</div>
+
+<div
+  class="flex justify-center items-center px-16 py-11 mt-14 tracking-wide bg-white rounded-xl border border-solid shadow-2xl border-zinc-500 max-md:px-5 max-md:mt-10 max-md:max-w-full"
+>
+  <div
+    class="flex flex-col justify-center px-6 py-px max-w-full w-[635px] max-md:px-5"
+  >
+    
+  </div>
+</div>
+
