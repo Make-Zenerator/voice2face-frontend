@@ -26,8 +26,8 @@ jobs:
 
       - name: Build SvelteKit app
         run: |
-        cd mz_v1_front
-        npm run build
+          cd mz_v1_front
+          npm run build
 
   cd:
     runs-on: ubuntu-latest
