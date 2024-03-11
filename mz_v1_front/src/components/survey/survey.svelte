@@ -8,8 +8,9 @@
 
     onMount(async () => {
         const token = sessionStorage.getItem('auth_token'); 
-
+        console.log(token);
     });
+
     const SNS_time =[
         {value: 0, label: '1시간 미만'},
         {value: 1, label:'1시간 ~ 3시간 미만'},
@@ -124,7 +125,6 @@
         formData.append('waiting_improvement', selectedString3);
         formData.append('recommend', service);
         formData.append('opinion', service_comments);
-        const token = sessionStorage.getItem('auth_token'); 
 
 
     try {
@@ -137,7 +137,7 @@
       });
 
       if (response.ok) {
-        alert("설문에 응해주셔서 감사합니다!더 좋은 서비스 제공을 위해 노력하는 Make Zenerator 되겠습니다.");
+        alert("설문에 응해주셔서 감사합니다! \n더 좋은 서비스 제공을 위해 노력하는 Make Zenerator 되겠습니다.");
         goto(targetPath);
       }
       else {
@@ -198,11 +198,10 @@
         <Radio options={voice_to_face_well} fontSize={20} legend=''  bind:userSelected={v2f} />
         <br>
         {#if v2f in [0, 1]} 
-            <div style="font-size: 15pt; " >
                 <p class="question">3+. 생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요? (복수선택 가능)</p>
                 <div style="display: flex; items-align:flex-start; gap: 15px;">
                 {#each dissatisfied_generated_image as item (item.value)}
-                <label>
+                <label style="font-size: 15pt;">
                     <input
                         type="checkbox"
                         bind:group={selectedValues1}
@@ -210,7 +209,6 @@
                     /> {item.label}
                 </label><br>
             {/each}
-            </div>
             </div>
         {/if}
         <br>

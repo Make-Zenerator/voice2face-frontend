@@ -14,9 +14,17 @@
   let results = [];
   let id = sessionStorage.getItem('id');
   let latest_id = sessionStorage.getItem('latest_id');
-
+  let token;
   onMount(async () => {
-        const token = sessionStorage.getItem('auth_token'); 
+    try{
+       token = sessionStorage.getItem('auth_token'); 
+        console.log(token);
+
+    }
+    catch(error){
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+    }
     const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
       method: 'GET',
       headers: {
@@ -30,8 +38,8 @@
       results = data.mz_result; 
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
-    } else if (response.status ===401) {
-      alert(`세션이 만료되었습니다. $:{\n} 다시 로그인 해주세요.`);
+    } else if (response.status === 401) {
+      
     }
       else {
       console.error('데이터를 가져오는 데 실패했습니다.');
@@ -588,16 +596,13 @@ style="
         </div>
       </div>
       <div
-        style="flex-shrink: 0; width: 608.89px; height: 48px; position: static"
+        style="display: flex; items-align: center; justify-contents: center ; gap: 50px;  position: static"
       >
         <RequestFilled
           styleVariant="filled"
           style="
             background: var(--7b95b7, #6b6b6b);
             width: 190px;
-            position: absolute;
-            left: 360.56px;
-            top: 754px;
           "
           name="다시 생성하기"
         ></RequestFilled>
@@ -606,9 +611,7 @@ style="
           style="
             background: var(--7b95b7, #6b6b6b);
             width: 190px;
-            position: absolute;
-            left: 796.45px;
-            top: 754px;
+
           "
           targetPath="/resultlist"
           name="결과 목록 보기"
@@ -616,8 +619,8 @@ style="
       </div>
     </div>
   </div>
-
   {#if results.survey == 0}
+  
   <div
           style="
             color: #000000;
