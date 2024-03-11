@@ -1,5 +1,5 @@
 <script>
-    import ButtonStyleFilled from "../routes/join/ButtonStyleFilled.svelte";
+    import ButtonStyleFilled from "../../routes/join/ButtonStyleFilled.svelte";
     let className = "";
     export { className as class };
     export let style;
@@ -77,7 +77,7 @@
       position: relative;
     "
   >
-    <a href="aboutus_non"
+    <a href="/aboutus"
     style="
     color: var(--7b95b7, #6b6b6b);
     text-align: center;

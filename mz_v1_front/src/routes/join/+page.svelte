@@ -1,7 +1,7 @@
 <script>
   import BasicFilled from "../../components/button/basic_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
-  import Header from "../../components/header_non.svelte";
+  import Header from "../../components/header/header_non.svelte";
   import Radio from "./radio.svelte"
   import { goto } from '$app/navigation';
   export let targetPath = "/";
@@ -82,7 +82,7 @@ async function handleSubmit(event) {
     }
   }
 </script>
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: auto; position: relative; ' + style}">
 <div
   style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
 >
@@ -97,7 +97,7 @@ async function handleSubmit(event) {
       flex-shrink: 0;
       position: relative;
     "
-  >
+  ><div style=" display: flex; justify-contents: center; items-align: center;">
     <div
       style="
         background: #ffffff;
@@ -518,7 +518,7 @@ async function handleSubmit(event) {
                   <ul>
                       <li>회원 서비스 제공을 위한 이메일 통보 및 연락</li>
                       <li>회원의 특성에 따른 맞춤형 서비스 제공</li>
-                      <li>목소리 데이터를 활용한 음성인식 기술 개발 및 서비스 향상</li>
+                      <li>목소리 데이터를 활용한 얼굴 생성 기술 개발 및 서비스 향상</li>
                       <li>수집된 데이터를 기반으로 한 모델 학습을 통한 개선된 서비스 제공</li>
                   </ul>
                   
@@ -545,9 +545,12 @@ async function handleSubmit(event) {
         </div>
       </div>
     </div>
+
     <PlaceholderImage
-      style="flex-shrink: 0; width: 564px; height: 865px"
+      style="flex-shrink: 0; width: 700px; height: 700px"
+      targetPath="logo/join_placeholder.png"
     ></PlaceholderImage>
+  </div>
   </div>
 </div>
 </form>

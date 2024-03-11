@@ -1,5 +1,5 @@
 <script>
-    import ButtonStyleFilled from "../routes/join/ButtonStyleFilled.svelte";
+    import ButtonStyleFilled from "../../routes/join/ButtonStyleFilled.svelte";
     import { goto } from '$app/navigation';
 
     let className = "";
@@ -9,7 +9,7 @@
 
     function handleLogout() {
     // 로컬 스토리지에서 'auth_token' 제거
-    localStorage.removeItem('auth_token');
+    sessionStorage.removeItem('auth_token');
     alert("로그아웃 되었습니다.");
     goto('/');
   }
@@ -84,7 +84,7 @@ style="
     position: relative;
   "
 >
-  <a href="/aboutus_login"
+  <a href="/aboutus"
     style="
       color: var(--7b95b7, #6b6b6b);
       text-align: center;

@@ -29,7 +29,8 @@
         const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
         const audioUrl = URL.createObjectURL(audioBlob);
         // 이벤트를 통해 오디오 URL을 부모 컴포넌트로 전달
-        dispatch('audioRecorded', { audioUrl, audioBlob });
+        dispatch('audioRecorded', audioUrl );
+        dispatch('blobUpdated', audioBlob);
         isRecordingComplete = true;
       };
 

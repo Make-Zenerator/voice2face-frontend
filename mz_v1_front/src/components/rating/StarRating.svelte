@@ -10,7 +10,10 @@
 	let collectFeedback = false;
 	let feedbackCompleted = false;
 	
-
+	let result ='';
+	export let ABtype ;
+	export let result_id;
+	export let latest_id;
 	
 	// using curried function to initialize hover with id
 	const handleHover = (id) => () => {
@@ -35,14 +38,49 @@
 		{ id: 4, title: 'Four Stars' },
 		{ id: 5, title: 'Five Stars' },
 	]
+
+	
     function checkRating() {
         if (rating === null) {
             alert('별점을 선택해주세요.');
         } else {
-            alert(`선택된 별점: ${rating}점`);
+            // alert(`선택된 별점: ${rating}점`);
+			saveRating();
         }
     } 
     
+
+	async function saveRating() {
+    const token = sessionStorage.getItem('auth_token'); // sessionStorage에서 토큰 가져오기
+	const formData = new FormData();
+    formData.append('type',ABtype);
+	formData.append('rating',rating);
+	
+    try {
+        const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${result_id}/mz-result/${latest_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Token': token,
+      },
+            body: formData,
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Rating saved successfully', result);
+            alert(`별점 ${rating}점이 성공적으로 저장되었습니다.`);
+        } else {
+            const errorResponse = await response.json();
+            console.error('Failed to save rating:', errorResponse);
+            alert(`별점 저장 실패: ${errorResponse.message}`);
+        }
+    } catch (error) {
+        console.error('Error saving rating:', error);
+        alert('별점 저장 중 에러가 발생했습니다.');
+    }
+}
+
+	
 </script>
 <style>
 	.feedback {

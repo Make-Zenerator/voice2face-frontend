@@ -1,7 +1,7 @@
 <script>
     import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
     import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
-    import Header from "../../components/header_login.svelte"
+    import Header from "../../components/header/header_login.svelte"
     let className = "";
     export { className as class };
     export let style;

@@ -1,22 +1,53 @@
 <script>
-  import ButtonStyleFilled from "../../components/button/basic_filled.svelte";
-  import Header from "../../components/header_login.svelte";
+  import MovingFilled from "../../components/button/moving_filled.svelte";
+  import Header from "../../components/header/header_login.svelte";
+  import { onMount } from 'svelte';
   let className = "";
   export { className as class };
   export let style;
-  import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Checkbox} from 'flowbite-svelte';
+  import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell} from 'flowbite-svelte';
 
- 
-  let items = [
-    { id: 1, request_date: 'Toyota', end_date: 'ABC', result_gender: 1 , result_age:1, make:0, result_audio: "url"},
-  
-  ];
+  let items = [];
+
+  async function fetchData() {
+    const token = sessionStorage.getItem('auth_token'); 
+
+    
+    const response = await fetch('http://175.45.194.59:5050/api/v1/mz-request', {
+      method: 'GET',
+      headers: {
+        'Token': token,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      items = data.mz_request_list; 
+    } else if(response.status === 400) {
+      alert("데이터베이스 에러");
+    } else if(response.status === 401) {
+      alert(`세션이 만료되었습니다. $:{\n} 다시 로그인 해주세요`);
+    }
+    else {
+      console.error('데이터를 가져오는 데 실패했습니다.');
+      alert("요청 중 에러가 발생했습니다.")
+    }
+  }
+
+  onMount(() => {
+    fetchData(); 
+    const interval = setInterval(fetchData, 5000); 
+
+    return () => {
+      clearInterval(interval); 
+    };
+  });
   </script>
 
 
 
 <div
-style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 70px; align-items: center; justify-content: flex-start; min-height: 100vh; position: relative ' + style}"
 >
 <Header></Header>
 <div>
@@ -54,7 +85,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
   <Table hoverable={true}
     style="
         flex-shrink: 0;
-        width: 1500px;
+        width: 1400px;
         font-size: 14pt;
         <!-- height: 120px; -->
         <!-- position: relative; -->
@@ -63,41 +94,38 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
         <!-- margin-right: auto; -->
     ">
     <TableHead>
-      <TableHeadCell style="width:150px; font-size:14pt;">요청 순서</TableHeadCell>
-      <TableHeadCell style="width:150px; font-size:14pt;">요청 시간</TableHeadCell>
-      <TableHeadCell style="width:150px; font-size:14pt;">완료 시간</TableHeadCell>
-      <TableHeadCell style="width:100px; font-size:14pt;">성별</TableHeadCell>
-      <TableHeadCell style="width:100px; font-size:14pt;">나이</TableHeadCell>
-      <TableHeadCell style="width:150px; font-size:14pt;">진행 상태</TableHeadCell>
-      <TableHeadCell style="width:100px; font-size:14pt;">목소리 듣기</TableHeadCell>
-      <TableHeadCell style="width:20%; font-size:14pt;">결과 보기</TableHeadCell>
-      <TableHeadCell>
-        <span class="sr-only">Edit</span>
-      </TableHeadCell>
+      <TableHeadCell style="width: 15%; font-size:14pt;">요청 시간</TableHeadCell>
+      <TableHeadCell style="width: 15%; font-size:14pt;">완료 시간</TableHeadCell>
+      <TableHeadCell style="width: 8%; font-size:14pt;">성별</TableHeadCell>
+      <TableHeadCell style="width: 8%; font-size:14pt;">나이</TableHeadCell>
+      <TableHeadCell style="width: 10%; font-size:14pt;">진행 상태</TableHeadCell>
+      <TableHeadCell style="font-size:14pt;">목소리 듣기</TableHeadCell>
+      <TableHeadCell style="font-size:14pt;">결과 보기</TableHeadCell>
     </TableHead>
     <TableBody class="divide-y">
       {#each items as item}
         <TableBodyRow>
-          <TableBodyCell>{item.id}</TableBodyCell>
-          <TableBodyCell>{item.request_date}</TableBodyCell>
-          <TableBodyCell>{item.end_date}</TableBodyCell>
-          <TableBodyCell>{item.result_gender}</TableBodyCell>
-          <TableBodyCell>{item.result_age}</TableBodyCell>
+          <TableBodyCell>{item.created_at}</TableBodyCell>
+          <TableBodyCell>
+            {#if item.updated_at != null} {item.updated_at}{/if}
+          </TableBodyCell>
+          <TableBodyCell>{item.gender}</TableBodyCell>
+          <TableBodyCell>{item.age}</TableBodyCell>
 
           <TableBodyCell>
-            {#if item.make == 0}<img src = "/resultlist/생성중.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
-            {:else if item.make == 1}<img src = "/resultlist/생성완료.png" style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
-            {:else if item.make == 2}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
+            {#if item.status == null}<img src = "/resultlist/생성중.png" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
+            {:else if item.status == "Success"}<img src = "/resultlist/생성완료.png" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
+            {:else}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
             {/if}
           </TableBodyCell>
           <TableBodyCell>
-              <audio src={`/audio/${item.result_audio}`} controls></audio>
+              <audio src={item.voice_url} controls></audio>
             </TableBodyCell>
           <TableBodyCell>
-            {#if item.make ==1}
-              <ButtonStyleFilled targetPath='/result' name="결과 확인"> </ButtonStyleFilled>
-            {:else if item.make ==2}
-              Error
+            {#if item.status =="Success"}
+              <MovingFilled targetPath='/result' name="결과 확인" id = {item.id} latest_id = {item.latest_mz_result_id}> </MovingFilled>
+            {:else if item.status == "Failed"}
+              생성실패
               {/if}
             </TableBodyCell>
         </TableBodyRow>

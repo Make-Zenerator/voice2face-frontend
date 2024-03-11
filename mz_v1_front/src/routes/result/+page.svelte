@@ -1,21 +1,73 @@
 <script>
   import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
+  import RequestFilled from "../../components/button/request_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
-  import Header from "../../components/header_login.svelte";
+  import Header from "../../components/header/header_login.svelte";
   import StarRating from "../../components/rating/StarRating.svelte";
   import SaveImage from "../../components/button/result_save.svelte";
+  import Survey from "../../components/survey/survey.svelte";
+  import { onMount } from 'svelte';
   let className = "";
   export { className as class };
   export let style;
-  let voice_face_path = "/join/placeholder-image.svg";
-  let condition_face_path = "/join/placeholder-image.svg";
-  let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";
-  let voice_stretch_path = "https://blog.teamtailor.com/hs-fs/hubfs/giphy%20(3).gif?width=500&height=245&name=giphy%20(3).gif";
-  let condition_stretch_path = "https://social-phinf.pstatic.net/20211122_62/1637573927058bhdFb_GIF/23ee09341fb3d26c2b57efc4dd3b928ea3364f68.gif";
+  let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";  
+  let results = [];
+  let id = sessionStorage.getItem('id');
+  let latest_id = sessionStorage.getItem('latest_id');
+  let token;
+  onMount(async () => {
+    try{
+       token = sessionStorage.getItem('auth_token'); 
+        console.log(token);
+
+    }
+    catch(error){
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+    }
+    const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
+      method: 'GET',
+      headers: {
+                'Token': token,
+      },
+      
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      results = data.mz_result; 
+    } else if(response.status === 400) {
+      alert("데이터베이스 에러");
+    } else if (response.status === 401) {
+      
+    }
+      else {
+      console.error('데이터를 가져오는 데 실패했습니다.');
+      alert("요청 중 에러가 발생했습니다.")
+    }
+  });
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+  }
   
+
+
 </script>
 <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 30px; align-items: center; justify-content: flex-start; position: relative; ' + style}"
+style="
+  background: var(--neutral-0, #ffffff);
+  padding: 0px 0px 120px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center; /* 가로축 중앙 정렬 */
+  justify-content: flex-start; /* 세로축 시작 지점부터 요소 쌓기 */
+  width: 100%; /* div의 너비를 지정하거나 부모 요소에 맞춤 */
+  height: auto; /* div의 높이를 내용물에 맞춤 */
+  position: relative;
+"
 >
   <Header/>
   <img
@@ -28,6 +80,7 @@
       object-fit: cover;
     "
     src="/join/image-21.png"
+    alt="logo"
   />
   <div
     style="
@@ -119,8 +172,8 @@
             </div>
           </div>
           <PlaceholderImage
-            style="flex-shrink: 0; width: 393px; height: 393px";
-            filename={voice_face_path}
+            style="flex-shrink: 0; width: 390px; height: 390px"
+            targetPath={results.voice_image_url}
           ></PlaceholderImage>
         </div>
         <div
@@ -155,8 +208,8 @@
               position: relative;
             "
           >
-          <StarRating />
-          <SaveImage targetImage= {voice_face_path}/>
+          <StarRating ABtype='voice' result_id={id} latest_id={latest_id} />
+          <SaveImage targetImage= {results.voice_image_url}/>
             
           </div>
             
@@ -233,7 +286,7 @@
           </div>
           <PlaceholderImage
             style="flex-shrink: 0; width: 390px; height: 390px"
-            targetPath={condition_face_path}
+            targetPath={results.condition_image_url}
           ></PlaceholderImage>
         </div>
         <div
@@ -268,8 +321,8 @@
               position: relative;
             "
           >
-          <StarRating />
-          <SaveImage saveImage={condition_face_path} />
+          <StarRating ABtype= 'condition' result_id={id} latest_id={latest_id}/>
+          <SaveImage targetImage={results.condition_image_url} />
             
           </div>
             
@@ -400,16 +453,15 @@
                 스트레칭 동영상
               </div>
             </div>
-            <PlaceholderImage
-              style="
+            <video 
+                style="
                 width: 393px;
-                height: 250px;
+                height: 393px;
                 position: absolute;
                 left: 0px;
                 top: 105px;
               "
-              targetPath={gt_stretch_path};
-            ></PlaceholderImage>
+           src= {gt_stretch_path} type="video/mp4" controls />
           </div>
           <div
             style="
@@ -465,16 +517,15 @@
                 목소리에 어울리는 얼굴
               </div>
             </div>
-            <PlaceholderImage
-              style="
+            <video 
+                style="
                 width: 393px;
-                height: 250px;
+                height: 393px;
                 position: absolute;
                 left: 0px;
                 top: 105px;
               "
-              targetPath={voice_stretch_path};
-            ></PlaceholderImage>
+           src= {results.voice_gif_url} type="video/mp4" controls />
           </div>
           <div
             style="
@@ -530,54 +581,37 @@
               성별, 나이만으로 만들어진 얼굴
               </div>
             </div>
-            <PlaceholderImage
-              style="
+
+            <video 
+                style="
                 width: 393px;
-                height: 250px;
+                height: 393px;
                 position: absolute;
                 left: 0px;
                 top: 105px;
               "
-              targetPath={condition_stretch_path};
-            ></PlaceholderImage>
+           src= {results.condition_gif_url} type="video/mp4" controls />
+
           </div>
         </div>
       </div>
       <div
-        style="flex-shrink: 0; width: 608.89px; height: 48px; position: static"
+        style="display: flex; items-align: center; justify-contents: center ; gap: 50px;  position: static"
       >
-        <ButtonStyleFilled
+        <RequestFilled
           styleVariant="filled"
           style="
             background: var(--7b95b7, #6b6b6b);
             width: 190px;
-            position: absolute;
-            left: 360.56px;
-            top: 754px;
           "
-          targetPath ="/infogather"
           name="다시 생성하기"
-        ></ButtonStyleFilled>
-        <ButtonStyleFilled
-          styleVariant="filled"
-          style="
-            background: var(--7b95b7, #6b6b6b);
-            width: 177.73px;
-            position: absolute;
-            left: 582.13px;
-            top: 754px;
-          "
-          
-          name="설문조사"
-        ></ButtonStyleFilled>
+        ></RequestFilled>
         <ButtonStyleFilled
           styleVariant="filled"
           style="
             background: var(--7b95b7, #6b6b6b);
             width: 190px;
-            position: absolute;
-            left: 796.45px;
-            top: 754px;
+
           "
           targetPath="/resultlist"
           name="결과 목록 보기"
@@ -585,4 +619,58 @@
       </div>
     </div>
   </div>
+  {#if results.survey == 0}
+  
+  <div
+          style="
+            color: #000000;
+            text-align: center;
+            font-family: 'DmSans-Bold', sans-serif;
+            font-size: 52px;
+            line-height: 76px;
+            font-weight: 700;
+            position: relative;
+            width: 742px;
+            height: 65px;
+          "
+        >
+          설문조사
+        </div>
+  <div style="text-align:center; font-size: 20pt; "> 
+    안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br >
+    <span><strong>Voice2Face</strong></span>를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
+    <br />
+    ~서비스에 대한 간단 소개 및 향후 계획~
+    <br /><br />
+    지금까지의 서비스 이용 경험을 바탕으로 아래의 설문 조사에 참여해주시면 감사드리겠습니다.
+    <br />
+    설문 예상 소요 시간은 <span><strong>약 5분 내외</strong></span>이며  
+    <br /> 
+    참여하신 분들 중 추첨을 통해 5분께 <span><strong>스타벅스 카페 아메리카노</strong></span> 기프티콘을 드릴 예정입니다
+    <br />
+    생성된 이미지 결과별로 설문 가능합니다. 많이 작성해주시면 확률이 올라갑니다.
+    <br />
+    (50명 넘으면 치킨으로 바뀔수도..? ^^)</div>
+
+    <div 
+      style="
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      width: 100%; 
+    ">
+    <div style="items-align:center; ">
+      
+      <Survey survey_id={id} survey_latest_id={latest_id} />
+    </div>
+
+    
 </div>
+{/if}
+</div>
+
+
+
+

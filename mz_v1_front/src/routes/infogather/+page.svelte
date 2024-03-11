@@ -4,11 +4,12 @@
   import { Progressbar, Button } from 'flowbite-svelte';
   import { sineOut } from 'svelte/easing';
   import Radio from "../join/radio.svelte";
-  import Header from "../../components/header_login.svelte"
-  import { createEventDispatcher } from 'svelte';
+  import Header from "../../components/header/header_login.svelte"
   export { className as class };
   export let style;
   import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
+
   export let targetPath = "/loading";
 
   let className = "";
@@ -19,6 +20,7 @@
 
   let audioUrl = '';
   let audioBlob= null;
+  let token; 
   const options = [{
 		value: 'man',
 		label: '남',
@@ -27,8 +29,9 @@
 		label: '여',
 	}]
 
-  const token = localStorage.getItem('auth_token');
-  console.log(token);
+  onMount(() => {
+    token = sessionStorage.getItem('auth_token');
+  });
 
 
   async function requestimage(){
@@ -37,7 +40,7 @@
     formData.append('gender', info_gender);
     if (audioBlob) {
       console.log(typeof(audioBlob));
-    formData.append('file', audioBlob, 'recorded_audio.wav');
+    formData.append('file', audioBlob, 'svelte_audio.wav');
   }
 
     try{
@@ -278,8 +281,8 @@
   <input
     type="number"
     bind:value="{info_age}"
-    min=0
-    max=120
+    min=20
+    max=50
     style="
       color: rgba(0, 0, 0, 0.87);
       text-align: center;
@@ -331,10 +334,10 @@
             >
             <VoiceButtonDefaultVariant3 
             on:audioRecorded={(event) => {
-              audioUrl = event.detail.audioUrl; // 오디오 URL을 설정
-              audioBlob = event.detail.audioBlob; // 오디오 Blob을 받음
+              audioUrl = event.detail; // 오디오 URL을 설정
             }} 
             on:progressUpdated={(event) => {progress = event.detail;}}
+            on:blobUpdated={(event) => { audioBlob = event.detail; }}
 />
             {#if audioUrl == ''}
             <Progressbar {progress}
@@ -353,7 +356,8 @@
               1. 마이크가 제대로 작동하는지 확인해주세요 <br/>
               2. 조용한 장소에서 녹음해주세요 <br/>
               3. 마이크를 누르면 3초 뒤 녹음을 시작합니다 <br/>
-              4. 15초 동안 아무 말이나 해주세요
+              4. 15초 동안 아무 말이나 해주세요 <br />
+              <strong><span style="color: red;">5. 생성 횟수는 5회로 제한합니다,</span></strong>
             </div>
             <button type ="button" style="color: gray;" on:click={toggleExample}>예시 문장</button> 
 
