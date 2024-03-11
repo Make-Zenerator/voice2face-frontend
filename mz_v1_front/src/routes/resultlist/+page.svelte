@@ -2,6 +2,7 @@
   import MovingFilled from "../../components/button/moving_filled.svelte";
   import Header from "../../components/header/header_login.svelte";
   import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
   let className = "";
   export { className as class };
   export let style;
@@ -26,11 +27,12 @@
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
     } else if(response.status === 401) {
-      alert(`세션이 만료되었습니다. $:{\n} 다시 로그인 해주세요`);
+      alert(`세션이 만료되었습니다. \n다시 로그인 해주세요`);
+      goto("/");
     }
     else {
       console.error('데이터를 가져오는 데 실패했습니다.');
-      alert("요청 중 에러가 발생했습니다.")
+      alert("요청 중 에러가 발생했습니다.");
     }
   }
 
@@ -55,14 +57,14 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
     class="image-22"
     style="
       flex-shrink: 0;
-      width: 196px;
-      height: 120px;
+      width: 166px;
+      height: 106px;
       position: relative;
       object-fit: cover;
       margin-left: auto;
       margin-right: auto;
     "
-    src="/resultlist/image-21.png"
+    src="./logo/logo1.png"
   />
   <div
     style="
@@ -77,7 +79,8 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
       margin-left: auto;
       margin-right: auto;
     "
-  >
+  > 
+  <br>
     생성 이미지는 선택 버튼을 통해 확인하실 수 있습니다.
   </div>
 </div>

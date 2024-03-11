@@ -2,13 +2,21 @@
     import Radio from "../../routes/join/radio.svelte";
     import TextArea from "./input_area.svelte";
     import { onMount } from 'svelte';
+    import {goto} from '$app/navigation';
     export let style;
-
-
+    
+    let token = null;
 
     onMount(async () => {
-        const token = sessionStorage.getItem('auth_token'); 
+        try{
+       token = sessionStorage.getItem('auth_token'); 
         console.log(token);
+
+    }
+    catch(error){
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+    }
     });
 
     const SNS_time =[
@@ -57,7 +65,7 @@
     const gif_based_additional_function = [
         {value: 0, label: '드라마/영화 명장면'},
         {value: 1, label: '예능 움짤'},
-        {value: 2, label: '뮤비'},
+        {value: 2, label: '뮤직비디오'},
         {value: 3, label: '뉴스'},
     ] // checkbox
     
@@ -71,6 +79,7 @@
         {value: 0, label: '1분 이내 생성 결과 확인하기'},
         {value: 1, label: '생성된 결과를 가입한 이메일로 전달받기'},
         {value: 2, label: '예시 영상 구경하기'},
+        {value: 3, label: '생성완료되면 카톡으로 알림받기'}
     ]
 
     const dissatified_service = [
@@ -89,7 +98,7 @@
 
     let service_comments;
     
-    let call_number= "";
+    let call_number=null;
     export let survey_id ;
     export let survey_latest_id;
     
@@ -114,13 +123,13 @@
         const formData = new FormData;
         formData.append('sns_time', SNS);
         formData.append('user_phone', call_number);
-        formData.append('image_rating_reason', reason_img_rate);
-        formData.append('voice_to_Face_rating', v2f);
+        formData.append('image_rating_reason', reason_img_rate); ///
+        formData.append('voice_to_face_rating', v2f);
         formData.append('dissatisfy_reason', selectedString1);
         formData.append('additional_function', image_add_function);
-        formData.append('face_to_gif_rating', f2g-4);
+        formData.append('face_to_gif_rating', f2g); 
         formData.append('more_gif', mbg);
-        formData.append('more_gif_type', selectedString2);
+        formData.append('more_gif_type', selectedString2); ///
         formData.append('waiting',won);
         formData.append('waiting_improvement', selectedString3);
         formData.append('recommend', service);
@@ -138,7 +147,7 @@
 
       if (response.ok) {
         alert("설문에 응해주셔서 감사합니다! \n더 좋은 서비스 제공을 위해 노력하는 Make Zenerator 되겠습니다.");
-        goto(targetPath);
+        goto('/home');
       }
       else {
         alert('Error ');
@@ -177,12 +186,32 @@
     padding: 44px 60px;
     gap: 20px;
   }
+  .checkboxContainer {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    width: 100%;
+  }
+
+  .checkboxRow {
+    display: flex; 
+    flex-direction: row; 
+    flex-basis: 100%; 
+    justify-content: space-around;
+  }
+
+  .checkboxLabel {
+    font-size: 15pt; 
+    flex-basis: 45%; 
+    display: flex; 
+    align-items: center; 
+  }
   </style>
 
     
 
 
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; width: 1200px;' + style}">
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; position: relative; width: 1200px;' + style}">
 
 <div style="'font-size: 20pt">
     <div class= survey-container >
@@ -197,20 +226,34 @@
         <p class="question"> 3. 목소리를 기반으로 생성된 얼굴이 본인의 목소리를 잘 반영한 것 같다 생각하시나요?</p>
         <Radio options={well_serviced} fontSize={20} legend=''  bind:userSelected={v2f} />
         <br>
-        {#if v2f in [0, 1]} 
-                <p class="question">3+. 생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요? (복수선택 가능)</p>
-                <div style="display: flex; items-align:flex-start; gap: 15px;">
-                {#each dissatisfied_generated_image as item (item.value)}
-                <label style="font-size: 15pt;">
-                    <input
-                        type="checkbox"
-                        bind:group={selectedValues1}
-                        value={item.value}
-                    /> {item.label}
-                </label><br>
-            {/each}
-            </div>
-        {/if}
+        {#if v2f in [0, 1]}
+        <p class="question">3+. 생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요? (복수선택 가능)</p>
+        <div class="checkboxContainer">
+            <div class="checkboxRow">
+            {#each dissatisfied_generated_image.slice(0, Math.ceil(dissatisfied_generated_image.length / 2)) as item (item.value)}
+                <label class="checkboxLabel">
+                <input
+                    type="checkbox"
+                    bind:group={selectedValues1}
+                    value={item.value}
+                /> {item.label}
+                </label>
+        {/each}
+        </div>
+    
+    <div class="checkboxRow">
+      {#each dissatisfied_generated_image.slice(Math.ceil(dissatisfied_generated_image.length / 2)) as item (item.value)}
+        <label class="checkboxLabel">
+          <input
+            type="checkbox"
+            bind:group={selectedValues1}
+            value={item.value}
+          /> {item.label}
+        </label>
+      {/each}
+    </div>
+  </div>
+{/if}
         <br>
         <p class="question"> 4. 생성된 이미지를 기반하여 추가되면 좋을 듯한 기능 혹은 아이디어가 있으신가요?</p>
         <TextArea bind:value={image_add_function} />
@@ -238,31 +281,47 @@
                 </label><br>
                 {/each}
                 </div>
+                <br>
             {/if}
+            
     </div>
     <div class= survey-container>
         <p class="question">7. 현재 서비스 제공 소요시간은 약 2분 입니다. 해당 시간동안 로딩 화면에서 대기하실 의향이 있으신가요?</p>
-        <Radio options={waiting_or_not} fontSize={20} legend=''  bind:userSelected={won}/>
-        {#if won} 
-        <div style="font-size: 15pt;">
-            <p class="question">7+. 대기하지 않기를 원하신다면 어떤 방향으로 서비스가 개선되기를 희망하시나요?</p>
-                {#each waiting_about as item (item.value)}
-                <label>
-                    <input 
-                        type="checkbox"
-                        bind:group={selectedValues3}
-                        value={item.value}
-                    /> {item.label}
-                </label><br>
-                {/each}
-        </div>
-        {/if}
+        <Radio options={waiting_or_not} fontSize={20} legend=''  bind:userSelected={won}/> <br>
+        {#if won}
+<div class="question">7+. 대기하지 않기를 원하신다면 어떤 방향으로 서비스가 개선되기를 희망하시나요?</div>
+<div class="checkboxContainer">
+  <div class="checkboxRow">
+    {#each waiting_about.slice(0, Math.ceil(waiting_about.length / 2)) as item}
+      <label class="checkboxLabel">
+        <input
+          type="checkbox"
+          bind:group={selectedValues3}
+          value={item.value}
+        /> {item.label}
+      </label>
+    {/each}
+  </div>
+
+  <div class="checkboxRow">
+    {#each waiting_about.slice(Math.ceil(waiting_about.length / 2)) as item}
+      <label class="checkboxLabel">
+        <input
+          type="checkbox"
+          bind:group={selectedValues3}
+          value={item.value}
+        /> {item.label}
+      </label>
+    {/each}
+  </div>
+</div>
+{/if}
     </div>
     <div class= survey-container>
         <p class="question">8. 이 서비스를 친구나 가족에게 추천할 의향이 있으신가요?</p>
-        <Radio options={dissatified_service} fontSize={20}  legend='' bind:userSelected={service}/>
+        <Radio options={dissatified_service} fontSize={20}  legend='' bind:userSelected={service}/><br>
         <p class="question">9. 해당 서비스에 대한 건의사항이나 불편했던 점, 좋았던 점 등에 대해 자유롭게 작성해주세요</p>
-        <TextArea bind:value={service_comments} />
+        <TextArea bind:value={service_comments} /> <br>
     </div>
     <div class= survey-container style="align-items: center;"> 
         <div> 
@@ -284,7 +343,7 @@
             justify-content: flex-start;
             width: 70%;
             height: 30%;
-            max-height: 300px;
+            max-height: 350px;
             color: rgba(0, 0, 0, 0.87);
             text-align: left;
             font-family: 'DmSans-Medium', sans-serif;
@@ -315,7 +374,7 @@
             <Radio options={agree} fontSize={20} legend='' bind:userSelected={agree2} />
         {#if agree2} 
             <p class="question"> 전화번호 입력</p>
-            <input class="t_box" style="width: 50%;"type="text" placeholder='010-XXXX-XXXX' value={call_number} />
+            <input class="t_box" style="width: 50%;"type="text" placeholder='010-XXXX-XXXX' bind:value={call_number} />
         {/if}
         <br>
         

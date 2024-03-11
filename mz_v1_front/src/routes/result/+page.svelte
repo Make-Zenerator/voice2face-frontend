@@ -14,7 +14,7 @@
   let results = [];
   let id = sessionStorage.getItem('id');
   let latest_id = sessionStorage.getItem('latest_id');
-  let token;
+  let token = null;
   onMount(async () => {
     try{
        token = sessionStorage.getItem('auth_token'); 
