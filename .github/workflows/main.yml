@@ -42,4 +42,4 @@ jobs:
           username: ${{secrets.SERVER_USERNAME}}
           key: ${{secrets.SERVER2_KEY}}
           port: ${{secrets.SERVER_PORT}}
-          script: 'cd voice2face-backend/mz_v1_front && git pull origin develop && npm install && npm run build && pm2 start ./build/index.js'
+          script: 'ls && cd mz_v1_front && git pull origin develop && npm install && npm run build && pm2 start ./build/index.js'
