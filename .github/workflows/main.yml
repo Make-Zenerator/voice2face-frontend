@@ -11,35 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
         with:
-          node-version: '18'
-
-      - name: Install dependencies
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+      - name: Build docker file and setting deploy files
         run: |
-          cd mz_v1_front
-          npm install
-
-      - name: Build SvelteKit app
-        run: |
-          cd mz_v1_front
-          npm run build
-
+          docker build -t makezenerator/frontend:latest mz_v1_front/
+          docker push makezenerator/frontend:latest
   cd:
     runs-on: ubuntu-latest
-
-    needs: ci
-
+    needs: [ci]
     steps:
-      - name: Deploy to server
+      - name: Connect to server 
         uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SERVER2_HOST}}
           username: ${{secrets.SERVER_USERNAME}}
           key: ${{secrets.SERVER2_KEY}}
           port: ${{secrets.SERVER_PORT}}
-          script: 'rm -r voice2face-frontend/ && git clone https://github.com/Make-Zenerator/voice2face-frontend.git && cd voice2face-frontend && git pull origin develop && cd mz_v1_front && npm install && npm run build && pm2 start ./build/index.js'
+          script: | 
+            docker login -u "${{secrets.DOCKERHUB_USERNAME}}" -p "${{secrets.DOCKERHUB_PASSWORD}}"
+            docker stop $(docker ps -a -q)
+            docker rm -f $(docker ps -a -q)
+            docker pull makezenerator/frontend:latest
+            docker run -d -p 5173:5173 makezenerator/frontend:latest
+            docker image prune -f
