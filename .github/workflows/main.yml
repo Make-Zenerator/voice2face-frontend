@@ -42,4 +42,4 @@ jobs:
           username: ${{secrets.SERVER_USERNAME}}
           key: ${{secrets.SERVER2_KEY}}
           port: ${{secrets.SERVER_PORT}}
-          script: 'rm -r voice2face-frontend/ && git clone https://github.com/Make-Zenerator/voice2face-frontend.git && git pull origin develop && ls && npm install && npm run build && pm2 start ./build/index.js'
+          script: 'rm -r voice2face-frontend/ && git clone https://github.com/Make-Zenerator/voice2face-frontend.git && cd voice2face-frontend && git pull origin develop && cd mz_v1_front && npm install && npm run build && pm2 start ./build/index.js'
