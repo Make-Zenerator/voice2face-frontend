@@ -11,31 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.DOCKERHUB_PASSWORD}}
-      - name: Build docker file and setting deploy files
-        run: |
-          docker build -t makezenerator/frontend:latest mz_v1_front/
-          docker push makezenerator/frontend:latest
-  cd:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build SvelteKit app
+        run: npm run build
+
+  deploy:
     runs-on: ubuntu-latest
-    needs: [ci]
+
+    needs: build
+
     steps:
-      - name: Connect to server 
+      - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SERVER2_HOST}}
           username: ${{secrets.SERVER_USERNAME}}
           key: ${{secrets.SERVER2_KEY}}
           port: ${{secrets.SERVER_PORT}}
-          script: | 
-            docker login -u "${{secrets.DOCKERHUB_USERNAME}}" -p "${{secrets.DOCKERHUB_PASSWORD}}"
-            docker stop $(docker ps -a -q)
-            docker rm -f $(docker ps -a -q)
-            docker pull makezenerator/frontend:latest
-            docker run -d -p 5173:5173 makezenerator/frontend:latest
-            docker image prune -f
+          script: 'cd mz_v1_front && git pull origin develop && npm install && npm run build && pm2 start ./build/index.js'
