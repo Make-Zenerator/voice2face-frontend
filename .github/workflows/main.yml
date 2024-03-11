@@ -21,8 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-        cd mz_v1_front
-        npm install
+          cd mz_v1_front
+          npm install
 
       - name: Build SvelteKit app
         run: npm run build
