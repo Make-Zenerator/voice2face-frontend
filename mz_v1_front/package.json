@@ -6,7 +6,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "vite start"
-
   },
   "devDependencies": {
     "@fontsource/fira-mono": "^4.5.10",
@@ -25,6 +24,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-node": "^5.0.1"
+    "@sveltejs/adapter-node": "^5.0.1",
+    "pm2": "^5.3.1"
   }
 }
