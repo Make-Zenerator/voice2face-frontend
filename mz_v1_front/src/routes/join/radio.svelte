@@ -27,10 +27,10 @@
       <input
         class="sr-only"
         type="radio"
-        id={slugify(label)}
+        id={slugify(label) + '-' + uniqueID}
         bind:group={userSelected}
         value={value} />
-      <label for={slugify(label)}> {label} </label>
+        <label for={slugify(label) + '-' + uniqueID}> {label} </label>
     {/each}
   </div>
   

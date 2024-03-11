@@ -17,18 +17,18 @@
         {value: 2, label: '3시간 ~ 5시간 미만'},
         {value: 3, label: '5시간 이상'},
     ]
-    let SNS;
+    let SNS = null;
 
     let reason_img_rate; 
     
-    const voice_to_face_well = [
+    const well_serviced = [
         {value: 0, label: '매우 아니다'},
         {value: 1, label: '아니다'},
         {value: 2, label: '보통이다'},
         {value: 3, label: '그렇다'},
         {value: 4, label: '매우 그렇다'},
     ]
-    let v2f;
+    let v2f = null;
 
     const dissatisfied_generated_image = [
         {value: 0, label: '외국인이라 어색하다'},
@@ -46,13 +46,13 @@
         {value: 3, label: '그렇다'},
         {value: 4, label: '매우 그렇다'},
     ]
-    let f2g;
+    let f2g= null;
 
     const more_based_gif = [
         {value: 1, label: '예'},
         {value: 0, label: '아니요'},
     ] //bool
-    let mbg;
+    let mbg = null;
 
     const gif_based_additional_function = [
         {value: 0, label: '드라마/영화 명장면'},
@@ -65,7 +65,7 @@
         {value: 0, label: '이정도면 기다릴 수 있다'},
         {value: 1, label: '대기하지 않을 것 같다'},
     ] //bool
-    let won;
+    let won = null;
 
     const waiting_about = [
         {value: 0, label: '1분 이내 생성 결과 확인하기'},
@@ -118,7 +118,7 @@
         formData.append('voice_to_Face_rating', v2f);
         formData.append('dissatisfy_reason', selectedString1);
         formData.append('additional_function', image_add_function);
-        formData.append('face_to_gif_rating', f2g);
+        formData.append('face_to_gif_rating', f2g-4);
         formData.append('more_gif', mbg);
         formData.append('more_gif_type', selectedString2);
         formData.append('waiting',won);
@@ -182,7 +182,7 @@
     
 
 
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; width: 1200px;' + style}">
 
 <div style="'font-size: 20pt">
     <div class= survey-container >
@@ -195,7 +195,7 @@
         <TextArea bind:value={reason_img_rate} />
         <br>
         <p class="question"> 3. 목소리를 기반으로 생성된 얼굴이 본인의 목소리를 잘 반영한 것 같다 생각하시나요?</p>
-        <Radio options={voice_to_face_well} fontSize={20} legend=''  bind:userSelected={v2f} />
+        <Radio options={well_serviced} fontSize={20} legend=''  bind:userSelected={v2f} />
         <br>
         {#if v2f in [0, 1]} 
                 <p class="question">3+. 생성된 얼굴이 만족스럽지 않다면, 어떤 점이 불만족스러우신가요? (복수선택 가능)</p>
@@ -225,8 +225,9 @@
         <Radio options={more_based_gif} fontSize={20} legend=''  bind:userSelected={mbg} />
         <br>
         {#if mbg}
-            <div style="font-size: 15pt">
+
                 <p class="question"> 6+. 합성의 기반이 될 영상을 추가한다면 어떤 종류를 원하시나요? (복수선택 가능)</p>
+                <div style="display: flex; items-align:flex-start; gap: 15px; font-size: 15pt;">
                 {#each gif_based_additional_function as item (item.value)}
                 <label>
                     <input 
@@ -236,15 +237,14 @@
                     /> {item.label}
                 </label><br>
                 {/each}
-            </div>
+                </div>
             {/if}
     </div>
     <div class= survey-container>
-        <p class="question">7. 현재 얼굴 이미지 및 GIF를 생성하는데 2분 정도 소요됩니다.</p>
-        <p class="question">&nbsp;&nbsp;&nbsp;&nbsp;대기 페이지에서 해당 시간을 대기하실 의향이 있으신가요?</p>
+        <p class="question">7. 현재 서비스 제공 소요시간은 약 2분 입니다. 해당 시간동안 로딩 화면에서 대기하실 의향이 있으신가요?</p>
         <Radio options={waiting_or_not} fontSize={20} legend=''  bind:userSelected={won}/>
         {#if won} 
-        <div>
+        <div style="font-size: 15pt;">
             <p class="question">7+. 대기하지 않기를 원하신다면 어떤 방향으로 서비스가 개선되기를 희망하시나요?</p>
                 {#each waiting_about as item (item.value)}
                 <label>
@@ -282,22 +282,22 @@
             gap: 10px;
             align-items: flex-start;
             justify-content: flex-start;
-            width: 55%;
-            height: 30%x;
+            width: 70%;
+            height: 30%;
             max-height: 300px;
             color: rgba(0, 0, 0, 0.87);
             text-align: left;
             font-family: 'DmSans-Medium', sans-serif;
-            font-size: 14px;
-            line-height: 15px;
+            font-size: 20px;
+            line-height: 23px;
             font-weight: 500;
-            margin: 0px;
+            margin: 2px;
         "
         >
         
         <p><strong>1. 수집하는 개인정보의 항목:</strong></p>
         <ul>
-            <li>전화번호</li>
+            <li>- 전화번호</li>
         </ul>
         <p><strong>2. 개인정보의 수집 및 이용 목적:</strong></p>
         <ul>
