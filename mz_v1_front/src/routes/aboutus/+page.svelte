@@ -34,7 +34,7 @@
         font-weight: var(--title-large-font-weight, 700);
         position: relative;
         width: 412px;
-        height: 112px;
+        height: 52px;
       "
     >
       About Us

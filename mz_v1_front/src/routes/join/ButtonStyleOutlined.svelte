@@ -21,7 +21,7 @@
   >
     <div
       style="
-        color: var(--neutral-10, #486284);
+        color: var(--neutral-10, #6b6b6b);
         text-align: left;
         font-family: var(--body-small-font-family, 'DmSans-Regular', sans-serif);
         font-size: var(--body-small-font-size, 24px);

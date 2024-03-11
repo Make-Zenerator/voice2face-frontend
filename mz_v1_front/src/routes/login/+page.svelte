@@ -289,7 +289,8 @@
           ></div>
         </div>
         <PlaceholderImage
-          style="flex-shrink: 0; width: 564px; height: 405px"
+          style="flex-shrink: 0; width: 405px; height: 405px" 
+          src="logo/login_f.png"
         ></PlaceholderImage>
       </div>
     </div>

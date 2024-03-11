@@ -42,27 +42,26 @@
       color: var(--7b95b7, #6b6b6b);
       text-align: center;
       font-family: 'DmSans-Bold', sans-serif;
-      line-height: 24px;
+      line-height: 28px;
       font-weight: 400;
       font-size: 26px;
       position: absolute;
-      left: 188px;
-      top: 31px;
+      left: 178px;
+      top: 22px;
     "
       >
-        Make Zenerator
+        <strong>Make Zenerator</strong>
       </div>
       <img href="/"
         class="{'image-2 ' + className}"
         style="
-      width: 90px;
-      height: 55px;
+      width: 80px;
       position: absolute;
       left: 98px;
       top: 8.5px;
       object-fit: cover;
     "
-        src="/logo/logo4.png"
+        src="logo/logo1.png"
         alt="logo"
       /></a>
   </div>

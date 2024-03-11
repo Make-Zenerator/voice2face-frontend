@@ -45,16 +45,15 @@ style="
 <a href="/home" style="flex-shrink: 0; width: 299px; height: 55px; position: static">
   <div
     style="
-      color: var(--7b95b7, #6b6b6b);
-      text-align: left;
-      font-family: 'Titan One', sans-serif;
-      font-style: normal;
-      line-height: 24px;
-      font-weight: 400;
-      font-size: 26px;
-      position: absolute;
-      left: 188px;
-      top: 31px;
+    color: var(--7b95b7, #6b6b6b);
+    text-align: center;
+    font-family: 'DmSans-Bold', sans-serif;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 26px;
+    position: absolute;
+    left: 178px;
+    top: 22px;
     "
   >
     Make Zenerator
@@ -62,14 +61,13 @@ style="
   <img
     class="{'image-2 ' + className}"
     style="
-      width: 90px;
-      height: 55px;
+      width: 80px;
       position: absolute;
       left: 98px;
       top: 8.5px;
       object-fit: cover;
     "
-    src="/join/image-20.png"
+    src="./logo/logo1.png"
     alt="logo"
   />
 </a>
