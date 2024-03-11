@@ -9,7 +9,7 @@
 
   </script>
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 160px 0px; display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 849px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 160px 0px; display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start;  position: relative; ' + style}"
   >
   <Header/>
  <div>
@@ -156,9 +156,10 @@
 
           </div>
         </div>
-        <PlaceholderImage
-          style="align-self: stretch; flex: 1; height: auto"
-        ></PlaceholderImage>
+        <video autoplay loop muted style="width:40% ">
+          <source src="http://127.0.0.1:9000/voice2face/site/hj_24fps_square.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
       <div
         style="

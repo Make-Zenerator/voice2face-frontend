@@ -461,7 +461,7 @@ style="
                 left: 0px;
                 top: 105px;
               "
-           src= {gt_stretch_path} type="video/mp4" controls />
+           src= {gt_stretch_path} type="video/mp4" autoplay loop muted />
           </div>
           <div
             style="
@@ -525,7 +525,7 @@ style="
                 left: 0px;
                 top: 105px;
               "
-           src= {results.voice_gif_url} type="video/mp4" controls />
+           src= {results.voice_gif_url} type="video/mp4" autoplay loop muted />
           </div>
           <div
             style="
@@ -590,7 +590,7 @@ style="
                 left: 0px;
                 top: 105px;
               "
-           src= {results.condition_gif_url} type="video/mp4" controls />
+           src= {results.condition_gif_url} type="video/mp4" autoplay loop muted />
 
           </div>
         </div>
