@@ -8,4 +8,4 @@ RUN npm install
 COPY . ./
 RUN npm run build
 
-CMD ["pm2", "start", "./build/index.js"]
+CMD ["pm2", "start", "build"]
