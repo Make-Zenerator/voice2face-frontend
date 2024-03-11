@@ -20,7 +20,9 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+        cd mz_v1_front
+        npm install
 
       - name: Build SvelteKit app
         run: npm run build
