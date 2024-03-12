@@ -10,11 +10,13 @@
     export let targetPath = "/";
     export let id;
     export let latest_id;
+    export let gender;
 
     async function handleClick() {
         // id와 latest_id를 sessionStorage에 저장
         sessionStorage.setItem('id', id);
         sessionStorage.setItem('latest_id', latest_id);
+        sessionStorage.setItem('gender', gender);
         // targetPath로 페이지 이동
         goto(targetPath);
     }

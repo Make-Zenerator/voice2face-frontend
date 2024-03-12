@@ -126,7 +126,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
             </TableBodyCell>
           <TableBodyCell>
             {#if item.status =="Success"}
-              <MovingFilled targetPath='/result' name="결과 확인" id = {item.id} latest_id = {item.latest_mz_result_id}> </MovingFilled>
+              <MovingFilled targetPath='/result' name="결과 확인" id = {item.id} latest_id = {item.latest_mz_result_id} gender={item.gender}> </MovingFilled>
             {:else if item.status == "Failed"}
               생성실패
               {/if}
