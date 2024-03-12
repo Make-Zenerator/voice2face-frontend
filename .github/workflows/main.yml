@@ -37,5 +37,5 @@ jobs:
             docker stop $(docker ps -a -q)
             docker rm -f $(docker ps -a -q)
             docker pull makezenerator/frontend:latest
-            docker run -d -p 3000:3000 makezenerator/frontend:latest
+            docker run -d -p 80:80 makezenerator/frontend:latest
             docker image prune -f
