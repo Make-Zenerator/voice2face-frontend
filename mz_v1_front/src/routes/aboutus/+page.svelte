@@ -34,7 +34,7 @@
         font-weight: var(--title-large-font-weight, 700);
         position: relative;
         width: 412px;
-        height: 52px;
+        height: 62px;
       "
     >
       About Us
@@ -51,7 +51,11 @@
         width: 612px;
       "
     >
-    안녕하세요! <br/>사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br/>Voice2Face를 개발 중인 Make Zenerator 팀입니다. 
+    안녕하세요! <br>
+    사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스,<br>
+    Voice2Face를 개발 중인 Make Zenerator 팀입니다. <br>
+    (문의&불편사항: mz140103@gmail.com)<br>
+
 
     </div>
     <img src = "/logo/MZ_aboutus.jpg" alt = "MZ_members">
@@ -65,7 +69,7 @@
       font-weight: var(--title-large-font-weight, 700);
       position: relative;
       width: 412px;
-      height: 112px;
+      height: 32px;
     "
   >
     MZ Members

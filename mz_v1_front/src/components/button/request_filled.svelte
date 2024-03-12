@@ -23,7 +23,7 @@
 
           });
           if (response.ok) {
-            alert('재생성 요청했습니다.');
+            alert('제출된 정보로 재생성 요청했습니다.');
             goto('/home');
           }
           else{

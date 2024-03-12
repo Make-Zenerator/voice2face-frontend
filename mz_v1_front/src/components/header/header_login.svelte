@@ -18,11 +18,22 @@
     a {
    text-decoration: none;
  }
+
+ @font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
+
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Titan+One&display=swap" rel="stylesheet">
+
+
 
 <div
 style="
@@ -42,18 +53,19 @@ style="
   overflow: hidden;
 "
 >
+<div>
 <a href="/home" style="flex-shrink: 0; width: 299px; height: 55px; position: static">
   <div
     style="
     color: var(--7b95b7, #6b6b6b);
     text-align: center;
-    font-family: 'DmSans-Bold', sans-serif;
+    font-family: 'yg-jalnan';
     line-height: 28px;
     font-weight: 400;
-    font-size: 26px;
+    font-size: 20px;
     position: absolute;
-    left: 178px;
-    top: 22px;
+    left: 200px;
+    top: 27px;
     "
   >
     <strong>Make Zenerator</strong>
@@ -61,16 +73,17 @@ style="
   <img
     class="{'image-2 ' + className}"
     style="
-      width: 80px;
+      width: 70px;
       position: absolute;
-      left: 98px;
-      top: 8.5px;
+      left: 130px;
+      top: 2px;
       object-fit: cover;
     "
     src="./logo/logo1.png"
     alt="logo"
   />
 </a>
+</div>
 <div
   style="
     display: flex;

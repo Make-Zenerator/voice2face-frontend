@@ -1,7 +1,6 @@
 <script>
     import ButtonStyleFilled from "./join/ButtonStyleFilled.svelte";
     import ButtonStyleOutlined from "./join/ButtonStyleOutlined.svelte";
-    import PlaceholderImage from "./join/PlaceholderImage.svelte";
     import Header from "../components/header/header_non.svelte";
     let className = "";
     export { className as class };
@@ -9,7 +8,7 @@
 
   </script>
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 180px; align-items: center; justify-content: flex-start;  position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 100px; align-items: center; justify-content: flex-start;  position: relative; ' + style}"
   >
   <Header/>
  <div>
@@ -17,7 +16,7 @@
       style="
         display: flex;
         flex-direction: column;
-        gap: 170px;
+        gap: 120px;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
@@ -157,7 +156,7 @@
           </div>
         </div>
         <video autoplay loop muted style="width:40% ">
-          <source src="http://127.0.0.1:9000/voice2face/site/hj_24fps_square.mp4" type="video/mp4">
+          <source src="http://223.130.133.236:9000/voice2face-public/site/main/main_sample.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
@@ -184,7 +183,7 @@
               overflow: visible;
               top: -18px;
             "
-            src="/boostcampLogo.jpg"
+            src="/logo/boostcampLogo.jpg"
             alt="boostcamp"
           />
 

@@ -6,7 +6,6 @@
   import { goto } from '$app/navigation';
   export let targetPath = "/";
   let className = "";
-  let radioValue;
   export { className as class };
   export let style;
   let join_email;
@@ -37,13 +36,11 @@ $: {
 async function handleSubmit(event) {
     event.preventDefault();
 
-    // 개인정보 수집 동의 확인
     if (!join_agree) {
       alert("개인정보 수집 이용에 동의를 체크해주셔야 서비스를 이용하실 수 있습니다.");
       return;
     }
 
-    // 비밀번호 일치 확인
     if (join_pswd !== join_check) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
@@ -56,7 +53,6 @@ async function handleSubmit(event) {
     formData.append('gender', join_gender);
     
 
-    // 폼 데이터를 JSON으로 서버에 전송
     try {
       const response = await fetch('http://api.makezenerator.com/api/v1/users', {
         method: 'POST',
@@ -227,7 +223,7 @@ async function handleSubmit(event) {
                     text-align: center;
                     font-family: 'DmSans-Medium', sans-serif;
                     font-size: 14px;
-                    line-height: 40px;
+                    line-height: 30px;
                     font-weight: 500;
                     position: relative;
                     width: 100%;
@@ -282,7 +278,7 @@ async function handleSubmit(event) {
                     text-align: center;
                     font-family: 'DmSans-Medium', sans-serif;
                     font-size: 14px;
-                    line-height: 40px;
+                    line-height: 30px;
                     font-weight: 500;
                     position: relative;
                     width: 100%;
@@ -337,7 +333,7 @@ async function handleSubmit(event) {
                     text-align: center;
                     font-family: 'DmSans-Medium', sans-serif;
                     font-size: 14px;
-                    line-height: 40px;
+                    line-height: 30px;
                     font-weight: 500;
                     position: relative;
                     width: 100%;
@@ -434,7 +430,7 @@ async function handleSubmit(event) {
                 line-height: 40px;
                 font-weight: 500;
                 border: none;
-                width: 100%; /* 입력 상자가 div를 꽉 채우도록 조정 */
+                width: 100%; 
                 height: 40px; /* 입력 상자의 높이 조정 */
                 background: transparent; /* 배경색 투명 */
                 -webkit-appearance: none; /* 스타일 초기화 */
@@ -503,7 +499,7 @@ async function handleSubmit(event) {
                   color: rgba(0, 0, 0, 0.87);
                   text-align: left;
                   font-family: 'DmSans-Medium', sans-serif;
-                  font-size: 10px;
+                  font-size: 12px;
                   line-height: 15px;
                   font-weight: 500;
                   margin: 0px;

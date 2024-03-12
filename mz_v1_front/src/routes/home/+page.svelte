@@ -9,7 +9,7 @@
     
   </script>
   <div
-    style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+    style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 180px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
   >
     <Header/>
     <div
@@ -185,9 +185,9 @@
           
           position: relative;
           overflow: visible;
-          top: 0px;
+          top: -80px;
         "
-        src="/boostcampLogo.jpg"
+        src="/logo/boostcampLogo.jpg"
         alt="boostcamp"
       />
     </div>
