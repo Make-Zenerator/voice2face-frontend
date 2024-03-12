@@ -8,6 +8,6 @@ RUN npm install
 RUN npm install -g pm2
 
 COPY . ./
-RUN npm run build
+RUN npm run build --port 80
 
-CMD ["pm2-runtime", "start", "pm2.config.js", "--env", "production"]
+CMD ["pm2-runtime", "start", "./build/index.js", "--env", "production"]
