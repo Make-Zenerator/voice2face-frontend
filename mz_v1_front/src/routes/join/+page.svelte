@@ -82,9 +82,15 @@ async function handleSubmit(event) {
     }
   }
 </script>
+
+<style>
+  .custom-scroll::-webkit-scrollbar {
+    display: none;
+}
+</style>
 <form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: auto; position: relative; ' + style}">
 <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1116px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1200px; position: relative; ' + style}"
 >
  <Header/>
   <div
@@ -92,12 +98,12 @@ async function handleSubmit(event) {
       display: flex;
       flex-direction: row;
       gap: 41px;
-      align-items: flex-start;
-      justify-content: flex-start;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       position: relative;
     "
-  ><div style=" display: flex; justify-contents: center; items-align: center;">
+  ><div style=" display: flex; justify-contents: center; align-items: center; gap: 80px">
     <div
       style="
         background: #ffffff;
@@ -479,30 +485,30 @@ async function handleSubmit(event) {
                   position: relative;
                 "
               >
-              <div
-  style="
-    overflow-y: auto;
-    background: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #000000;
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 337px;
-    height: 158px;
-    max-height: 200px;
-    color: rgba(0, 0, 0, 0.87);
-    text-align: left;
-    font-family: 'DmSans-Medium', sans-serif;
-    font-size: 10px;
-    line-height: 15px;
-    font-weight: 500;
-    margin: 0px;
-  "
->
+              <div class="custom-scroll"
+                style="
+                  overflow-y: auto;
+                  background: #ffffff;
+                  border-radius: 10px;
+                  border: 1px solid #000000;
+                  padding: 10px 20px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                  align-items: flex-start;
+                  justify-content: flex-start;
+                  width: 337px;
+                  height: 158px;
+                  max-height: 200px;
+                  color: rgba(0, 0, 0, 0.87);
+                  text-align: left;
+                  font-family: 'DmSans-Medium', sans-serif;
+                  font-size: 10px;
+                  line-height: 15px;
+                  font-weight: 500;
+                  margin: 0px;
+                "
+              >
                 
                   <p><strong>본인은 아래와 같이 개인정보의 수집 및 이용에 동의합니다.</strong></p>
                   
@@ -545,11 +551,13 @@ async function handleSubmit(event) {
         </div>
       </div>
     </div>
-
-    <PlaceholderImage
-      style="flex-shrink: 0; width: 700px; height: 700px"
-      targetPath="logo/join_placeholder.png"
+    <div style="display: flex; ">
+      <PlaceholderImage
+      style="flex-shrink: 0; width: 600px;"
+      targetPath="logo/join.png"
     ></PlaceholderImage>
+    </div>
+    
   </div>
   </div>
 </div>

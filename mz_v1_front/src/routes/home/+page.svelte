@@ -17,7 +17,7 @@
         padding: 32px 0px 0px 0px;
         display: flex;
         flex-direction: column;
-        gap: 64px;
+        gap: 100px;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
@@ -76,7 +76,7 @@
                 justify-content: center;
               "
             >
-              무료로 경험하는
+              <strong>무료로 경험하는</strong>
             </div>
             <div
               style="
@@ -173,20 +173,23 @@
             margin-top: 20px;
           "
         >
-        <img
+        
+        </div>
+        
+      </div>
+      <img
         class="group3"
         style="
           flex-shrink: 0;
-          width: 20%;
+          width: 400px;
           
           position: relative;
           overflow: visible;
+          top: 0px;
         "
         src="/boostcampLogo.jpg"
         alt="boostcamp"
       />
-        </div>
-      </div>
     </div>
   </div>
 

@@ -9,7 +9,7 @@
 
   </script>
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 160px 0px; display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start;  position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 180px; align-items: center; justify-content: flex-start;  position: relative; ' + style}"
   >
   <Header/>
  <div>
@@ -17,7 +17,7 @@
       style="
         display: flex;
         flex-direction: column;
-        gap: 64px;
+        gap: 170px;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
@@ -172,33 +172,22 @@
           position: relative;
         "
       >
-        <div
-          style="
-            display: flex;
-            flex-direction: row;
-            gap: 64px;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            position: relative;
-            margin-top: 20px;
-          "
-        >
+        
 
           <img
             class="group3"
             style="
               flex-shrink: 0;
-              width: 20%;
+              width: 400px;
               height: 100%;
               position: relative;
               overflow: visible;
+              top: -18px;
             "
             src="/boostcampLogo.jpg"
             alt="boostcamp"
           />
 
-        </div>
       </div>
     </div>
   </div>

@@ -56,7 +56,7 @@ style="
     top: 22px;
     "
   >
-    Make Zenerator
+    <strong>Make Zenerator</strong>
   </div>
   <img
     class="{'image-2 ' + className}"

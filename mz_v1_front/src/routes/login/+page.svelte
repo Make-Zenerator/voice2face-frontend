@@ -199,7 +199,7 @@
                   text-align: center;
                   font-family: 'DmSans-Medium', sans-serif;
                   font-size: 18px;
-                  line-height: 40px;
+                  line-height: 30px;
                   font-weight: 500;
                   position: relative;
                   width: 100%;
@@ -253,7 +253,7 @@
                   text-align: center;
                   font-family: 'DmSans-Medium', sans-serif;
                   font-size: 18px;
-                  line-height: 40px;
+                  line-height: 30px;
                   font-weight: 500;
                   position: relative;
                   width: 100%;
