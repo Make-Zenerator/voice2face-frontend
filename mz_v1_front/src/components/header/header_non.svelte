@@ -10,6 +10,13 @@
      a {
     text-decoration: none;
   }
+
+  @font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 </style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,36 +42,35 @@
     overflow: hidden;
   "
 >
-  <div style="flex-shrink: 0; width: 299px; height: 55px; position: static">
-    <a href="/">
+  <a href="/" style="flex-shrink: 0; width: 299px; height: 55px; position: static">
       <div
-      style="
-      color: var(--7b95b7, #6b6b6b);
-      text-align: center;
-      font-family: 'DmSans-Bold', sans-serif;
-      line-height: 28px;
-      font-weight: 400;
-      font-size: 26px;
-      position: absolute;
-      left: 178px;
-      top: 22px;
+    style="
+    color: var(--7b95b7, #6b6b6b);
+    text-align: center;
+    font-family: 'yg-jalnan';
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 20px;
+    position: absolute;
+    left: 170px;
+    top: 27px;
     "
-      >
-        <strong>Make Zenerator</strong>
-      </div>
-      <img href="/"
-        class="{'image-2 ' + className}"
-        style="
-      width: 80px;
-      position: absolute;
-      left: 98px;
-      top: 8.5px;
-      object-fit: cover;
-    "
-        src="logo/logo1.png"
-        alt="logo"
-      /></a>
+  >
+    <strong>Make Zenerator</strong>
   </div>
+  <img
+  class="{'image-2 ' + className}"
+  style="
+    width: 70px;
+    position: absolute;
+    left: 100px;
+    top: 2px;
+    object-fit: cover;
+  "
+  src="./logo/logo1.png"
+  alt="logo"
+/>
+    </a>
   <div
     style="
       display: flex;

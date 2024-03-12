@@ -58,7 +58,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
     style="
       flex-shrink: 0;
       width: 166px;
-      height: 106px;
+
       position: relative;
       object-fit: cover;
       margin-left: auto;

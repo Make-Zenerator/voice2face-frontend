@@ -34,7 +34,7 @@
         font-weight: var(--title-large-font-weight, 700);
         position: relative;
         width: 412px;
-        height: 52px;
+        height: 62px;
       "
     >
       About Us
@@ -65,7 +65,7 @@
       font-weight: var(--title-large-font-weight, 700);
       position: relative;
       width: 412px;
-      height: 112px;
+      height: 32px;
     "
   >
     MZ Members
