@@ -7,10 +7,13 @@
     const variantsClassName = "style-variant-" + styleVariant;
     export let name = "Do something";
     export let type = "";
-    export let result_id= sessionStorage.getItem('id');
+    
 
     async function reRequest() {
+
       const token = sessionStorage.getItem('auth_token');
+      const result_id= sessionStorage.getItem('id');
+
       try {
         const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${result_id}/mz-result`, {
           method: 'POST',

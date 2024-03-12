@@ -178,7 +178,7 @@
             class="group3"
             style="
               flex-shrink: 0;
-              width: 400px;
+              width: 300px;
               height: 100%;
               position: relative;
               overflow: visible;

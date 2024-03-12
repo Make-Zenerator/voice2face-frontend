@@ -10,7 +10,6 @@
     onMount(async () => {
         try{
        token = sessionStorage.getItem('auth_token'); 
-        console.log(token);
 
     }
     catch(error){

@@ -6,19 +6,25 @@
   import StarRating from "../../components/rating/StarRating.svelte";
   import SaveImage from "../../components/button/result_save.svelte";
   import Survey from "../../components/survey/survey.svelte";
+  
   import { onMount } from 'svelte';
   let className = "";
   export { className as class };
   export let style;
-  let gt_stretch_path = "https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1";  
+  let gt_stretch_path_m = "http://223.130.133.236:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
+  let gt_stretch_path_w = "http://223.130.133.236:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
   let results = [];
-  let id = sessionStorage.getItem('id');
-  let latest_id = sessionStorage.getItem('latest_id');
+  let id;
+  let latest_id;
+  let gender;
   let token = null;
+  
   onMount(async () => {
     try{
-       token = sessionStorage.getItem('auth_token'); 
-        console.log(token);
+      token = sessionStorage.getItem('auth_token'); 
+      gender =sessionStorage.getItem('gender');
+      id = sessionStorage.getItem('id');
+      latest_id = sessionStorage.getItem('latest_id');
 
     }
     catch(error){
@@ -453,7 +459,17 @@ style="
                 스트레칭 동영상
               </div>
             </div>
-            <video 
+            {#if gender == "man"} <video 
+            style="
+            width: 393px;
+            height: 393px;
+            position: absolute;
+            left: 0px;
+            top: 105px;
+          "
+       src= {gt_stretch_path_m} type="video/mp4" autoplay loop muted />
+       {:else}
+       <video 
                 style="
                 width: 393px;
                 height: 393px;
@@ -461,7 +477,10 @@ style="
                 left: 0px;
                 top: 105px;
               "
-           src= {gt_stretch_path} type="video/mp4" autoplay loop muted />
+           src= {gt_stretch_path_w} type="video/mp4" autoplay loop muted />
+       
+       {/if}
+            
           </div>
           <div
             style="
