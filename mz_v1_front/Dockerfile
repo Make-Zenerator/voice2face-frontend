@@ -10,4 +10,4 @@ RUN npm install -g pm2
 COPY . ./
 RUN npm run build --port 80
 
-CMD ["pm2-runtime", "start", "./build/index.js", "--env", "production", "--port", "80"]
+CMD ["PORT=80", "pm2-runtime", "start", "./build/index.js", "--env", "production"]
