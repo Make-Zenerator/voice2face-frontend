@@ -30,7 +30,13 @@
 	}]
 
   onMount(() => {
-    token = sessionStorage.getItem('auth_token');
+    try{token = sessionStorage.getItem('auth_token');}
+    catch(error){
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+    }
+    
+
   });
 
 
@@ -55,14 +61,15 @@
         if (response.ok) {
             const data = await response.json();
             alert(`성공적으로 요청했습니다.`);
-            goto(targetPath); // 사용자를 홈 페이지로 리다이렉트
+            goto(targetPath); 
         } else if (response.status === 401){
-          alert("권한 에러");
+          alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+          goto('/');
         } else if (response.status === 400){
           alert("데이터베이스 에러");
         }
         else {
-            const errorResponse = await response.json(); // 에러 응답을 받아 처리
+            const errorResponse = await response.json(); 
             alert(`요청 실패: ${errorResponse.message}`);
             console.log(response);
         }
@@ -73,16 +80,17 @@
 }
 
 
-  let showExample = false; // 초기 상태는 예시 문장을 숨김니다.
+  let showExample = false; 
 
     function toggleExample() {
-    showExample = !showExample; // showExample 값을 토글하여 문장의 표시/숨김을 제어합니다.
+    showExample = !showExample; 
   }
 </script>
 
-<form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
-<div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+<form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 900px; position: relative; ' + style}">
+
+  <div
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 60px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
 >
 
   <Header/>
@@ -95,7 +103,7 @@
       justify-content: center;
       flex-shrink: 0;
       width: 1103px;
-      height: 412px;
+      height: 800px;
       position: relative;
     "
   >
@@ -107,7 +115,7 @@
         align-items: center;
         justify-content: flex-start;
         flex-shrink: 0;
-        height: 423px;
+        height: 800px;
         position: relative;
       "
     >
@@ -119,7 +127,7 @@
           align-items: flex-start;
           justify-content: flex-start;
           flex-shrink: 0;
-          height: 401px;
+          height: 675px;
           position: relative;
         "
       >
@@ -270,7 +278,7 @@
     flex-direction: row;
     gap: 10px;
     align-items: center;
-    justify-content: center; /* 가운데 정렬 */
+    justify-content: center;
     flex-shrink: 0;
     width: 337px;
     height: 46px;
@@ -291,11 +299,11 @@
       line-height: 40px;
       font-weight: 500;
       border: none;
-      width: 100%; /* 입력 상자가 div를 꽉 채우도록 조정 */
-      height: 40px; /* 입력 상자의 높이 조정 */
-      background: transparent; /* 배경색 투명 */
-      -webkit-appearance: none; /* 스타일 초기화 */
-      margin: 0; /* margin 초기화 */
+      width: 100%; 
+      height: 40px; 
+      background: transparent; 
+      -webkit-appearance: none; 
+      margin: 0; 
     "
 
     placeholder="나이 입력" 
@@ -334,7 +342,7 @@
             >
             <VoiceButtonDefaultVariant3 
             on:audioRecorded={(event) => {
-              audioUrl = event.detail; // 오디오 URL을 설정
+              audioUrl = event.detail;
             }} 
             on:progressUpdated={(event) => {progress = event.detail;}}
             on:blobUpdated={(event) => { audioBlob = event.detail; }}
@@ -357,19 +365,15 @@
               2. 조용한 장소에서 녹음해주세요 <br/>
               3. 마이크를 누르면 3초 뒤 녹음을 시작합니다 <br/>
               4. 15초 동안 아무 말이나 해주세요 <br />
-              <strong><span style="color: red;">5. 생성 횟수는 5회로 제한합니다.</span></strong>
             </div>
-            <button type ="button" style="color: gray;" on:click={toggleExample}><strong>예시 문장 보기</strong></button> 
-
-              {#if showExample} <!-- showExample이 true일 때만 아래 문장을 표시 -->
+            
               <div>
-                <!-- 여기에 표시하고 싶은 내용을 작성합니다. -->
+                <p>예시문장</p>
                 <p>안녕하세요, 저희는 엠지 팀입니다.</p>
                 <p>현재 목소리를 통해 얼굴을 만들어주는 </p>
                 <p>프로젝트를 진행하고 있습니다.</p>
                 <p>내 목소리의 또 다른 나를 만들어보세요!</p>
               </div>
-              {/if}
           </div>
         </div>
       </div>
