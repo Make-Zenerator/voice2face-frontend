@@ -355,7 +355,7 @@
         
         <p><strong>1. 수집하는 개인정보의 항목:</strong></p>
         <ul>
-            <li>- 전화번호</li>
+            <li>- 이메일</li>
         </ul>
         <p><strong>2. 개인정보의 수집 및 이용 목적:</strong></p>
         <ul>
@@ -372,8 +372,8 @@
             <p class="question"> 본인은 위와 같이 개인정보 수집 및 이용에 동의 합니다.</p>
             <Radio options={agree} fontSize={20} legend='' bind:userSelected={agree2} />
         {#if agree2} 
-            <p class="question"> 전화번호 입력</p>
-            <input class="t_box" style="width: 50%;"type="text" placeholder='010-XXXX-XXXX' bind:value={call_number} />
+            <p class="question"> 이메일 입력</p>
+            <input class="t_box" style="width: 50%;"type="text" placeholder='makezenerator@gmail.com' bind:value={call_number} />
         {/if}
         <br>
         
@@ -400,3 +400,24 @@
     </button>
     </div>
 </form>
+
+
+
+
+안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br >
+    <span><strong>Voice2Face</strong></span>를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
+    <br />
+    저희는 온라인 상에서 얼굴을 드러내고 싶지 않은 사람들에게 목소리를 기반으로 생성한 얼굴을 제공하여,
+    <br />
+    목소리와 이미지 간의 이질감을 없애고 사생활을 보장받으며 온라인 상에서 활동할 수 있도록 하는 서비스를 제공하고자 합니다.
+    <br>
+    저희는 사용자의 목소리를 바탕으로 현실적인 얼굴을 만드는 것을 목표로 서비스를 고도화 하고 있습니다. <br>
+    <br /><br />
+    서비스 품질 향상을 위해 지금까지의 서비스 이용 경험을 바탕으로 아래의 설문 조사에 참여해주시면 감사드리겠습니다.
+    <br />
+    설문 예상 소요 시간은 <span><strong>약 5분 내외</strong></span>이며  
+    <br /> 
+    참여하신 분들 중 추첨을 통해 5분께 <span><strong>스타벅스 카페 아메리카노</strong></span> 기프티콘을 드릴 예정입니다
+    <br />
+    생성된 이미지 결과별로 설문 가능합니다. 많이 작성해주시면 확률이 올라갑니다.
+    <br />
