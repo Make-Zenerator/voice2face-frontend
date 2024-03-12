@@ -183,7 +183,7 @@
               overflow: visible;
               top: -18px;
             "
-            src="/boostcampLogo.jpg"
+            src="/logo/boostcampLogo.jpg"
             alt="boostcamp"
           />
 
