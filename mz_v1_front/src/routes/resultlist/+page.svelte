@@ -14,7 +14,7 @@
     const token = sessionStorage.getItem('auth_token'); 
 
     
-    const response = await fetch('http://175.45.194.59:5050/api/v1/mz-request', {
+    const response = await fetch('http://api.makezenerator.com/api/v1/mz-request', {
       method: 'GET',
       headers: {
         'Token': token,

@@ -58,7 +58,7 @@ async function handleSubmit(event) {
 
     // 폼 데이터를 JSON으로 서버에 전송
     try {
-      const response = await fetch('http://175.45.194.59:5050/api/v1/users', {
+      const response = await fetch('http://api.makezenerator.com/api/v1/users', {
         method: 'POST',
         body: formData,
       });

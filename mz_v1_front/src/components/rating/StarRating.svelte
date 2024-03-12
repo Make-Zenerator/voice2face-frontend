@@ -57,7 +57,7 @@
 	formData.append('rating',rating);
 	
     try {
-        const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${result_id}/mz-result/${latest_id}`, {
+        const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${result_id}/mz-result/${latest_id}`, {
             method: 'PATCH',
             headers: {
                 'Token': token,

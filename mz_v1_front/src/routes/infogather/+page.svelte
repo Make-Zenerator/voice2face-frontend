@@ -44,7 +44,7 @@
   }
 
     try{
-        const response = await fetch('http://175.45.194.59:5050/api/v1/mz-request', {
+        const response = await fetch('http://api.makezenerator.com/api/v1/mz-request', {
             method: 'POST',
             headers: {
                 'Token': token,
