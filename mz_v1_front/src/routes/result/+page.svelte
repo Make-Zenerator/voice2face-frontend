@@ -8,6 +8,8 @@
   import Survey from "../../components/survey/survey.svelte";
   
   import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
+
   let className = "";
   export { className as class };
   export let style;
@@ -68,10 +70,10 @@ style="
   display: flex;
   flex-direction: column;
   gap: 30px;
-  align-items: center; /* 가로축 중앙 정렬 */
-  justify-content: flex-start; /* 세로축 시작 지점부터 요소 쌓기 */
-  width: 100%; /* div의 너비를 지정하거나 부모 요소에 맞춤 */
-  height: auto; /* div의 높이를 내용물에 맞춤 */
+  align-items: center; 
+  justify-content: flex-start; 
+  width: 100%; 
+  height: auto;
   position: relative;
 "
 >
@@ -81,7 +83,6 @@ style="
     style="
       flex-shrink: 0;
       width: 196px;
-      height: 120px;
       position: relative;
       object-fit: cover;
     "
@@ -655,23 +656,23 @@ style="
         >
           설문조사
         </div>
+
   <div style="text-align:center; font-size: 20pt; "> 
     안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br >
     <span><strong>Voice2Face</strong></span>를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
-    <br />
+    <br><br>
     저희는 온라인 상에서 얼굴을 드러내고 싶지 않은 사람들에게 목소리를 기반으로 생성한 얼굴을 제공하여, 
     <br />
     목소리와 이미지 간의 이질감을 없애고 사생활을 보장받으며 온라인 상에서 활동할 수 있도록 하는 서비스를 제공하고자 합니다.
     <br>
-    저희는 사용자의 목소리를 바탕으로 현실적인 얼굴을 만드는 것을 목표로 서비스를 고도화 하고 있습니다. <br>
-    <br /><br />
+    <br />
     서비스 품질 향상을 위해 지금까지의 서비스 이용 경험을 바탕으로 아래의 설문 조사에 참여해주시면 감사드리겠습니다.
     <br />
     설문 예상 소요 시간은 <span><strong>약 5분 내외</strong></span>이며  
     <br /> 
     참여하신 분들 중 추첨을 통해 5분께 <span><strong>스타벅스 카페 아메리카노</strong></span> 기프티콘을 드릴 예정입니다.
     <br />
-    생성된 이미지 결과별로 설문 가능합니다. (많이 작성해주시면 확률이 올라갑니다.)
+    (설문은 생성된 이미지 결과별로 제출할 수 있습니다.)
     </div>
 
     <div 
@@ -685,7 +686,7 @@ style="
     ">
     <div style="items-align:center; ">
       
-      <Survey survey_id={id} survey_latest_id={latest_id} />
+      <Survey survey_id={id} survey_latest_id={latest_id} star_rating= {star_rating} />
     </div>
 
     
