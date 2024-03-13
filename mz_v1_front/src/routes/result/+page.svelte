@@ -33,7 +33,7 @@
       alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
       goto('/');
     }
-    const response = await fetch(`http://175.45.194.59:5050/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
+    const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
       method: 'GET',
       headers: {
                 'Token': token,
@@ -44,6 +44,7 @@
     if (response.ok) {
       const data = await response.json();
       results = data.mz_result; 
+      console.log(` survey: ${results.survey}`);
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
     } else if (response.status === 401) {
@@ -686,7 +687,7 @@ style="
     ">
     <div style="items-align:center; ">
       
-      <Survey survey_id={id} survey_latest_id={latest_id} star_rating= {star_rating} />
+      <Survey survey_id={id} survey_latest_id={latest_id} />
     </div>
 
     
