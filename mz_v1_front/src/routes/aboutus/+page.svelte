@@ -54,7 +54,7 @@
     안녕하세요! <br>
     사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스,<br>
     Voice2Face를 개발 중인 Make Zenerator 팀입니다. <br>
-    (문의&불편사항: mz140103@gmail.com)<br>
+    (문의&불편사항: mz240103@gmail.com)<br>
 
 
     </div>
