@@ -213,7 +213,7 @@ style="
             "
           >
           <StarRating ABtype='voice' result_id={id} latest_id={latest_id} />
-          <SaveImage targetImage= {results.voice_image_url}/>
+          <SaveImage targetImage= {results.voice_image_url} fileName="voice"/>
             
           </div>
             
@@ -326,7 +326,7 @@ style="
             "
           >
           <StarRating ABtype= 'condition' result_id={id} latest_id={latest_id}/>
-          <SaveImage targetImage={results.condition_image_url} />
+          <SaveImage targetImage={results.condition_image_url} fileName="condition"/>
             
           </div>
             

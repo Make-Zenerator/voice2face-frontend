@@ -45,7 +45,6 @@
     formData.append('age', info_age);
     formData.append('gender', info_gender);
     if (audioBlob) {
-      console.log(typeof(audioBlob));
     formData.append('file', audioBlob, 'svelte_audio.wav');
   }
 
