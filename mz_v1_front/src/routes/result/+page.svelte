@@ -6,13 +6,9 @@
   import StarRating from "../../components/rating/StarRating.svelte";
   import SaveImage from "../../components/button/result_save.svelte";
   import Survey from "../../components/survey/survey.svelte";
-  
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
 
-  let className = "";
-  export { className as class };
-  export let style;
   let gt_stretch_path_m = "http://223.130.133.236:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
   let gt_stretch_path_w = "http://223.130.133.236:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
   let results = [];

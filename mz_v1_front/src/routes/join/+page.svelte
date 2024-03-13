@@ -5,9 +5,6 @@
   import Radio from "./radio.svelte"
   import { goto } from '$app/navigation';
   export let targetPath = "/";
-  let className = "";
-  export { className as class };
-  export let style;
   let join_email;
   let join_pswd;
   let join_check;
@@ -84,9 +81,9 @@ async function handleSubmit(event) {
     display: none;
 }
 </style>
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: auto; position: relative; ' + style}">
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: auto; position: relative; ' }">
 <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1200px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 85px 0px; display: flex; flex-direction: column; gap: 99px; align-items: center; justify-content: flex-start; height: 1200px; position: relative; ' }"
 >
  <Header/>
   <div

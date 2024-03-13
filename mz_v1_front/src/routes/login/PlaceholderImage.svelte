@@ -3,10 +3,6 @@
     export { className as class };
     export let style;
     export let src = 'logo/login_image.webp'
-  //   export let targetPath = "/";
-  // function handleClick() {
-  //   goto(targetPath); // 버튼 클릭 시 targetPath로 이동
-  // }
   </script>
   <img
     class="{'placeholder-image ' + className}"

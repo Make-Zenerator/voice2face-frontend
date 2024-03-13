@@ -4,7 +4,6 @@
 
     let className = "";
     export { className as class };
-    export let style;
 
 
     function handleLogout() {

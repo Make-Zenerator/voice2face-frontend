@@ -1,8 +1,6 @@
 <script>
   
     export let styleVariant = "outlined";
-    let className = "";
-    export { className as class };
     export let style;
     const variantsClassName = "style-variant-" + styleVariant;
     export let name = "Do something";

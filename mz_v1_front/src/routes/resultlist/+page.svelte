@@ -3,9 +3,6 @@
   import Header from "../../components/header/header_login.svelte";
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  let className = "";
-  export { className as class };
-  export let style;
   import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell} from 'flowbite-svelte';
 
   let items = [];
@@ -49,9 +46,9 @@
 
 
 <div
-style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 70px; align-items: center; justify-content: flex-start; min-height: 100vh; position: relative ' + style}"
+style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 70px; align-items: center; justify-content: flex-start; min-height: 100vh; position: relative ' }"
 >
-<Header></Header>
+<Header />
 <div>
   <img
     class="image-22"
@@ -65,6 +62,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
       margin-right: auto;
     "
     src="./logo/logo1.png"
+    alt="logo"
   />
   <div
     style="
@@ -90,11 +88,6 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
         flex-shrink: 0;
         width: 1400px;
         font-size: 14pt;
-        <!-- height: 120px; -->
-        <!-- position: relative; -->
-        <!-- object-fit: cover; -->
-        <!-- margin-left: auto; -->
-        <!-- margin-right: auto; -->
     ">
     <TableHead>
       <TableHeadCell style="width: 15%; font-size:14pt;">요청 시간</TableHeadCell>
@@ -112,7 +105,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
           <TableBodyCell>
             {#if item.updated_at != null} {item.updated_at}{/if}
           </TableBodyCell>
-          <TableBodyCell>{item.gender}</TableBodyCell>
+          <TableBodyCell>{#if item.gender == "man" } 남성 {:else } 여성 {/if} </TableBodyCell>
           <TableBodyCell>{item.age}</TableBodyCell>
 
           <TableBodyCell>

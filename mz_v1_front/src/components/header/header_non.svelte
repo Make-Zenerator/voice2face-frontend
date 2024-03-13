@@ -2,7 +2,6 @@
     import ButtonStyleFilled from "../../routes/join/ButtonStyleFilled.svelte";
     let className = "";
     export { className as class };
-    export let style;
 
     
   </script>

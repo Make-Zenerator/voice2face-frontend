@@ -2,12 +2,9 @@
     import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
     import HeaderLogin from "../../components/header/header_login.svelte";
     import PlaceholderImage from "../join/PlaceholderImage.svelte";
-    let className = "";
-    export { className as class };
-    export let style;
   </script>
   <div
-    style="{'background: var(--neutral-0, #ffffff); display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+    style="{'background: var(--neutral-0, #ffffff); display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 845px; position: relative; '}"
   >
    <HeaderLogin />
     <div
@@ -106,7 +103,7 @@
                     <span class="div-2-span3">
                       생성 요청했습니다.
                       <br />
-                      예상 소요시간은 ~분 입니다.
+                      예상 소요시간은 5~10분 입니다.
                     </span>
                   </span>
                 </div>
@@ -133,7 +130,7 @@
           </div>
           <PlaceholderImage
             style="flex-shrink: 0; width: 405px; height: 405px"
-            filename="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2VuaGd0ZzVtejhvbnQ5YTUzYmQ3ZGpqanQ2MWU2MG9uMWgyMjM0dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEjI6SIIHBdRxXI40/giphy.gif"
+            targetPath="/logo/loading.png"
           ></PlaceholderImage>
         </div>
       </div>

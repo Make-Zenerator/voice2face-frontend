@@ -4,9 +4,6 @@
   import Header from "../../components/header/header_non.svelte";
   import { goto } from '$app/navigation';
 
-  let className = "";
-  export { className as class };
-  export let style;
   let login_email;
   let login_pswd;
   let targetPath = "/home";
@@ -45,9 +42,9 @@
 
 
 </script>
-<form on:submit|preventDefault={login} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}">
+<form on:submit|preventDefault={login} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 845px; position: relative; '}">
 <div
-  style="{'background: var(--neutral-0, #ffffff); display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff); display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' }"
 >
   <Header/>
   <div
