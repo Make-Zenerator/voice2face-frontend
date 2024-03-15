@@ -7,16 +7,10 @@
     
     let token = null;
 
-    onMount(async () => {
-        try{
-       token = sessionStorage.getItem('auth_token'); 
 
-    }
-    catch(error){
-      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
-      goto('/');
-    }
-    });
+    token = sessionStorage.getItem('auth_token'); 
+
+
 
     const SNS_time =[
         {value: 0, label: '1시간 미만'},
