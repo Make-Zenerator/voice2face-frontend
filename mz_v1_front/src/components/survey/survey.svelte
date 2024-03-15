@@ -136,7 +136,7 @@
 
 
     try {
-      const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${survey_id}/mz-result/${survey_latest_id}`, {
+      const response = await fetch(`https://api.makezenerator.com/api/v1/mz-request/${survey_id}/mz-result/${survey_latest_id}`, {
         method: 'POST',
         headers: {
             'Token':token,

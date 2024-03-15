@@ -51,7 +51,7 @@ async function handleSubmit(event) {
     
 
     try {
-      const response = await fetch('http://api.makezenerator.com/api/v1/users', {
+      const response = await fetch('https://api.makezenerator.com/api/v1/users', {
         method: 'POST',
         body: formData,
       });

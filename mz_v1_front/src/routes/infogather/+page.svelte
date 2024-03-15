@@ -53,7 +53,7 @@
   }
 
     try{
-        const response = await fetch('http://api.makezenerator.com/api/v1/mz-request', {
+        const response = await fetch('https://api.makezenerator.com/api/v1/mz-request', {
             method: 'POST',
             headers: {
                 'Token': token,

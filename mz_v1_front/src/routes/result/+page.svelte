@@ -29,7 +29,7 @@
       alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
       goto('/');
     }
-    const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
+    const response = await fetch(`https://api.makezenerator.com/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
       method: 'GET',
       headers: {
                 'Token': token,
