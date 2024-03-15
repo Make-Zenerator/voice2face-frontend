@@ -1,14 +1,19 @@
 <script>
-    export let targetImage = "target_image_path.jpg";
+    export let targetImage = "/join/placeholder-image2.svg";
+    export let fileName = "default";
     
-    function downloadImage() {
+    async function downloadImage() {
+    const response = await fetch(targetImage);
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = targetImage;
-    a.download = targetImage.split('/').pop(); // 원하는 파일 이름으로 변경하세요.
+    a.href = url;
+    a.download = fileName+"."+targetImage.split('.').pop();
     document.body.appendChild(a);
     a.click();
+    window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
-  }
+}
 </script>
 
 <img on:click={downloadImage}

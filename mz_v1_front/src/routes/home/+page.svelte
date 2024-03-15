@@ -2,8 +2,11 @@
     import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
     import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
     import Header from "../../components/header/header_login.svelte";
+    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
 
-    
+
+
   </script>
   <div
     style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 180px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' }"

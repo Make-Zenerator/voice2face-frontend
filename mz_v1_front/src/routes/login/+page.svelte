@@ -14,7 +14,7 @@
     formData.append('password', login_pswd);
 
     try{
-        const response = await fetch('http://api.makezenerator.com/api/v1/auth', {
+        const response = await fetch('https://api.makezenerator.com/api/v1/auth', {
             method: 'POST',
             body: formData,
         });

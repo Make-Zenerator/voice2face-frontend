@@ -15,7 +15,7 @@
       const result_id= sessionStorage.getItem('id');
 
       try {
-        const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${result_id}/mz-result`, {
+        const response = await fetch(`https://api.makezenerator.com/api/v1/mz-request/${result_id}/mz-result`, {
           method: 'POST',
           headers: {
             'Token': token,

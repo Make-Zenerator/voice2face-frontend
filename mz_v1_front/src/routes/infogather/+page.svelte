@@ -9,6 +9,8 @@
   export let style;
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
+  import Modal from "../../components/modal/basic_modal.svelte";
+  
 
   export let targetPath = "/loading";
 
@@ -21,6 +23,8 @@
   let audioUrl = '';
   let audioBlob= null;
   let token; 
+  let showModal = true;
+  
   const options = [{
 		value: 'man',
 		label: '남',
@@ -30,13 +34,13 @@
 	}]
 
   onMount(() => {
-    try{token = sessionStorage.getItem('auth_token');}
+    try{
+      token = sessionStorage.getItem('auth_token');
+    }
     catch(error){
       alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
       goto('/');
     }
-    
-
   });
 
 
@@ -45,12 +49,11 @@
     formData.append('age', info_age);
     formData.append('gender', info_gender);
     if (audioBlob) {
-      console.log(typeof(audioBlob));
     formData.append('file', audioBlob, 'svelte_audio.wav');
   }
 
     try{
-        const response = await fetch('http://api.makezenerator.com/api/v1/mz-request', {
+        const response = await fetch('https://api.makezenerator.com/api/v1/mz-request', {
             method: 'POST',
             headers: {
                 'Token': token,
@@ -90,7 +93,7 @@
 <form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 900px; position: relative; ' + style}">
 
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 60px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
 >
 
   <Header/>
@@ -359,12 +362,15 @@
                 <audio controls src = {audioUrl}></audio>
               {/if}
             </div>
-            <div>
-              <strong>주의사항</strong><br/>
-              1. 마이크가 제대로 작동하는지 확인해주세요 <br/>
-              2. 조용한 장소에서 녹음해주세요 <br/>
-              <strong style="color:red">3. 마이크를 누르면 1초 뒤 녹음을 시작합니다 </strong><br/>
-              4. 15초 동안 아무 말이나 해주세요 <br />
+            <div >
+              <strong>주의사항</strong><br>
+              1. 마이크가 제대로 작동하는지 확인해주세요 <br>
+              2. 조용한 장소에서 녹음해주세요 <br>
+              3. 마이크를 누르면 <strong>1초 뒤</strong> 녹음을 시작합니다.<br>
+              4. 15초 동안 아무 말이나 해주세요 <br>
+              5. <strong>목소리 주인공</strong>의 성별과 나이를 입력해주세요. <br>
+              
+
             </div>
             
               <div>
@@ -445,7 +451,8 @@
             align-self: stretch;
           "
         >
-          나의 성별, 나이, 목소리를 입력해주세요
+          나의 성별, 나이, 목소리를 입력해주세요 <br>
+          (베타 테스트로 나이는 <strong>20~50세</strong>까지 설정 가능합니다.)
         </div>
       </div>
       <div
@@ -475,3 +482,16 @@
   </div>
 </div>
 </form>
+
+
+<Modal bind:showModal>
+
+  <ol class="definition-list" style="font-size: 14pt;">
+    <li>1. 마이크가 제대로 작동하는지 확인해주세요.</li>
+    <li>2. 조용한 장소에서 녹음해주세요.</li>
+    <li>3. 마이크를 누르면 <strong>1초 뒤</strong> 녹음을 시작합니다.</li>
+    <li>4. 15초 동안 아무 말이나 해주세요.</li>
+    <li>5. <strong>목소리 주인공</strong>의 성별과 나이를 입력해주세요.</li>
+    <li>(베타 테스트로 나이는 <strong>20~50세</strong> 까지 설정 가능합니다)</li>
+  </ol>
+</Modal>

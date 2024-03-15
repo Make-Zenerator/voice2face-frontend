@@ -7,7 +7,6 @@
   import SaveImage from "../../components/button/result_save.svelte";
   import Survey from "../../components/survey/survey.svelte";
   import { onMount } from 'svelte';
-  import { goto } from '$app/navigation';
 
   let gt_stretch_path_m = "http://223.130.133.236:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
   let gt_stretch_path_w = "http://223.130.133.236:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
@@ -18,18 +17,13 @@
   let token = null;
   
   onMount(async () => {
-    try{
       token = sessionStorage.getItem('auth_token'); 
       gender =sessionStorage.getItem('gender');
       id = sessionStorage.getItem('id');
       latest_id = sessionStorage.getItem('latest_id');
 
-    }
-    catch(error){
-      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
-      goto('/');
-    }
-    const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
+    
+    const response = await fetch(`https://api.makezenerator.com/api/v1/mz-request/${id}/mz-result/${latest_id}`, {
       method: 'GET',
       headers: {
                 'Token': token,
@@ -213,7 +207,7 @@ style="
             "
           >
           <StarRating ABtype='voice' result_id={id} latest_id={latest_id} />
-          <SaveImage targetImage= {results.voice_image_url}/>
+          <SaveImage targetImage= {results.voice_image_url} fileName="voice"/>
             
           </div>
             
@@ -326,7 +320,7 @@ style="
             "
           >
           <StarRating ABtype= 'condition' result_id={id} latest_id={latest_id}/>
-          <SaveImage targetImage={results.condition_image_url} />
+          <SaveImage targetImage={results.condition_image_url} fileName="condition"/>
             
           </div>
             
