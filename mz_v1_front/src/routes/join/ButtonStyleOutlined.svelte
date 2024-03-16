@@ -24,7 +24,7 @@
         color: var(--neutral-10, #6b6b6b);
         text-align: left;
         font-family: var(--body-small-font-family, 'DmSans-Regular', sans-serif);
-        font-size: var(--body-small-font-size, 24px);
+        font-size: var(--body-small-font-size, 22px);
         line-height: var(--body-small-line-height, 24px);
         font-weight: var(--body-small-font-weight, 400);
         position: relative;

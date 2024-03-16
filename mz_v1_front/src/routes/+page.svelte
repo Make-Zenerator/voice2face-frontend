@@ -25,11 +25,11 @@
         style="
           display: flex;
           flex-direction: row;
-          gap: 40px;
+          gap: 110px;
           align-items: center;
-          justify-content: flex-start;
+          justify-content: flex-end;
           flex-shrink: 0;
-          width: 1216px;
+          width: 1200px;
           position: relative;
         "
       >
@@ -153,7 +153,7 @@
           </div>
         </div>
         <video autoplay loop muted style="width:40% ">
-          <source src="http://223.130.133.236:9000/voice2face-public/site/main/main_sample.mp4" type="video/mp4">
+          <source src="https://make-generator.s3.ap-northeast-2.amazonaws.com/home/main_sample.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
