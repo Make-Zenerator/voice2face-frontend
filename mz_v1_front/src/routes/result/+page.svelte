@@ -8,8 +8,8 @@
   import Survey from "../../components/survey/survey.svelte";
   import { onMount } from 'svelte';
 
-  let gt_stretch_path_m = "http://223.130.133.236:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
-  let gt_stretch_path_w = "http://223.130.133.236:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
+  let gt_stretch_path_m = "https://make-generator.s3.ap-northeast-2.amazonaws.com/home/tae_24fps_square.mp4"; 
+  let gt_stretch_path_w = "https://make-generator.s3.ap-northeast-2.amazonaws.com/home/hj_24fps_square.mp4"; 
   let results = [];
   let id;
   let latest_id;
@@ -648,7 +648,7 @@ style="
           설문조사
         </div>
 
-  <div style="text-align:center; font-size: 20pt; "> 
+  <div style="text-align:center; font-size: 18pt; "> 
     안녕하세요! 사용자의 목소리를 기반으로 가상의 얼굴을 생성하는 서비스, <br >
     <span><strong>Voice2Face</strong></span>를 개발 중인 <span><strong>Make Zenerator</strong></span>팀입니다.
     <br><br>

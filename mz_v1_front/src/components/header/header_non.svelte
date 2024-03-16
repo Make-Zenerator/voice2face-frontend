@@ -28,7 +28,7 @@
     background: var(--neutral-0, #ffffff);
     border-style: solid;
     border-color: var(--neutral-2, #dee5ed);
-    border-width: 0px 0px 1px 0px;
+    border-width: 0px 0px 0.5px 0px;
     padding: 8px 98px 8px 98px;
     display: flex;
     flex-direction: row;
@@ -41,6 +41,7 @@
     overflow: hidden;
   "
 >
+<div>
   <a href="/" style="flex-shrink: 0; width: 299px; height: 55px; position: static">
       <div
     style="
@@ -49,10 +50,10 @@
     font-family: 'yg-jalnan';
     line-height: 28px;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 22px;
     position: absolute;
     left: 170px;
-    top: 27px;
+    top: 23px;
     "
   >
     <strong>Make Zenerator</strong>
@@ -63,13 +64,14 @@
     width: 70px;
     position: absolute;
     left: 100px;
-    top: 2px;
+    top: 0px;
     object-fit: cover;
   "
   src="./logo/logo1.png"
   alt="logo"
 />
     </a>
+    </div>
   <div
     style="
       display: flex;
@@ -107,7 +109,7 @@
       'DmSans-Regular',
       sans-serif
     );
-    font-size: var(--body-small-font-size, 24px);
+    font-size: var(--body-small-font-size, 22px);
     line-height: var(--body-small-line-height, 24px);
     font-weight: var(--body-small-font-weight, 400);
     position: relative;
