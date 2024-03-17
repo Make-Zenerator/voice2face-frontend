@@ -41,7 +41,7 @@
 
         setTimeout(() => {
           mediaRecorder.stop();
-        }, 15100); 
+        }, 10100); 
       }, 1000);
       
     } catch (err) {
