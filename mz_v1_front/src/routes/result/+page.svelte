@@ -34,7 +34,6 @@
     if (response.ok) {
       const data = await response.json();
       results = data.mz_result; 
-      console.log(` survey: ${results.survey}`);
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
     } else if (response.status === 401) {
@@ -609,6 +608,8 @@ style="
       <div
         style="display: flex; items-align: center; justify-contents: center ; gap: 50px;  position: static"
       >
+      
+      {#if results.updatedat == null}
         <RequestFilled
           styleVariant="filled"
           style="
@@ -617,6 +618,7 @@ style="
           "
           name="다시 생성하기"
         ></RequestFilled>
+      {/if}
         <ButtonStyleFilled
           styleVariant="filled"
           style="
