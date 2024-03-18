@@ -354,7 +354,7 @@
             <Progressbar {progress}
             animate
             precision={2}
-            tweenDuration={15100}
+            tweenDuration={10100}
             easing={sineOut}
             size="h-6" />
           
