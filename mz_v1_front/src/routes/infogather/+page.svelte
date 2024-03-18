@@ -93,7 +93,7 @@
 <form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 900px; position: relative; ' + style}">
 
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; height: 845px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; position: relative; ' + style}"
 >
 
   <Header/>
@@ -106,7 +106,7 @@
       justify-content: center;
       flex-shrink: 0;
       width: 1103px;
-      height: 800px;
+      height: 700px;
       position: relative;
     "
   >
@@ -362,18 +362,19 @@
                 <audio controls src = {audioUrl}></audio>
               {/if}
             </div>
-            <div >
+            <div style="line-height: 18pt;">
               <strong>주의사항</strong><br>
-              1. 마이크가 제대로 작동하는지 확인해주세요 <br>
-              2. 조용한 장소에서 녹음해주세요 <br>
+              1. 마이크가 제대로 작동하는지 확인해주세요. <br>
+              2. 조용한 장소에서 녹음해주세요. <br>
               3. 마이크를 누르면 <strong>1초 뒤</strong> 녹음을 시작합니다.<br>
-              4. 10초 동안 아무 말이나 해주세요 <br>
+              4. 10초 동안 아무 말이나 해주세요. <br>
               5. <strong>목소리 주인공</strong>의 성별과 나이를 입력해주세요. <br>
+              6. 생성 횟수는 <strong>5회</strong>로 제한합니다.
               
 
             </div>
             
-              <div>
+              <div style="line-height: 18pt;">
                 <p><strong>예시문장</strong></p>
                 <p>안녕하세요, 저희는 엠지 팀입니다.</p>
                 <p>현재 목소리를 통해 얼굴을 만들어주는 </p>
@@ -451,8 +452,8 @@
             align-self: stretch;
           "
         >
-          나의 성별, 나이, 목소리를 입력해주세요 <br>
-          (베타 테스트로 나이는 <strong>20~50세</strong>까지 설정 가능합니다.)
+          나의 성별, 나이, 목소리를 입력해주세요. <br>
+          (베타 테스트 단계로 나이는 <strong>20~50세</strong>까지 설정 가능합니다.)
         </div>
       </div>
       <div
@@ -486,12 +487,13 @@
 
 <Modal bind:showModal>
 
-  <ol class="definition-list" style="font-size: 14pt;">
+  <ol class="definition-list" style="font-size: 14pt; line-height: 18pt;">
     <li>1. 마이크가 제대로 작동하는지 확인해주세요.</li>
     <li>2. 조용한 장소에서 녹음해주세요.</li>
     <li>3. 마이크를 누르면 <strong>1초 뒤</strong> 녹음을 시작합니다.</li>
-    <li>4. 15초 동안 아무 말이나 해주세요.</li>
+    <li>4. 10초 동안 아무 말이나 해주세요.</li>
     <li>5. <strong>목소리 주인공</strong>의 성별과 나이를 입력해주세요.</li>
-    <li>(베타 테스트로 나이는 <strong>20~50세</strong> 까지 설정 가능합니다)</li>
+    <li>6. 생성 횟수는 <strong>5회</strong>로 제한합니다.</li>
+    <li>(베타 테스트 단계로 나이는 <strong>20~50세</strong> 까지 설정 가능합니다.)</li>
   </ol>
 </Modal>

@@ -110,9 +110,9 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
           <TableBodyCell>{item.age}</TableBodyCell>
 
           <TableBodyCell>
-            {#if item.status == null}<img src = "/resultlist/생성중.png" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
+            {#if item.status == "Proceeding"}<img src = "/resultlist/생성중.png" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%; " alt="생성 중"/>
             {:else if item.status == "Success"}<img src = "/resultlist/생성완료.png" style="width: 100%; height: 100%; max-width: 100%; max-height: 100%;" alt="생성 완료"/>
-            {:else}<img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
+            {:else} <img src = "/resultlist/생성실패.png "style="width: 100%; height: 45%; max-width: 100%; max-height: 100%;" alt="생성 실패"/>
             {/if}
           </TableBodyCell>
           <TableBodyCell>

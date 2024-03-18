@@ -609,7 +609,7 @@ style="
         style="display: flex; items-align: center; justify-contents: center ; gap: 50px;  position: static"
       >
       
-      {#if results.updatedat == null}
+      {#if results.updated_at == null}
         <RequestFilled
           styleVariant="filled"
           style="
