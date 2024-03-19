@@ -138,7 +138,7 @@
           
           <PlaceholderImage
             style="flex-shrink: 0;"
-            targetPath="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/hojun.jpg"
+            targetPath="https://storage.makezenerator.com:9000/voice2face-public/site/aboutus/hojun.jpg"
           ></PlaceholderImage>
         </div>
         <div
@@ -182,7 +182,7 @@
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/taeyang916"></SocialProperty1Github>
           <PlaceholderImage
             style="flex-shrink: 0;"
-            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/taeyang.jpg "
+            targetPath=" https://storage.makezenerator.com:9000/voice2face-public/site/aboutus/taeyang.jpg "
           ></PlaceholderImage>
         </div>
         <div
@@ -226,7 +226,7 @@
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/soyoonjeong"></SocialProperty1Github>
           <PlaceholderImage
             style="flex-shrink: 0;"
-            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/soyoon.jpg "
+            targetPath=" https://storage.makezenerator.com:9000/voice2face-public/site/aboutus/soyoon.jpg "
           ></PlaceholderImage>
         </div>
       </div>
@@ -282,7 +282,7 @@
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/carboxaminoo"></SocialProperty1Github>
           <PlaceholderImage
             style="flex-shrink: 0;"
-            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/haeji.jpg "
+            targetPath=" https://storage.makezenerator.com:9000/voice2face-public/site/aboutus/hyeji.jpg "
           ></PlaceholderImage>
         </div>
         <div
@@ -326,7 +326,7 @@
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/dlatjgus0612"></SocialProperty1Github>
           <PlaceholderImage
             style="flex-shrink: 0;"
-            targetPath="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/seohyun.jpg"
+            targetPath="https://storage.makezenerator.com:9000/voice2face-public/site/aboutus/seohyun.jpg"
           ></PlaceholderImage>
         </div>
         <div
@@ -370,7 +370,7 @@
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/jouhy"></SocialProperty1Github>
           <PlaceholderImage
             style="flex-shrink: 0;"
-            targetPath=" https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/juhy.jpg "
+            targetPath=" https://storage.makezenerator.com:9000/voice2face-public/site/aboutus/juhy.jpg "
           ></PlaceholderImage>
         </div>
       </div>

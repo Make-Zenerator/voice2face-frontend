@@ -8,8 +8,8 @@
   import Survey from "../../components/survey/survey.svelte";
   import { onMount } from 'svelte';
 
-  let gt_stretch_path_m = "https://make-generator.s3.ap-northeast-2.amazonaws.com/home/tae_24fps_square.mp4"; 
-  let gt_stretch_path_w = "https://make-generator.s3.ap-northeast-2.amazonaws.com/home/hj_24fps_square.mp4"; 
+  let gt_stretch_path_m = "https://storage.makezenerator.com:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
+  let gt_stretch_path_w = "https://storage.makezenerator.com:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
   let results = [];
   let id;
   let latest_id;

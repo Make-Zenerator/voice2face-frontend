@@ -153,7 +153,7 @@
           </div>
         </div>
         <video autoplay loop muted style="width:40% ">
-          <source src="https://make-generator.s3.ap-northeast-2.amazonaws.com/home/main_sample.mp4" type="video/mp4">
+          <source src="https:/storage.makezenerator.com:9000/voice2face-public/site/main/main_sample.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
