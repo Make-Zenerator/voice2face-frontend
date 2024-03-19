@@ -70,6 +70,8 @@
           goto('/');
         } else if (response.status === 400){
           alert("데이터베이스 에러");
+        } else if (response.status === 404){
+          alert("생성횟수가 5회 초과하여 요청실패 되었습니다.")
         }
         else {
             const errorResponse = await response.json(); 
