@@ -77,7 +77,7 @@ style="
       position: relative;
       object-fit: cover;
     "
-    src="/logo/logo.png"
+    src="/logo/logo1.png"
     alt="logo"
   />
   <div

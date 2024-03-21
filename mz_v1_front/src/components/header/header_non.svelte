@@ -50,10 +50,10 @@
     font-family: 'yg-jalnan';
     line-height: 28px;
     font-weight: 400;
-    font-size: 22px;
+    font-size: 23px;
     position: absolute;
-    left: 170px;
-    top: 23px;
+    left: 173px;
+    top: 25px;
     "
   >
     <strong>Make Zenerator</strong>
@@ -64,10 +64,10 @@
     width: 70px;
     position: absolute;
     left: 100px;
-    top: 0px;
+    top: 5px;
     object-fit: cover;
   "
-  src="./logo/logo1.png"
+  src="./logo/logo.png"
   alt="logo"
 />
     </a>
