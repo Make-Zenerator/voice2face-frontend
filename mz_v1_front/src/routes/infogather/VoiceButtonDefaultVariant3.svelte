@@ -19,7 +19,7 @@
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/wav'});
       
       mediaRecorder.ondataavailable = event => {
         audioChunks.push(event.data);
