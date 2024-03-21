@@ -10,6 +10,7 @@
 
   let gt_stretch_path_m = "https://storage.makezenerator.com:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
   let gt_stretch_path_w = "https://storage.makezenerator.com:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
+  let fail_path = "https://storage.makezenerator.com:9000/voice2face-public/site/result/sad.png"; 
   let results = [];
   let id;
   let latest_id;
@@ -527,6 +528,20 @@ style="
                 목소리에 어울리는 얼굴
               </div>
             </div>
+            {#if results.voice_gif_url == null}
+            <PlaceholderImage
+            style="
+            flex-shrink: 0; 
+            width: 393px;
+            height: 393px;
+            <!-- position: absolute;
+            left: 0px;
+            top: 105px; -->
+                "
+            targetPath={fail_path}
+          ></PlaceholderImage>
+            {:else}
+
             <video 
                 style="
                 width: 393px;
@@ -535,7 +550,11 @@ style="
                 left: 0px;
                 top: 105px;
               "
-           src= {results.voice_gif_url} type="video/mp4" autoplay loop muted />
+            src= {results.voice_gif_url} type="video/mp4" autoplay loop muted />
+
+            {/if}
+            
+            
           </div>
           <div
             style="

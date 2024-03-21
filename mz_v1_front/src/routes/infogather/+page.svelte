@@ -64,6 +64,8 @@
         if (response.ok) {
             const data = await response.json();
             alert(`성공적으로 요청했습니다.`);
+            console.log(typeof(audioBlob))
+            console.log(typeof(audioUrl))
             goto(targetPath); 
         } else if (response.status === 401){
           alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);

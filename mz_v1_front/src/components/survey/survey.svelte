@@ -1,7 +1,6 @@
 <script>
     import Radio from "../../routes/join/radio.svelte";
     import TextArea from "./input_area.svelte";
-    import { onMount } from 'svelte';
     import {goto} from '$app/navigation';
     export let style;
     
@@ -80,14 +79,14 @@
         {value: 0, label: '없다'},
     ] //bool
 
-    let service;
+    let service = null;
 
     const agree = [
         {value: 0, label: '동의 안함'},
         {value: 1, label:  '동의 함'},
 
     ]
-    let agree2;
+    let agree2 = null;
 
     let service_comments;
     
