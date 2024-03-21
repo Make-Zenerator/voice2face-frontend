@@ -80,6 +80,16 @@ async function handleSubmit(event) {
   .custom-scroll::-webkit-scrollbar {
     display: none;
 }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
 </style>
 <form 
   on:submit|preventDefault={handleSubmit} 
@@ -222,7 +232,7 @@ async function handleSubmit(event) {
                     color: rgba(0, 0, 0, 0.4);
                     text-align: center;
                     font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 14px;
+                    font-size: 16px;
                     line-height: 30px;
                     font-weight: 500;
                     position: relative;
@@ -277,7 +287,7 @@ async function handleSubmit(event) {
                     color: rgba(0, 0, 0, 0.4);
                     text-align: center;
                     font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 14px;
+                    font-size: 16px;
                     line-height: 30px;
                     font-weight: 500;
                     position: relative;
@@ -332,7 +342,7 @@ async function handleSubmit(event) {
                     color: rgba(0, 0, 0, 0.4);
                     text-align: center;
                     font-family: 'DmSans-Medium', sans-serif;
-                    font-size: 14px;
+                    font-size: 16px;
                     line-height: 30px;
                     font-weight: 500;
                     position: relative;
@@ -426,12 +436,12 @@ async function handleSubmit(event) {
                 color: rgba(0, 0, 0, 0.87);
                 text-align: center;
                 font-family: 'DmSans-Medium', sans-serif;
-                font-size: 14px;
+                font-size: 16px;
                 line-height: 40px;
                 font-weight: 500;
                 border: none;
                 width: 100%; 
-                height: 40px; /* 입력 상자의 높이 조정 */
+                height: 46px; /* 입력 상자의 높이 조정 */
                 background: transparent; /* 배경색 투명 */
                 -webkit-appearance: none; /* 스타일 초기화 */
                 margin: 0; /* margin 초기화 */

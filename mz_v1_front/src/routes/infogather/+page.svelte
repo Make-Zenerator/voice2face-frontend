@@ -97,6 +97,18 @@
     showExample = !showExample; 
   }
 </script>
+<style>
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+</style>
 
 <form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 900px; position: relative; ' + style}">
 
@@ -306,7 +318,7 @@
       color: rgba(0, 0, 0, 0.87);
       text-align: center;
       font-family: 'DmSans-Medium', sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 40px;
       font-weight: 500;
       border: none;
