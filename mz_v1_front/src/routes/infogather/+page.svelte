@@ -17,7 +17,7 @@
   let className = "";
   let info_gender;
 
-  let info_age;
+  let info_age=null;
   let progress = 0;
 
   let audioUrl = '';
@@ -46,11 +46,18 @@
 
   async function requestimage(){
     const formData = new FormData();
+    if (info_age == null) {
+      alert("나이를 입력해주세요")
+      return 
+    } 
     formData.append('age', info_age);
     formData.append('gender', info_gender);
     if (audioBlob) {
     formData.append('file', audioBlob, 'svelte_audio.wav');
-  }
+    } else {
+      alert("목소리를 입력해주세요")
+      return
+    }
 
     try{
         const response = await fetch('https://api.makezenerator.com/api/v1/mz-request', {
@@ -64,21 +71,18 @@
         if (response.ok) {
             const data = await response.json();
             alert(`성공적으로 요청했습니다.`);
-            console.log(typeof(audioBlob))
-            console.log(typeof(audioUrl))
             goto(targetPath); 
         } else if (response.status === 401){
           alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
           goto('/');
         } else if (response.status === 400){
           alert("데이터베이스 에러");
-        } else if (response.status === 404){
+        } else if (response.status === 405){
           alert("생성횟수가 5회 초과하여 요청실패 되었습니다.")
         }
         else {
             const errorResponse = await response.json(); 
-            alert(`요청 실패: ${errorResponse.message}`);
-            console.log(response);
+            alert(`요청 실패: ${errorResponse.error}`);
         }
     } catch (error) {
         console.error('생성 요청 중 에러 발생:', error);
