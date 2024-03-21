@@ -26,6 +26,7 @@
     } else if(response.status === 401) {
       alert(`세션이 만료되었습니다. \n다시 로그인 해주세요`);
       goto("/");
+      return
     }
     else {
       console.error('데이터를 가져오는 데 실패했습니다.');
