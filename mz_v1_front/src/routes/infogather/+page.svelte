@@ -6,7 +6,6 @@
   import Radio from "../join/radio.svelte";
   import Header from "../../components/header/header_login.svelte"
   export { className as class };
-  export let style;
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
   import Modal from "../../components/modal/basic_modal.svelte";
@@ -110,10 +109,10 @@
 
 </style>
 
-<form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 900px; position: relative; ' + style}">
+<form on:submit|preventDefault={requestimage} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; height: 900px; position: relative; '}">
 
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; position: relative; '}"
 >
 
   <Header/>

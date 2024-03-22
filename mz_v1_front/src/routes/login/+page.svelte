@@ -32,7 +32,6 @@
             goto(targetPath); // 사용자를 홈 페이지로 리다이렉트
         } else {
             alert('로그인 실패 \n 이메일과 비밀번호를 확인해주세요');
-            console.log(response);
         }
     } catch (error) {
       console.error('로그인 중 에러 발생:', error);

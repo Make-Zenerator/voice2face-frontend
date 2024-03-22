@@ -2,7 +2,7 @@
     import Radio from "../../routes/join/radio.svelte";
     import TextArea from "./input_area.svelte";
     import {goto} from '$app/navigation';
-    export let style;
+  
     
     let token = null;
 
@@ -203,7 +203,7 @@
     
 
 
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; position: relative; width: 1200px;' + style}">
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; position: relative; width: 1200px;'}">
 
 <div style="'font-size: 20pt">
     <div class= survey-container >
@@ -372,7 +372,7 @@
         
 
         <button type="submit"
-    style="{'background: var(--neutral-10, #000000);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
+    style="{'background: var(--neutral-10, #000000);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;'}"
     >
 
     

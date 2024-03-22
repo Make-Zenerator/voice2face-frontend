@@ -5,7 +5,6 @@
   export let variant = 'variant-3';
   let className = '';
   export { className as class };
-  export let style;
   const variantsClassName = 'default-' + variant;
   
   let mediaRecorder;
@@ -57,7 +56,7 @@
   }
 </script>
 
-<div style="{'width: 100px; height: 50px; position: relative; ' + style}">
+<div style="{'width: 100px; height: 50px; position: relative; '}">
   {#if !isRecordingComplete}
     <img
       class="{'frame-6 ' + className + ' ' + variantsClassName}"

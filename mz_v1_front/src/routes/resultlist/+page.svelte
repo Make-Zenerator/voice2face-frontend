@@ -100,7 +100,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
       <TableHeadCell style="font-size:14pt;">목소리 듣기</TableHeadCell>
       <TableHeadCell style="font-size:14pt;">결과 보기</TableHeadCell>
     </TableHead>
-    <TableBody class="divide-y">
+    <TableBody >
       {#each items as item}
         <TableBodyRow>
           <TableBodyCell>{item.created_at}</TableBodyCell>

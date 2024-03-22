@@ -6,7 +6,6 @@
     import { onMount } from 'svelte';
     let className = "";
     export { className as class };
-    export let style;
     let token;
     let isUserLoggedIn = false;
 
@@ -17,7 +16,7 @@
 
   </script>
   <div
-  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; height: 2200px; position: relative; ' + style}"
+  style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 40px; align-items: center; justify-content: flex-start; height: 2200px; position: relative; '}"
 >
 {#if isUserLoggedIn}
 <Header />

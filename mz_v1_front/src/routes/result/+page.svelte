@@ -652,7 +652,7 @@ style="
     </div>
   </div>
   {#if results.survey == 0}
-  
+  <div><br><br></div>
   <div
           style="
             color: #000000;

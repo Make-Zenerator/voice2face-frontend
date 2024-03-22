@@ -58,7 +58,6 @@ async function handleSubmit(event) {
 
       if (response.ok) {
         const result = await response.json();
-        console.log('회원가입 성공:', result);
         alert("회원가입 완료했습니다!!");
         goto(targetPath); // 성공 시 리디렉션
 
