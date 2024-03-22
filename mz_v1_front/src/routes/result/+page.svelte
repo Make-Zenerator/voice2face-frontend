@@ -199,7 +199,7 @@ style="
             style="
               display: flex;
               flex-direction: row;
-              gap: 11px;
+              gap: 20px;
               align-items: flex-end;
               justify-content: flex-start;
               flex-shrink: 0;
@@ -312,7 +312,7 @@ style="
             style="
               display: flex;
               flex-direction: row;
-              gap: 11px;
+              gap: 20px;
               align-items: flex-end;
               justify-content: flex-start;
               flex-shrink: 0;

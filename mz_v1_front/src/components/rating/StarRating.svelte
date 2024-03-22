@@ -29,6 +29,7 @@
 		}
 		rating = id;
 		collectFeedback = true;
+		saveRating();
 	} 
 	
 	let stars = [
@@ -44,7 +45,6 @@
         if (rating === null) {
             alert('별점을 선택해주세요.');
         } else {
-            // alert(`선택된 별점: ${rating}점`);
 			saveRating();
         }
     } 
@@ -67,16 +67,13 @@
 
         if (response.ok) {
             const result = await response.json();
-            console.log('Rating saved successfully', result);
             alert(`별점 ${rating}점이 성공적으로 저장되었습니다.`);
         } else {
             const errorResponse = await response.json();
             console.error('Failed to save rating:', errorResponse);
-            alert(`별점 저장 실패: ${errorResponse.message}`);
         }
     } catch (error) {
         console.error('Error saving rating:', error);
-        alert('별점 저장 중 에러가 발생했습니다.');
     }
 }
 
@@ -143,5 +140,4 @@
 					on:click={handleRate(star.id)}
 				/>
 		{/each}
-				<button on:click={checkRating}>별점 저장</button>
 </div>
