@@ -2,6 +2,7 @@
     import Radio from "../../routes/join/radio.svelte";
     import TextArea from "./input_area.svelte";
     import {goto} from '$app/navigation';
+    export let style;
   
     
     let token = null;
@@ -19,7 +20,7 @@
     ]
     let SNS = null;
 
-    let reason_img_rate=null; 
+    let reason_img_rate; 
     
     const well_serviced = [
         {value: 0, label: '매우 아니다'},
@@ -90,7 +91,7 @@
 
     let service_comments;
     
-    let email =null;
+    let call_number=null;
     export let survey_id ;
     export let survey_latest_id;
     
@@ -142,7 +143,7 @@
 
         const formData = new FormData;
         formData.append('sns_time', SNS);
-        formData.append('user_phone', email);
+        formData.append('user_phone', call_number);
         formData.append('image_rating_reason', reason_img_rate); ///
         formData.append('voice_to_face_rating', v2f);
         formData.append('dissatisfy_reason', selectedString1);
@@ -231,7 +232,7 @@
     
 
 
-<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; position: relative; width: 1200px;'}">
+<form on:submit|preventDefault={handleSubmit} style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; display: flex; flex-direction: column; gap: 120px; align-items: center; justify-content: flex-start; position: relative; width: 1200px;'+ style}">
 
 <div style="'font-size: 20pt">
     <div class= survey-container >
@@ -394,13 +395,13 @@
             <Radio options={agree} fontSize={20} legend='' bind:userSelected={agree2} />
         {#if agree2} 
             <p class="question"> 이메일 입력</p>
-            <input class="t_box" style="width: 50%;"type="text" placeholder='makezenerator@gmail.com' bind:value={email} />
+            <input class="t_box" style="width: 50%;"type="text" placeholder='makezenerator@gmail.com' bind:value={call_number} />
         {/if}
         <br>
         
 
         <button type="submit"
-    style="{'background: var(--neutral-10, #000000);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;'}"
+    style="{'background: var(--neutral-10, #000000);border-radius: 50px; border-style: solid; border-color: var(--neutral-10, #486284); border-width: 1px; padding: 12px 20px 12px 20px; display: flex; flex-direction: row; gap: 10px; align-items: center; justify-content: center; position: relative; overflow: hidden;' + style}"
     >
 
     
