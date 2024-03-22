@@ -24,7 +24,7 @@
           });
           if (response.ok) {
             alert('제출된 정보로 재생성 요청했습니다.');
-            goto('/home');
+            goto('/resultlist');
           }
           else{
             const errorResponse = await response.json();
