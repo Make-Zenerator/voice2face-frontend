@@ -19,7 +19,7 @@
     ]
     let SNS = null;
 
-    let reason_img_rate; 
+    let reason_img_rate=null; 
     
     const well_serviced = [
         {value: 0, label: '매우 아니다'},
@@ -90,7 +90,7 @@
 
     let service_comments;
     
-    let call_number=null;
+    let email =null;
     export let survey_id ;
     export let survey_latest_id;
     
@@ -111,10 +111,38 @@
 
     async function handleSubmit() {
 
+        if (SNS == null) {
+          alert("1번 문항에 답변이 작성되지 않았습니다.");
+          return 
+        }
+        else if (reason_img_rate == null) {
+          alert("2번 문항에 답변이 작성되지 않았습니다.");
+          return
+        }
+        else if (v2f == null) {
+          alert("3번 문항에 답변이 작성되지 않았습니다.");
+          return
+        }
+        else if (f2g == null) {
+          alert("5번 문항에 답변이 작성되지 않았습니다.");
+          return
+        }
+        else if (mbg == null) {
+          alert("6번 문항에 답변이 작성되지 않았습니다.");
+          return
+        }
+        else if (won == null) {
+          alert("7번 문항에 답변이 작성되지 않았습니다.");
+          return
+        }
+        else if (service == null) {
+          alert("8번 문항에 답변이 작성되지 않았습니다.");
+          return
+        }
 
         const formData = new FormData;
         formData.append('sns_time', SNS);
-        formData.append('user_phone', call_number);
+        formData.append('user_phone', email);
         formData.append('image_rating_reason', reason_img_rate); ///
         formData.append('voice_to_face_rating', v2f);
         formData.append('dissatisfy_reason', selectedString1);
@@ -366,7 +394,7 @@
             <Radio options={agree} fontSize={20} legend='' bind:userSelected={agree2} />
         {#if agree2} 
             <p class="question"> 이메일 입력</p>
-            <input class="t_box" style="width: 50%;"type="text" placeholder='makezenerator@gmail.com' bind:value={call_number} />
+            <input class="t_box" style="width: 50%;"type="text" placeholder='makezenerator@gmail.com' bind:value={email} />
         {/if}
         <br>
         
