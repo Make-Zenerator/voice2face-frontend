@@ -103,7 +103,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
     <TableBody >
       {#each items as item}
         <TableBodyRow>
-          <TableBodyCell>{item.created_at}</TableBodyCell>
+          <TableBodyCell>{item.created_at.replace('T', ' ')}</TableBodyCell>
           <TableBodyCell>
             {#if item.ata != null} {item.ata}{/if}
           </TableBodyCell>
