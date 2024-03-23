@@ -25,9 +25,9 @@
     const well_serviced = [
         {value: 0, label: '매우 아니다'},
         {value: 1, label: '아니다'},
-        {value: 2, label: '보통이다'},
-        {value: 3, label: '그렇다'},
-        {value: 4, label: '매우 그렇다'},
+        {value: 2, label: '그렇다'},
+        {value: 3, label: '매우 그렇다'},
+        {value: 4, label: '모르겠다'},
     ]
     let v2f = null;
 
@@ -43,9 +43,9 @@
     const face_to_gif_well = [
         {value: 0, label: '매우 아니다'},
         {value: 1, label: '아니다'},
-        {value: 2, label: '보통이다'},
-        {value: 3, label: '그렇다'},
-        {value: 4, label: '매우 그렇다'},
+        {value: 2, label: '그렇다'},
+        {value: 3, label: '매우 그렇다'},
+        {value: 4, label: '모르겠다'},
     ]
     let f2g= null;
 

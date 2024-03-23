@@ -105,7 +105,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
         <TableBodyRow>
           <TableBodyCell>{item.created_at}</TableBodyCell>
           <TableBodyCell>
-            {#if item.updated_at != null} {item.updated_at}{/if}
+            {#if item.ata != null} {item.ata}{/if}
           </TableBodyCell>
           <TableBodyCell>{#if item.gender == "man" } 남성 {:else } 여성 {/if} </TableBodyCell>
           <TableBodyCell>{item.age}</TableBodyCell>
