@@ -37,8 +37,6 @@
       results = data.mz_result; 
     } else if(response.status === 400) {
       alert("데이터베이스 에러");
-    } else if (response.status === 401) {
-      
     }
       else {
       console.error('데이터를 가져오는 데 실패했습니다.');
