@@ -105,7 +105,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 0px 0px 120px 0px; displ
         <TableBodyRow>
           <TableBodyCell>{item.created_at.replace('T', ' ')}</TableBodyCell>
           <TableBodyCell>
-            {#if item.ata != null} {item.ata}{/if}
+            {#if item.ata != null} {item.ata.replace('T', ' ')}{/if}
           </TableBodyCell>
           <TableBodyCell>{#if item.gender == "man" } 남성 {:else } 여성 {/if} </TableBodyCell>
           <TableBodyCell>{item.age}</TableBodyCell>
