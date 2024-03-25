@@ -21,7 +21,6 @@
 
   let audioUrl = '';
   let audioBlob= null;
-  let token; 
   let showModal = true;
   
   const options = [{
@@ -33,10 +32,8 @@
 	}]
 
   onMount(() => {
-    try{
-      token = sessionStorage.getItem('auth_token');
-    }
-    catch(error){
+    const token = sessionStorage.getItem('auth_token');
+    if (!token) {
       alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
       goto('/');
     }
@@ -58,7 +55,10 @@
       return
     }
 
+    
+
     try{
+        const token = sessionStorage.getItem('auth_token');
         const response = await fetch('https://api.makezenerator.com/api/v1/mz-request', {
             method: 'POST',
             headers: {

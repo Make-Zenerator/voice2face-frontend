@@ -9,8 +9,6 @@
 
   async function fetchData() {
     const token = sessionStorage.getItem('auth_token'); 
-
-    
     const response = await fetch('https://api.makezenerator.com/api/v1/mz-request', {
       method: 'GET',
       headers: {
