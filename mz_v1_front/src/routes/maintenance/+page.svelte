@@ -14,7 +14,7 @@ style="{'background: var(--neutral-0, #ffffff);padding: 160px 0px 120px 0px; dis
       margin-right: auto;
     "
     src="./logo/maintenance.png"
-    alt="fig_logo"
+    alt="maintenance"
   />
   <div
     style="
