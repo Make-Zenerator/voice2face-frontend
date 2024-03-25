@@ -9,12 +9,6 @@
 
   async function fetchData() {
     const token = sessionStorage.getItem('auth_token'); 
-    if (!token) {
-      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
-      goto('/');
-      return
-    }
-    
     const response = await fetch('https://api.makezenerator.com/api/v1/mz-request', {
       method: 'GET',
       headers: {

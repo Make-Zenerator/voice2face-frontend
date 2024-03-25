@@ -21,7 +21,6 @@
 
   let audioUrl = '';
   let audioBlob= null;
-  let token; 
   let showModal = true;
   
   const options = [{
@@ -56,7 +55,10 @@
       return
     }
 
+    
+
     try{
+        const token = sessionStorage.getItem('auth_token');
         const response = await fetch('https://api.makezenerator.com/api/v1/mz-request', {
             method: 'POST',
             headers: {
