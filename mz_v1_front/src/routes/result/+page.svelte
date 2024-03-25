@@ -7,6 +7,7 @@
   import SaveImage from "../../components/button/result_save.svelte";
   import Survey from "../../components/survey/survey.svelte";
   import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
 
   let gt_stretch_path_m = "https://storage.makezenerator.com:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
   let gt_stretch_path_w = "https://storage.makezenerator.com:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
@@ -19,6 +20,11 @@
   
   onMount(async () => {
       token = sessionStorage.getItem('auth_token'); 
+      if (!token) {
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+      return
+    }
       gender =sessionStorage.getItem('gender');
       id = sessionStorage.getItem('id');
       latest_id = sessionStorage.getItem('latest_id');
@@ -44,10 +50,6 @@
     }
   });
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-  }
   
 
 

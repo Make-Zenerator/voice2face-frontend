@@ -2,6 +2,16 @@
     import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
     import HeaderLogin from "../../components/header/header_login.svelte";
     import PlaceholderImage from "../join/PlaceholderImage.svelte";
+    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
+    onMount(() => {
+    const token = sessionStorage.getItem('auth_token');
+    if (!token) {
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+    }
+  });
+
   </script>
   <div
     style="{'background: var(--neutral-0, #ffffff); display: flex; flex-direction: column; gap: 160px; align-items: center; justify-content: flex-start; height: 845px; position: relative; '}"
