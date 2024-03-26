@@ -1,8 +1,6 @@
 name: Frontend
 
 on:
-  pull_request:
-    branches: ['develop'] # main 브랜치에 pull request될 때 동작 
   push:
     branches: ['develop'] # main 브랜치에 push될 때 동작
 
