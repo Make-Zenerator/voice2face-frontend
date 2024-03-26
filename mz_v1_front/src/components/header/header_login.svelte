@@ -8,7 +8,7 @@
 
     function handleLogout() {
     // 로컬 스토리지에서 'auth_token' 제거
-    sessionStorage.removeItem('auth_token');
+    sessionStorage.clear();
     alert("로그아웃 되었습니다.");
     goto('/');
   }
