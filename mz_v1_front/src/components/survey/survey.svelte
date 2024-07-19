@@ -4,6 +4,8 @@
     import { onMount } from 'svelte';
     import {goto} from '$app/navigation';
     export let style;
+
+    const serverIP = import.meta.env.VITE_SERVER_IP;
     
     let token = null;
 
@@ -136,7 +138,7 @@
 
 
     try {
-      const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${survey_id}/mz-result/${survey_latest_id}`, {
+      const response = await fetch(`${serverIP}/api/v1/mz-request/${survey_id}/mz-result/${survey_latest_id}`, {
         method: 'POST',
         headers: {
             'Token':token,

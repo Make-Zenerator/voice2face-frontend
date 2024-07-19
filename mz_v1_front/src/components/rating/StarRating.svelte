@@ -14,6 +14,8 @@
 	export let ABtype ;
 	export let result_id;
 	export let latest_id;
+
+	const serverIP = import.meta.env.VITE_SERVER_IP;
 	
 	// using curried function to initialize hover with id
 	const handleHover = (id) => () => {
@@ -57,7 +59,7 @@
 	formData.append('rating',rating);
 	
     try {
-        const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${result_id}/mz-result/${latest_id}`, {
+        const response = await fetch(`${serverIP}/api/v1/mz-request/${result_id}/mz-result/${latest_id}`, {
             method: 'PATCH',
             headers: {
                 'Token': token,
