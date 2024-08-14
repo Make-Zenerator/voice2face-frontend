@@ -2,16 +2,25 @@
   import SocialProperty1Github from "../../components/image/SocialProperty1Github.svelte";
   import Header from "../../components/header/header_login.svelte";
   import HeaderNon from "../../components/header/header_non.svelte";
+
   import { onMount } from 'svelte';
-  let className = "";
-  export { className as class };
-  export let style;
-  let token;
-  let isUserLoggedIn = false;
+
+  let token = null;
+  let isLoggedIn = false;
+
+  function checkSession() {
+    console.log('세션 토큰 확인 중...');
+    token = sessionStorage.getItem('auth_token');
+    console.log('토큰:', token);
+    if (!token) {
+      isLoggedIn = false;
+    } else {
+      isLoggedIn = true;
+    }
+  }
 
   onMount(() => {
-    token = sessionStorage.getItem('auth_token');
-    isUserLoggedIn = !!token; 
+    checkSession();
   });
 </script>
 
@@ -222,7 +231,7 @@
 
 <div class="frame">
   <div class="main-container">
-    {#if isUserLoggedIn}
+    {#if isLoggedIn}
       <Header />
     {:else}
       <HeaderNon />

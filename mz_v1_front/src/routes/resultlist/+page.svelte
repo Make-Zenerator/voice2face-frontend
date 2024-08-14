@@ -8,9 +8,24 @@
   export let style;
   import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
 
+  let sessionChecked = false;
+
+  function checkSession() {
+    console.log('세션 토큰 확인 중...');
+    // token = sessionStorage.getItem('auth_token');
+    token = "2";
+    console.log('토큰:', token);
+    if (!token) {
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+    } 
+
+    sessionChecked = true;
+  }
+
   let items = [];
 
-  const serverIP = import.meta.env.VITE_SERVER_IP;
+  const serverIP = "http://api.makezenerator.com";
 
   async function fetchData() {
     const token = sessionStorage.getItem('auth_token'); 

@@ -1,8 +1,10 @@
 <script>
   import BasicFilled from "../../components/button/basic_filled.svelte";
   import PlaceholderImage from "./PlaceholderImage.svelte";
-  import Header from "../../components/header/header_non.svelte";
+  import Header from "../../components/header/header_login.svelte";
+  import HeaderNon from "../../components/header/header_non.svelte";
   import Radio from "./radio.svelte"
+  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   export let targetPath = "/";
   let className = "";
@@ -16,7 +18,27 @@
   let join_agree = false;
   let passwordMismatch = false;
 
-  const serverIP = import.meta.env.VITE_SERVER_IP;
+  let token = null;
+  let isLoggedIn = false;
+  let sessionChecked = false;
+
+  function checkSession() {
+    console.log('세션 토큰 확인 중...');
+    token = sessionStorage.getItem('auth_token');
+    console.log('토큰:', token);
+    if (token) {
+      isLoggedIn = true;
+      goto('/home')
+      ;
+    }
+    sessionChecked = true
+  }
+
+  onMount(() => {
+    checkSession();
+  });
+
+  const serverIP = "http://api.makezenerator.com";
 
   const options = [{
     value: 'man',
@@ -82,7 +104,6 @@
 <style>
   form {
     background: var(--neutral-0, #ffffff);
-    padding: 0px 0px 120px 0px;
     display: flex;
     flex-direction: column;
     gap: 120px;
@@ -326,13 +347,30 @@
 
   @media(max-width: 420px) {
   form {
+    gap: 60px;
+  }
+
+  .frame {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .main-container {
+    top: 120px;
+    width: 100%;
+    padding: 0;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* form {
     padding: 0px 16px 80px 16px;
     gap: 60px;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* 세로 중앙 정렬 */
+    justify-content: center; 
   }
 
   .frame {
@@ -346,7 +384,7 @@
     gap: 60px;
     align-items: center;
     margin-bottom: 60px;
-  }
+  } */
 
   .inner-content {
     flex-direction: column;
@@ -474,10 +512,15 @@
 
 </style>
 
+{#if sessionChecked}
 <form on:submit|preventDefault={handleSubmit} class="form-container" style={style}>
   <div class="frame">
     <div class="main-container">
-      <Header />
+      {#if isLoggedIn}
+        <Header />
+      {:else}
+        <HeaderNon />
+      {/if} 
       <div class="inner-content">
         <div class="inner-content-center">
           <div class="signup-box">
@@ -576,3 +619,6 @@
     </div>
   </div>
 </form>
+{:else}
+<div></div>
+{/if}

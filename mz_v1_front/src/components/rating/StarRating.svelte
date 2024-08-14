@@ -15,7 +15,7 @@
 	export let result_id;
 	export let latest_id;
 
-	const serverIP = import.meta.env.VITE_SERVER_IP;
+	const serverIP = "http://api.makezenerator.com";
 	
 	// using curried function to initialize hover with id
 	const handleHover = (id) => () => {

@@ -1,7 +1,30 @@
 <script>
   import ButtonStyleFilled from "../join/ButtonStyleFilled.svelte";
   import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
-  import Header from "../../components/header/header_login.svelte"
+  import Header from "../../components/header/header_login.svelte";
+  import HeaderNon from "../../components/header/header_non.svelte";
+
+  import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
+
+  let token = null;
+  let isLoggedIn = false;
+
+  function checkSession() {
+    console.log('세션 토큰 확인 중...');
+    token = sessionStorage.getItem('auth_token');
+    console.log('토큰:', token);
+    if (!token) {
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/');
+    } else {
+      isLoggedIn = true;
+    }
+  }
+
+  onMount(() => {
+    checkSession();
+  });
 </script>
 
 <style>
@@ -131,12 +154,13 @@
 
   @media(max-width: 420px) {
   .main-container {
+    top: 120px;
     width: 100%;
     padding: 0px 16px 80px 16px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    margin-bottom:120px;
   }
 
   .text-container {
@@ -228,7 +252,11 @@
 </style>
 <div class="frame">
   <div class="main-container">
-    <Header/>
+    {#if isLoggedIn}
+      <Header />
+    {:else}
+      <HeaderNon />
+    {/if}
     <div class="text-container">
       <div class="inner-text-group">
         <div class="text-block">
