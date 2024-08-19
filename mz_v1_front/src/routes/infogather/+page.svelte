@@ -5,8 +5,17 @@
   import { sineOut } from 'svelte/easing';
   import Radio from "../join/radio.svelte";
   import Header from "../../components/header/header_login.svelte";
+  import HeaderNon from "../../components/header/header_non.svelte";
+
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
+
+  import Modal from "../../components/modal/basic_modal.svelte";
+
+  // let isLoggedIn = true;
+
+  let token = null;
+  let isLoggedIn = false;
 
   export { className as class };
   export let style;
@@ -20,7 +29,24 @@
   let progress = 0;
   let audioUrl = '';
   let audioBlob = null;
-  let token; 
+  let showModal = true;
+
+  function checkSession() {
+    console.log('세션 토큰 확인 중...');
+      token = sessionStorage.getItem('auth_token');
+        console.log('토큰:', token);
+
+      if (!token) {
+        alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+        goto('/login');
+      } else {
+        isLoggedIn = true;
+      }
+  }
+
+  onMount(() => {
+    checkSession();
+  });
 
   const genderOptions = [{
     value: 'man',
@@ -48,22 +74,20 @@
     image: '/_src_temp/video4.png' // 이미지 경로를 수정
   }];
 
-  onMount(() => {
-    try {
-      token = sessionStorage.getItem('auth_token');
-    } catch (error) {
-      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
-      goto('/');
-    }
-  });
 
   async function requestImage() {
     const formData = new FormData();
-    formData.append('age', info_age);
-    formData.append('gender', info_gender);
-    formData.append('video', info_video);
-    if (audioBlob) {
+      if (info_age == null) {
+        alert("나이를 입력해 주세요.")
+        return 
+      } 
+      formData.append('age', info_age);
+      formData.append('gender', info_gender);
+      if (audioBlob) {
       formData.append('file', audioBlob, 'svelte_audio.wav');
+      } else {
+        alert("목소리를 입력해 주세요.")
+        return
     }
 
     try {
@@ -96,8 +120,8 @@
         console.log(response);
       }
     } catch (error) {
-      console.error('생성 요청 중 에러 발생:', error);
-      alert('요청 중 에러가 발생했습니다.');
+        console.error('생성 요청 중 에러 발생:', error);
+        alert('요청 중 에러가 발생했습니다.');
     }
   }
 
@@ -531,89 +555,15 @@
       width: 100%; */
     }
 
-    /* .left-panel, .right-panel {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
+    .note-container {
+      width: 400px;
+  }
 
-    .right-panel {
-      top: 150px;
-      padding-bottom: 60px;
-    }
+  .example-container {
+    width: 400px;
+  }
 
-    .form-box {
-      width: 100%;
-      padding: 20px 20px 50px 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .title-container {
-      top: 5px;
-    }
-
-    .title-container, .right-panel-title-container {
-      width: 100%;
-      text-align: center;
-    }
-
-    .title, .right-panel-title {
-      font-size: 32px;
-      line-height: 36px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .title-description {
-      display: flex;
-    }
-
-    .input-container, .input-box, .right-panel-inner, .button-container {
-      width: 100%;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .label, .age-label, .voice-label , .video-label{
-      font-size: 16px;
-      line-height: 20px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .voice-container {
-      gap: 30px;
-      padding-right: 20px;
-    }
-
-    .radio-container, .age-input-container, .voice-container {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .radio-container {
-      left: 42px;
-    }
-
-    .age-input {
-      font-size: 16px;
-      line-height: 24px;
-      text-align: center;
-    } */
-
-    /* .note-container, .example-container {
-      width: 100%;
-      padding-left: 10px;
-    }
-
-    .submit-button {
-      width: 100%;
-    } */
+    
 
     .right-panel-title-container {
       display: none;
@@ -626,22 +576,6 @@
       margin-top: 10px;
       margin-bottom: 30px;
     }
-
-
-    /* .video-option input[type="radio"] + label::after {
-      content: "";
-      position: absolute;
-      display: inline-block;
-      width: 0.5em;
-      height: 0.5em;
-      top: 0.45em;
-      left:4.44em;
-      background: var(--accent-color, #282828);
-      border: 1px solid var(--accent-color, #282828);
-      border-radius: 50%;
-      transform: scale(0);
-      transition: transform 0.2s ease-in-out;
-    } */
   }
 
   @media (max-width: 420px) {
@@ -792,7 +726,11 @@
 <form on:submit|preventDefault={requestImage} class="form-container" style={style}>
   <div class="frame">
     <div class="main-container">
-      <Header />
+      {#if isLoggedIn}
+        <Header />
+      {:else}
+        <HeaderNon />
+      {/if}
       <div class="inner-content">
         <div class="left-panel">
           <div class="form-box">
@@ -874,7 +812,8 @@
             3. 마이크를 누르면 <strong>1초 뒤</strong> 녹음을 시작합니다.<br/>
             4. 10초 동안 아무 말이나 해주세요. <br />
             5. <strong>목소리 주인공</strong>의 성별과 나이를 입력해주세요.<br />
-            6. 생성 횟수는 <strong>10회</strong>로 제한합니다.
+            6. 생성 횟수는 <strong>10회</strong>로 제한합니다.<br />
+            (베타 테스트 단계로 나이는 <strong>20~50세</strong> 까지 설정 가능합니다.)
           </div>
           <div class="example-container">
             <strong>예시문장</strong><br/>
@@ -888,3 +827,16 @@
     </div>
   </div>
 </form>
+
+<Modal bind:showModal>
+
+  <ol class="definition-list" style="font-size: 16px; line-height: 28px;">
+    <li>1. 마이크가 제대로 작동하는지 확인해주세요.</li>
+    <li>2. 조용한 장소에서 녹음해주세요.</li>
+    <li>3. 마이크를 누르면 <strong>1초 뒤</strong> 녹음을 시작합니다.</li>
+    <li>4. 10초 동안 아무 말이나 해주세요.</li>
+    <li>5. <strong>목소리 주인공</strong>의 성별과 나이를 입력해주세요.</li>
+    <li>6. 생성 횟수는 <strong>10회</strong>로 제한합니다.</li>
+    <li>(베타 테스트 단계로 나이는 <strong>20~50세</strong> 까지 설정 가능합니다.)</li>
+  </ol>
+</Modal>

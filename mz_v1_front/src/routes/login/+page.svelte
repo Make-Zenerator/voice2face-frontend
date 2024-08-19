@@ -1,10 +1,31 @@
 <script>
   import BasicFilled from "../../components/button/basic_filled.svelte";
-  import PlaceholderImage from "./PlaceholderImage.svelte";
-  import Header from "../../components/header/header_non.svelte";
+  import Header from "../../components/header/header_login.svelte";
+  import HeaderNon from "../../components/header/header_non.svelte";
+  import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
 
-  const serverIP = import.meta.env.VITE_SERVER_IP;
+  const serverIP = "http://api.makezenerator.com";
+
+  let token = null;
+  let isLoggedIn = false;
+  let sessionChecked = false;
+
+  function checkSession() {
+    console.log('세션 토큰 확인 중...');
+    token = sessionStorage.getItem('auth_token');
+    console.log('토큰:', token);
+    if (token) {
+      isLoggedIn = true;
+      goto('/home')
+      ;
+    }
+    sessionChecked = true
+  }
+
+  onMount(() => {
+    checkSession();
+  });
 
   let className = "";
   export { className as class };
@@ -17,6 +38,16 @@
     const formData = new FormData();
     formData.append('email', login_email);
     formData.append('password', login_pswd);
+
+    if (!login_email) {
+        alert("이메일을 입력해 주세요.")
+        return 
+      } 
+
+    if (!login_pswd) {
+        alert("비밀번호를 입력해 주세요.")
+        return 
+      }
 
     try {
       const response = await fetch(`${serverIP}/api/v1/auth`, {
@@ -337,10 +368,15 @@
 
 </style>
 
+{#if sessionChecked}
 <form on:submit|preventDefault={login} class="form-container" style={style}>
   <div class="frame">
     <div class="main-container">
-      <Header />
+      {#if isLoggedIn}
+        <Header />
+      {:else}
+        <HeaderNon />
+      {/if} 
       <div class="inner-container">
         <div class="login-wrapper">
           <div class="login-container">
@@ -386,3 +422,6 @@
     </div>
   </div>
 </form>
+{:else}
+<div></div>
+{/if}

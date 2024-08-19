@@ -3,7 +3,7 @@
   import ButtonStyleOutlined from "./join/ButtonStyleOutlined.svelte";
   import Header from "../components/header/header_non.svelte";
 
-  const introVideo = '/_src_temp/hj_24fps_square.mp4';
+  const introVideo = "./_src_temp/hj_24fps_square.mp4";
 </script>
 
 <style>
@@ -254,7 +254,7 @@
   .small-title {
     font-size: 24px;
     line-height: 32px;
-    width: 380px;
+    width: 100%;
     text-align: center;
   }
 
@@ -331,7 +331,7 @@
           </div>
         </div>
         <div class="video">
-          <video autoplay loop muted>
+          <video autoplay loop muted playsinline>
             <source src="{introVideo}" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

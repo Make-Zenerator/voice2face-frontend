@@ -1,10 +1,31 @@
 <script>
   import ButtonStyleOutlined from "../join/ButtonStyleOutlined.svelte";
-  import HeaderLogin from "../../components/header/header_login.svelte";
-  import PlaceholderImage from "../login/PlaceholderImage.svelte";
+  import Header from "../../components/header/header_login.svelte";
 
-  const loadingImage = '/_src_temp/loading_image.png';
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
 
+  const loadingImage = "./_src_temp/loading_image.png";
+
+  let isLoggedIn = false;
+  let checkedSession = false; // 세션 체크가 완료되었는지 확인하는 변수
+
+  function checkSession() {
+    console.log('세션 토큰 확인 중...');
+    const token = sessionStorage.getItem('auth_token');
+    console.log('토큰:', token);
+    if (!token) {
+      alert(`세션이 만료되었습니다.\n다시 로그인 해주세요.`);
+      goto('/login');
+    } else {
+      isLoggedIn = true;
+    }
+    checkedSession = true; // 세션 체크 완료
+  }
+
+  onMount(() => {
+    checkSession();
+  });
 </script>
 
 <style>
@@ -183,32 +204,34 @@
 </style>
 
 <div class="frame">
-  <div class="main-container">
-    <HeaderLogin />
-    <div class="inner-container">
-      <div class="card-container">
-        <div class="card">
-          <div class="content">
-            <div class="text-container">
-              <div class="loading-header">로딩 중 이에요...</div>
-              <div class="text">
-                생성 요청했습니다. <br />
-                완료되면 화면이 자동으로 변환됩니다.
+  {#if checkedSession && isLoggedIn}
+    <div class="main-container">
+      <Header />
+      <div class="inner-container">
+        <div class="card-container">
+          <div class="card">
+            <div class="content">
+              <div class="text-container">
+                <div class="loading-header">로딩 중 이에요...</div>
+                <div class="text">
+                  생성 요청했습니다. <br />
+                  완료되면 화면이 자동으로 변환됩니다.
+                </div>
               </div>
+              <ButtonStyleOutlined
+                class="button"
+                name="메인으로 돌아가기"
+                targetPath="/home"
+              ></ButtonStyleOutlined>
             </div>
-            <ButtonStyleOutlined
-              class="button"
-              name="메인으로 돌아가기"
-              targetPath="/home"
-            ></ButtonStyleOutlined>
           </div>
+          <img
+            class="placeholder"
+            src={loadingImage}
+            alt="login_image"
+          />
         </div>
-        <img
-          class="placeholder"
-          src={loadingImage}
-          alt="login_image"
-        />
       </div>
     </div>
-  </div>
+  {/if}
 </div>

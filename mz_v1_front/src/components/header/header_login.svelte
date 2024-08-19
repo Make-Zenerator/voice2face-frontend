@@ -191,7 +191,7 @@
 
   <div class="header-container">
     <div class="brand">
-      <a href="/" class="brand-link">
+      <a href="/home" class="brand-link">
         <img class="brand-logo" src="./logo/logo1.png" alt="logo">
         <div class="brand-name">
           <strong>Make Zenerator</strong>
