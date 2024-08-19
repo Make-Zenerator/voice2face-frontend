@@ -250,21 +250,21 @@
             <div class="member-name">신호준</div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/internationalwe/"></SocialProperty1Github>
-          <img src="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/hojun.jpg" class="member-image" alt="신호준">
+          <img src="/member/hojun.jpg" class="member-image" alt="신호준">
         </div>
         <div class="member-column">
           <div>
             <div class="member-name">김태양</div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/taeyang916"></SocialProperty1Github>
-          <img src="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/taeyang.jpg" class="member-image" alt="김태양">
+          <img src="/member/taeyang.jpg" class="member-image" alt="김태양">
         </div>
         <div class="member-column">
           <div>
             <div class="member-name">정소윤</div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/soyoonjeong"></SocialProperty1Github>
-          <img src="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/soyoon.jpg" class="member-image" alt="정소윤">
+          <img src="/member/soyoon.jpg" class="member-image" alt="정소윤">
         </div>
       </div>
       <div class="member-row">
@@ -273,21 +273,21 @@
             <div class="member-name">김혜지</div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/carboxaminoo"></SocialProperty1Github>
-          <img src="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/haeji.jpg" class="member-image" alt="김혜지">
+          <img src="/member/haeji.jpg" class="member-image" alt="김혜지">
         </div>
         <div class="member-column">
           <div>
             <div class="member-name">임서현</div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/dlatjgus0612"></SocialProperty1Github>
-          <img src="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/seohyun.jpg" class="member-image" alt="임서현">
+          <img src="/member/seohyun.jpg" class="member-image" alt="임서현">
         </div>
         <div class="member-column">
           <div>
             <div class="member-name">성주희</div>
           </div>
           <SocialProperty1Github style="flex-shrink: 0" targetPath="https://github.com/jouhy"></SocialProperty1Github>
-          <img src="https://make-generator.s3.ap-northeast-2.amazonaws.com/profiles/juhy.jpg" class="member-image" alt="성주희">
+          <img src="/member/juhy.jpg" class="member-image" alt="성주희">
         </div>
       </div>
 

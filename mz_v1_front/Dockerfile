@@ -6,6 +6,7 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
 RUN npm install -g pm2
+RUN npm install dotenv
 
 COPY . ./
 RUN npm run build

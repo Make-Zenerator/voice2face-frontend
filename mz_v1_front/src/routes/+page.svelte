@@ -3,7 +3,7 @@
   import ButtonStyleOutlined from "./join/ButtonStyleOutlined.svelte";
   import Header from "../components/header/header_non.svelte";
 
-  const introVideo = import.meta.env.VITE_INTRO_VIDEO;
+  const introVideo = '/_src_temp/hj_24fps_square.mp4';
 </script>
 
 <style>

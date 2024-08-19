@@ -33,19 +33,19 @@
   const videoOptions = [{
     value: 'video1',
     label: '킹스맨',
-    image: './_src_temp/video1.png' // 이미지 경로를 수정
+    image: '/_src_temp/video1.png' // 이미지 경로를 수정
   }, {
     value: 'video2',
     label: '예나',
-    image: './_src_temp/video2.png' // 이미지 경로를 수정
+    image: '/_src_temp/video2.png' // 이미지 경로를 수정
   }, {
     value: 'video3',
     label: '사딸라',
-    image: './_src_temp/video3.png' // 이미지 경로를 수정
+    image: '/_src_temp/video3.png' // 이미지 경로를 수정
   }, {
     value: 'video4',
     label: '연진아',
-    image: './_src_temp/video4.png' // 이미지 경로를 수정
+    image: '/_src_temp/video4.png' // 이미지 경로를 수정
   }];
 
   onMount(() => {
@@ -67,7 +67,9 @@
     }
 
     try {
-      const response = await fetch('http://api.makezenerator.com/api/v1/mz-request', {
+      const serverIP = import.meta.env.VITE_SERVER_IP;
+      console.log(serverIP)
+      const response = await fetch(`${serverIP}/api/v1/mz-request`, {
         method: 'POST',
         headers: {
           'Token': token,
@@ -84,7 +86,11 @@
         goto('/');
       } else if (response.status === 400) {
         alert("데이터베이스 에러");
-      } else {
+      } else if (response.status === 405){
+          alert("생성횟수가 10회를 초과하여 요청실패 되었습니다.")
+      } else if (response.status === 404){
+        alert("나이, 성별, 비디오, 음성 파일 중 누락된 것이 있습니다.")
+      }else {
         const errorResponse = await response.json(); 
         alert(`요청 실패: ${errorResponse.message}`);
         console.log(response);

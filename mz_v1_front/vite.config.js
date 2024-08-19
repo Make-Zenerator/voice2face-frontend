@@ -6,6 +6,7 @@ dotenv.config();
 
 export default defineConfig({
 	plugins: [sveltekit()],
+    envPrefix: 'VITE_', // 환경 변수 접두사 설정
 	server: {
         fs: {
             allow: [

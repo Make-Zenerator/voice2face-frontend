@@ -3,7 +3,7 @@
   import HeaderLogin from "../../components/header/header_login.svelte";
   import PlaceholderImage from "../login/PlaceholderImage.svelte";
 
-  const loadingImage = import.meta.env.VITE_LOADING_IMAGE;
+  const loadingImage = '/_src_temp/loading_image.png';
 
 </script>
 
