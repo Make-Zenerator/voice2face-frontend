@@ -89,7 +89,12 @@
         alert("목소리를 입력해 주세요.")
         return
     }
-
+      if(info_video==null){
+        alert("짤을 선택해 주세요.")
+        return 
+      }
+      formData.append('video', info_video); 
+      
     try {
       const serverIP = import.meta.env.VITE_SERVER_IP;
       console.log(serverIP)
@@ -113,7 +118,10 @@
       } else if (response.status === 405){
           alert("생성횟수가 10회를 초과하여 요청실패 되었습니다.")
       } else if (response.status === 404){
-        alert("나이, 성별, 비디오, 음성 파일 중 누락된 것이 있습니다.")
+        const errorResponse = await response.json(); 
+        alert(`요청 실패: ${errorResponse.message}`);
+        console.log(response);
+        //alert("나이, 성별, 비디오, 음성 파일 중 누락된 것이 있습니다.")
       }else {
         const errorResponse = await response.json(); 
         alert(`요청 실패: ${errorResponse.message}`);
