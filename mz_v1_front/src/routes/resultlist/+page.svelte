@@ -25,7 +25,7 @@
 
   let items = [];
 
-  const serverIP = "http://api.makezenerator.com";
+  const serverIP = import.meta.env.VITE_SERVER_IP;
 
   async function fetchData() {
     const token = sessionStorage.getItem('auth_token'); 

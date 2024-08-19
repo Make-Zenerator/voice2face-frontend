@@ -38,7 +38,7 @@
     checkSession();
   });
 
-  const serverIP = "http://api.makezenerator.com";
+  const serverIP = import.meta.env.VITE_SERVER_IP;
 
   const options = [{
     value: 'man',

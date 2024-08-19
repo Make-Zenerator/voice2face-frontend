@@ -8,7 +8,7 @@
     export let name = "Do something";
     export let type = "";
 
-    const serverIP = "http://api.makezenerator.com";
+    const serverIP = import.meta.env.VITE_SERVER_IP;
     
 
     async function reRequest() {

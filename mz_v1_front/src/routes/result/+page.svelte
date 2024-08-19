@@ -15,7 +15,7 @@
   export { className as class };
   export let style;
 
-  const serverIP = "http://api.makezenerator.com";
+  const serverIP = import.meta.env.VITE_SERVER_IP;
   const gt_stretch_path_m = "http://223.130.133.236:9000/voice2face-public/site/result/tae_24fps_square.mp4"; 
   const gt_stretch_path_w = "http://223.130.133.236:9000/voice2face-public/site/result/hj_24fps_square.mp4"; 
   let results = [];

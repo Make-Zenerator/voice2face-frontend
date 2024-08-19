@@ -5,7 +5,7 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
 
-  const serverIP = "http://api.makezenerator.com";
+  const serverIP = import.meta.env.VITE_SERVER_IP;
 
   let token = null;
   let isLoggedIn = false;
