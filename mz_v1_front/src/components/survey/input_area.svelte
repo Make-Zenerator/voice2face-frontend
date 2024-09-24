@@ -25,6 +25,12 @@
         resize: none; /* 사용자가 크기 조절 못하게 함 */
         font-size: 15pt;
     }
+
+    @media (max-width: 420px) {
+        .auto-grow-textarea {
+                font-size: 12pt;
+    }
+}
 </style>
 
 <textarea bind:value class="auto-grow-textarea" on:input={e => autoGrow(e.target)}></textarea>

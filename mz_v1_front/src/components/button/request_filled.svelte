@@ -7,6 +7,8 @@
     const variantsClassName = "style-variant-" + styleVariant;
     export let name = "Do something";
     export let type = "";
+
+    const serverIP = import.meta.env.VITE_SERVER_IP;
     
 
     async function reRequest() {
@@ -15,7 +17,7 @@
       const result_id= sessionStorage.getItem('id');
 
       try {
-        const response = await fetch(`http://api.makezenerator.com/api/v1/mz-request/${result_id}/mz-result`, {
+        const response = await fetch(`${serverIP}/api/v1/mz-request/${result_id}/mz-result`, {
           method: 'POST',
           headers: {
             'Token': token,

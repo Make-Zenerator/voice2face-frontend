@@ -10,23 +10,6 @@
     str.toLowerCase().replace(/ /g, "-").replace(/\./g, "");
 </script>
 
-<div role="radiogroup" 
-     class="group-container"
-     aria-labelledby={`label-${uniqueID}`}
-     style="font-size:{fontSize}px; flex-direction:{flexDirection}" 
-     id={`group-${uniqueID}`}>
-  <div class="legend" id={`label-${uniqueID}`}>{legend}</div>
-  {#each options as { value, label }}
-    <input
-      class="sr-only"
-      type="radio"
-      id={slugify(label) + '-' + uniqueID}
-      bind:group={userSelected}
-      value={value} />
-    <label for={slugify(label) + '-' + uniqueID}> {label} </label>
-  {/each}
-</div>
-
 <style>
   :root {
     --accent-color: CornflowerBlue;
@@ -35,7 +18,7 @@
   .group-container {
     border-radius: 2px;
     display: flex;
-    flex-direction: var(--flexDirection, row);
+    flex-direction: row;
   }
   .legend {
     font-weight: bold;
@@ -121,4 +104,32 @@
     box-shadow: 0 0px 8px var(--accent-color, #282828);
     border-radius: 50%;
   }
+
+  /* 반응형 설정 */
+  @media (max-width: 1120px) {
+    .group-container {
+      flex-direction: column;
+    }
+    label {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
 </style>
+
+<div role="radiogroup" 
+     class="group-container"
+     aria-labelledby={`label-${uniqueID}`}
+     style="font-size:{fontSize}px;" 
+     id={`group-${uniqueID}`}>
+  <div class="legend" id={`label-${uniqueID}`}>{legend}</div>
+  {#each options as { value, label }}
+    <input
+      class="sr-only"
+      type="radio"
+      id={slugify(label) + '-' + uniqueID}
+      bind:group={userSelected}
+      value={value} />
+    <label for={slugify(label) + '-' + uniqueID}> {label} </label>
+  {/each}
+</div>
