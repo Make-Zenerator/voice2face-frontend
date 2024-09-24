@@ -10,7 +10,7 @@ export default defineConfig({
 	server: {
         fs: {
             allow: [
-                '/Users/minyun/Documents/Code/Make-Zenerator/voice2face-frontend/mz_v1_front/_src_temp'
+                '/Users/minyun/Documents/Code/Make-Zenerator/voice2face-frontend/_src_temp'
             ]
         }
     }

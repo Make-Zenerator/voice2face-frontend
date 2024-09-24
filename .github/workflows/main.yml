@@ -17,7 +17,7 @@ jobs:
           password: ${{secrets.DOCKERHUB_PASSWORD}}
       - name: Build docker file and setting deploy files
         run: |
-          docker build -t makezenerator/frontend:latest mz_v1_front/
+          docker build -t makezenerator/frontend:latest
           docker push makezenerator/frontend:latest
   cd:
     runs-on: ubuntu-latest
